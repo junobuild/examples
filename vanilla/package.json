@@ -1,0 +1,19 @@
+{
+  "name": "@junobuild/example-vanilla",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3",
+    "vite-plugin-compression": "^0.5.1"
+  },
+  "dependencies": {
+    "@junobuild/core": "^0.0.2"
+  }
+}
