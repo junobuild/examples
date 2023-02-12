@@ -1,0 +1,37 @@
+{
+	"name": "@junobuild/example-svelte-form",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "^2.0.0",
+		"@sveltejs/kit": "^1.5.0",
+		"@typescript-eslint/eslint-plugin": "^5.51.0",
+		"@typescript-eslint/parser": "^5.51.0",
+		"autoprefixer": "^10.4.13",
+		"eslint": "^8.33.0",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"prettier": "^2.8.3",
+		"prettier-plugin-svelte": "^2.9.0",
+		"sass": "^1.58.0",
+		"svelte": "^3.55.1",
+		"svelte-check": "^3.0.3",
+		"tslib": "^2.5.0",
+		"typescript": "^4.9.5",
+		"vite": "^4.1.1"
+	},
+	"type": "module",
+	"dependencies": {
+		"@junobuild/core": "^0.0.1",
+		"nanoid": "^4.0.1"
+	}
+}

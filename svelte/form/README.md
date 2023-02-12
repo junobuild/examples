@@ -1,6 +1,6 @@
-# Vanilla
+# Svelte - Form
 
-A sample app in vanilla Javascript that showcases authentication, datastore and storage usage.
+A sample app that uses Juno datastore without authentication.
 
 ## Getting started
 
@@ -8,7 +8,7 @@ Make sure you have [node.js](https://nodejs.org) LTS installed.
 
 ```bash
 git clone https://github.com/buildwithjuno/examples
-cd vanilla
+cd svelte/form
 npm ci
 ```
 
@@ -22,4 +22,4 @@ npm run dev
 
 This sample app uses a [satellite](https://juno.build/docs/terminology#satellite) build with [Juno](https://juno.build).
 
-Its ID is [xo2hm-lqaaa-aaaal-ab3oa-cai](https://xo2hm-lqaaa-aaaal-ab3oa-cai.ic0.app).
+Its ID is [jx5yt-yyaaa-aaaal-abzbq-cai](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app).
