@@ -4,7 +4,7 @@ import {initDoc} from "./doc";
 import {initStorage} from "./storage";
 
 document.addEventListener("DOMContentLoaded", async () => await initDapp({
-  satelliteId: "vugpq-vaaaa-aaaal-ab3ba-cai",
+  satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai",
 }), {once: true});
 
 document

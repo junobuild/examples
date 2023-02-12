@@ -22,4 +22,4 @@ npm run dev
 
 This sample app uses a [satellite](https://juno.build/docs/terminology#satellite) deployed by [Juno](https://juno.build).
 
-Its ID is `vugpq-vaaaa-aaaal-ab3ba-cai`.
+Its ID is [xo2hm-lqaaa-aaaal-ab3oa-cai](https://xo2hm-lqaaa-aaaal-ab3oa-cai.ic0.app).
