@@ -2,8 +2,8 @@
 	"name": "Juno",
 	"short_name": "Juno",
 	"start_url": "/",
-	"background_color": "#7888ff",
-	"theme_color": "#7888ff",
+	"background_color": "#ff97e7",
+	"theme_color": "#ff97e7",
 	"display": "standalone",
 	"icons": [
 		{ "src": "icons/icon-48x48.png", "sizes": "48x48", "type": "image/png", "purpose": "any" },
