@@ -1,21 +1,26 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { initJuno } from '@junobuild/core';
+	import { onDestroy, onMount } from 'svelte';
+	import { authSubscribe, initJuno, type User } from '@junobuild/core';
 	import Logo from '$lib/assets/juno_logo_white.svg';
 	import Main from '$lib/components/Main.svelte';
+	import { userStore } from '$lib/stores/user.store';
+	import SignOut from '$lib/components/SignOut.svelte';
 
-	onMount(
-		async () =>
-			await initJuno({
-				satelliteId: 'jx5yt-yyaaa-aaaal-abzbq-cai'
-			})
-	);
+	let unsubscribe: (() => void) | undefined = undefined;
+
+	onMount(async () => {
+		unsubscribe = authSubscribe((user: User | null) => userStore.set(user));
+
+		await initJuno({
+			satelliteId: 'jx5yt-yyaaa-aaaal-abzbq-cai'
+		});
+	});
+
+	onDestroy(() => unsubscribe?.());
 </script>
 
 <main>
-	<a href="/"
-		><h1><img src={Logo} role="presentation" loading="lazy" decoding="async" alt="Juno" /></h1></a
-	>
+	<h1><img src={Logo} role="presentation" loading="lazy" decoding="async" alt="Juno" /></h1>
 	<p>
 		Sign-up to join <a href="https://juno.build" target="_blank" rel="noreferrer noopener">Juno</a> closed
 		beta.
@@ -24,6 +29,8 @@
 	<section>
 		<Main />
 	</section>
+
+	<SignOut />
 </main>
 
 <style lang="scss">

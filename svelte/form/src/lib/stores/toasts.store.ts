@@ -9,7 +9,6 @@ const initToastsStore = () => {
 		subscribe,
 
 		error({ text, detail }: { text: string; detail?: unknown }) {
-			console.error(text, detail);
 			update((messages: ToastMsg[]) => [
 				...messages,
 				{ text, level: 'error', detail: errorDetailToString(detail) }

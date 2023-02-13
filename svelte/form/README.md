@@ -1,6 +1,6 @@
 # Svelte - Form
 
-A sample app that uses Juno datastore without authentication. Also used a subscription form to enter Juno closed beta. 
+A sample app that uses Juno datastore and authentication. Also used a subscription form to enter Juno closed beta 🤪.
 
 ## Getting started
 

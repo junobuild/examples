@@ -1,41 +1,66 @@
 <script lang="ts">
 	import SignUp from '$lib/components/SignUp.svelte';
-	import Get from '$lib/components/Get.svelte';
 	import type { Doc } from '@junobuild/core';
 	import type { Data } from '$lib/types/data';
-	import Delete from '$lib/components/Delete.svelte';
 	import IconVerified from '$lib/icons/IconVerified.svelte';
+	import { toasts } from '../stores/toasts.store';
+	import { userStore } from '../stores/user.store';
+	import { getDoc } from '@junobuild/core';
 
-	let mode: 'insert' | 'get' | 'update' | 'delete' | 'insert_deleted' | 'insert_done' | 'deleted' =
-		'insert';
+	let mode: 'insert' | 'insert_done' | 'deleted' = 'insert';
 
 	let doc: Doc<Data> | undefined = undefined;
-	const update = ({ detail }) => {
-		doc = detail?.doc ?? undefined;
-		mode = doc !== undefined ? 'update' : 'insert';
+
+	const loadData = async () => {
+		if ($userStore === null || $userStore === undefined || $userStore.key === undefined) {
+			doc = undefined;
+			mode = 'insert';
+			return;
+		}
+
+		try {
+			const result: Doc<Data> | undefined = await getDoc({
+				collection: 'signup',
+				key: $userStore.key
+			});
+
+			doc =
+				doc !== undefined
+					? result !== undefined
+						? {
+								...doc,
+								...result
+						  }
+						: {
+								...doc
+						  }
+					: result !== undefined
+					? {
+							...result
+					  }
+					: undefined;
+		} catch (err: unknown) {
+			toasts.error({
+				text: 'Error while loading your data',
+				detail: err
+			});
+		}
 	};
 
-	const done = ({ detail }) => {
-		console.log(detail);
+	$: $userStore, (async () => await loadData())();
 
+	const done = ({ detail }) => {
 		doc = detail?.doc ?? undefined;
 		mode = 'insert_done';
 	};
+
+	const deleted = () => {
+		doc = undefined;
+		mode = 'deleted';
+	};
 </script>
 
-{#if mode === 'get'}
-	<Get on:junoDoc={update} on:junoCancel={() => (mode = 'insert')} />
-{:else if mode === 'delete'}
-	<Delete
-		on:junoDelete={update}
-		on:junoDeleted={() => (mode = 'deleted')}
-		on:junoCancel={() => (mode = 'insert')}
-	/>
-{:else if mode === 'update'}
-	<p>Edit your subscription:</p>
-
-	<SignUp {doc} on:junoSubmitted={done} />
-{:else if mode === 'deleted'}
+{#if mode === 'deleted'}
 	<p>Your subscription has been deleted.</p>
 {:else if mode === 'insert_done'}
 	<div class="done">
@@ -43,42 +68,15 @@
 		<div>
 			<p>Thanks for signing up. We will contact you very soon!</p>
 			<p>
-				Your subscription ID is <strong>{doc?.key ?? ''}</strong>. Use it to
-				<button class="text" on:click={() => (mode = 'get')}>update</button>
-				or
-				<button class="text" on:click={() => (mode = 'delete')}>delete</button> your data.
+				Your subscription ID is <strong>{doc?.key ?? ''}</strong>.
 			</p>
 		</div>
 	</div>
-{:else if mode === 'insert_deleted'}
-	<p>Your subscription has been deleted.</p>
-
-	<SignUp doc={undefined} on:junoSubmitted={done} />
 {:else}
-	<SignUp doc={undefined} on:junoSubmitted={done} />
-
-	<div class="already">
-		I already signed-up. I want to <button class="text" on:click={() => (mode = 'get')}
-			>update</button
-		>
-		or
-		<button class="text" on:click={() => (mode = 'delete')}>delete</button> my subscription.
-	</div>
+	<SignUp {doc} on:junoSubmitted={done} on:junoDeleted={deleted} />
 {/if}
 
 <style lang="scss">
-	@use '../styles/mixins/fonts';
-
-	button.text {
-		margin: 0;
-	}
-
-	.already {
-		@include fonts.small;
-		color: var(--value-color);
-		margin-top: var(--padding-4x);
-	}
-
 	.done {
 		display: flex;
 		align-items: center;

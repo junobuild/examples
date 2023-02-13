@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { type Doc, setDoc } from '@junobuild/core';
-	import { nanoid } from 'nanoid';
 	import type { Data } from '$lib/types/data';
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import { busy } from '../stores/busy.store';
 	import { toasts } from '../stores/toasts.store';
+	import { userSignedInStore } from '$lib/stores/user.store';
+	import SignIn from '$lib/components/SignIn.svelte';
+	import { userStore } from '../stores/user.store';
+	import Delete from '$lib/components/Delete.svelte';
 
 	export let doc: Doc<Data> | undefined = undefined;
 
@@ -15,28 +18,36 @@
 	let description: string;
 	let key: string | undefined;
 
-	onMount(() => {
+	const mapData = () => {
 		key = doc?.key;
 		email = doc?.data?.email;
 		twitter = doc?.data?.twitter;
 		github = doc?.data?.github;
 		framework = doc?.data?.framework;
 		description = doc?.data?.description;
-	});
+	};
+
+	$: doc, (() => mapData())();
 
 	const dispatch = createEventDispatcher();
 
 	const onSubmit = async () => {
+		if (!$userSignedInStore) {
+			toasts.error({
+				text: 'You are not signed-in.'
+			});
+			return;
+		}
+
 		try {
 			busy.start();
-
-			const id = key ?? nanoid();
 
 			const updatedDoc = await setDoc({
 				collection: 'signup',
 				doc: {
 					...(doc && doc),
-					key: id,
+					// @ts-ignore it is not interfered but we know it is set
+					key: $userStore.key,
 					data: {
 						email,
 						twitter,
@@ -85,7 +96,7 @@
 </script>
 
 <form on:submit|preventDefault={onSubmit}>
-	<label for="email">Your mail address:</label>
+	<label for="email">Your mail address (*):</label>
 	<input
 		id="email"
 		type="email"
@@ -115,5 +126,29 @@
 		<option value="other">Other</option>
 	</select>
 
-	<button disabled={!validEmail}>Submit</button>
+	{#if $userSignedInStore}
+		<div class="toolbar">
+			<Delete {doc} on:junoDeleted />
+
+			<button disabled={!validEmail}>Submit</button>
+		</div>
+	{:else}
+		<SignIn />
+	{/if}
+
+	<p class="notice">(*) Mail address is mandatory. Other fields are welcomed.</p>
 </form>
+
+<style lang="scss">
+	@use '../styles/mixins/fonts';
+
+	.toolbar {
+		display: flex;
+		gap: var(--padding-2x);
+	}
+
+	.notice {
+		font-size: var(--font-size-very-small);
+		margin-top: var(--padding-4x);
+	}
+</style>
