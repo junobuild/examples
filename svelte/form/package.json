@@ -31,7 +31,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@junobuild/core": "^0.0.1",
+		"@junobuild/core": "^0.0.3",
 		"nanoid": "^4.0.1"
 	}
 }

@@ -1,9 +1,9 @@
-import { authSubscribe, initDapp, signIn, signOut, type User } from "@junobuild/core";
+import { authSubscribe, initJuno, signIn, signOut, type User } from "@junobuild/core";
 import "./style.css";
 import {initDoc} from "./doc";
 import {initStorage} from "./storage";
 
-document.addEventListener("DOMContentLoaded", async () => await initDapp({
+document.addEventListener("DOMContentLoaded", async () => await initJuno({
   satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai",
 }), {once: true});
 

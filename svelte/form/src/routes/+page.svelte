@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { initDapp } from '@junobuild/core';
+	import { initJuno } from '@junobuild/core';
 	import Logo from '$lib/assets/juno_logo_white.svg';
 	import Main from '$lib/components/Main.svelte';
 
 	onMount(
 		async () =>
-			await initDapp({
+			await initJuno({
 				satelliteId: 'jx5yt-yyaaa-aaaal-abzbq-cai'
 			})
 	);
