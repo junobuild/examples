@@ -71,7 +71,7 @@ a {
 }
 a:active,
 a:hover {
-	color: var(--color-primary);
+	color: var(--color-tertiary);
 	outline-width: 0;
 }
 a:hover,
@@ -148,18 +148,18 @@ figcaption {
 }
 
 ::selection {
-	background: var(--color-secondary);
-	color: var(--color-secondary-contrast);
+	background: var(--color-secondary-contrast);
+	color: var(--color-secondary);
 }
 
 ::-moz-selection {
-	background: var(--color-secondary);
-	color: var(--color-secondary-contrast);
+	background: var(--color-secondary-contrast);
+	color: var(--color-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 0;
-	background-color: var(--color-secondary);
+	background-color: var(--color-secondary-contrast);
 }
 
 ::-webkit-scrollbar-track {
