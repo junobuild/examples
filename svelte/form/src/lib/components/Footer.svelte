@@ -28,10 +28,4 @@
 		gap: var(--padding);
 		padding: 0 0 var(--padding-4x);
 	}
-
-	a {
-		&:hover {
-			color: var(--color-secondary);
-		}
-	}
 </style>
