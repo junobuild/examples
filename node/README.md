@@ -8,12 +8,12 @@ Make sure you have [node.js](https://nodejs.org) LTS installed.
 
 ```bash
 git clone https://github.com/buildwithjuno/examples
-cd node
+cd examples/node
 npm ci
 ```
 
 ## Local development
 
-```
+```bash
 npm run start
 ```
