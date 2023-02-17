@@ -4,3 +4,4 @@ This repository provides access to sample code, applications, and microservices 
 
 - [svelte](./svelte/README.md): a collection of examples developed with Svelte
 - [vanilla](./vanilla): a sample app in vanilla Javascript that showcases authentication, datastore and storage usage
+- [node](./node): a sample NodeJS script that showcases queries to Juno

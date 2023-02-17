@@ -1,0 +1,17 @@
+{
+  "name": "@junobuild/example-node",
+  "version": "0.0.1",
+  "description": "A sample NodeJS script that showcases queries to Juno.",
+  "main": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@dfinity/agent": "^0.15.3",
+    "@junobuild/core": "^0.0.5",
+    "node-fetch": "^3.3.0"
+  }
+}
