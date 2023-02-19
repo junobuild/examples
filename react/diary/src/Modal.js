@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { setDoc } from "@junobuild/core";
+import { setDoc, uploadFile } from "@junobuild/core";
 import { MyContext } from "./Auth";
 
 export const Modal = () => {
@@ -7,6 +7,7 @@ export const Modal = () => {
   const [inputText, setInputText] = useState("");
   const [valid, setValid] = useState(false);
   const [progress, setProgress] = useState(false);
+  const [file, setFile] = useState();
 
   const { user } = useContext(MyContext);
 
@@ -22,15 +23,30 @@ export const Modal = () => {
 
     setProgress(true);
 
-    const key = `${user.key}-${new Date().getTime()}`;
-
     try {
+      let url;
+
+      if (file !== undefined) {
+        const filename = `${user.key}-${file.name}`;
+
+        const { downloadUrl } = await uploadFile({
+          collection: "data",
+          data: file,
+          filename,
+        });
+
+        url = downloadUrl;
+      }
+
+      const key = `${user.key}-${new Date().getTime()}`;
+
       await setDoc({
         collection: "diaries",
         doc: {
           key,
           data: {
             text: inputText,
+            ...(url !== undefined && { url }),
           },
         },
       });
@@ -86,10 +102,13 @@ export const Modal = () => {
                       setInputText(e.target.value);
                     }}
                     value={inputText}
+                    disabled={progress}
                   ></textarea>
                   <input
                     type="file"
                     className="my-4 text-slate-500 text-lg leading-relaxed"
+                    onChange={(event) => setFile(event.target.files?.[0])}
+                    disabled={progress}
                   />
                 </div>
 
