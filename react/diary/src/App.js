@@ -1,8 +1,19 @@
 import { Background } from "./Background";
 import { Table } from "./Table";
 import { Modal } from "./Modal";
+import { initJuno } from "@junobuild/core";
+import { Auth } from "./Auth";
+import { useEffect, useRef } from "react";
 
 function App() {
+  useEffect(() => {
+    (async () =>
+      await initJuno({
+        satelliteId: "tfuft-aqaaa-aaaaa-aaaoq-cai",
+        localIdentityCanisterId: "rrkah-fqaaa-aaaaa-aaaaq-cai",
+      }))();
+  }, []);
+
   return (
     <>
       <div className="isolate bg-white">
@@ -26,9 +37,11 @@ function App() {
                   .
                 </p>
 
-                <Table />
+                <Auth>
+                  <Table />
 
-                <Modal />
+                  <Modal />
+                </Auth>
               </div>
             </div>
             <Background />
