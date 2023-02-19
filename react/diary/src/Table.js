@@ -1,10 +1,18 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { listDocs } from "@junobuild/core";
 import { MyContext } from "./Auth";
 
 export const Table = () => {
   const { user } = useContext(MyContext);
   const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    window.addEventListener("reload", list);
+
+    return () => {
+      window.removeEventListener("reload", list);
+    };
+  }, []);
 
   const list = async () => {
     const { items } = await listDocs({

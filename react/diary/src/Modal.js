@@ -15,6 +15,11 @@ export const Modal = () => {
     setValid(inputText !== "" && user !== undefined && user !== null);
   }, [showModal, inputText, user]);
 
+  const reload = () => {
+    let event = new Event("reload");
+    window.dispatchEvent(event);
+  };
+
   const add = async () => {
     // Demo purpose therefore edge case not properly handled
     if ([null, undefined].includes(user)) {
@@ -52,6 +57,8 @@ export const Modal = () => {
       });
 
       setShowModal(false);
+
+      reload();
     } catch (err) {
       console.error(err);
     }
