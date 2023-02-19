@@ -1,7 +1,47 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { setDoc } from "@junobuild/core";
+import { MyContext } from "./Auth";
 
 export const Modal = () => {
   const [showModal, setShowModal] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const [valid, setValid] = useState(false);
+  const [progress, setProgress] = useState(false);
+
+  const { user } = useContext(MyContext);
+
+  useEffect(() => {
+    setValid(inputText !== "" && user !== undefined && user !== null);
+  }, [showModal, inputText, user]);
+
+  const add = async () => {
+    // Demo purpose therefore edge case not properly handled
+    if ([null, undefined].includes(user)) {
+      return;
+    }
+
+    setProgress(true);
+
+    const key = `${user.key}-${new Date().getTime()}`;
+
+    try {
+      await setDoc({
+        collection: "diaries",
+        doc: {
+          key,
+          data: {
+            text: inputText,
+          },
+        },
+      });
+
+      setShowModal(false);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setProgress(false);
+  };
 
   return (
     <>
@@ -37,11 +77,15 @@ export const Modal = () => {
         transition
         ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        focus:text-gray-700 focus:bg-white focus:border-indigo-600 focus:outline-none
         resize-none
       "
                     rows="5"
                     placeholder="Your diary entry"
+                    onChange={(e) => {
+                      setInputText(e.target.value);
+                    }}
+                    value={inputText}
                   ></textarea>
                   <input
                     type="file"
@@ -50,28 +94,34 @@ export const Modal = () => {
                 </div>
 
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Submit
-                  </button>
+                  {progress ? (
+                    <div
+                      className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-indigo-600 rounded-full"
+                      role="status"
+                      aria-label="loading"
+                    >
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <button
+                        className="background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none ease-linear transition-all duration-150"
+                        type="button"
+                        onClick={() => setShowModal(false)}
+                      >
+                        Close
+                      </button>
 
-                  <div
-                    className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-indigo-600 rounded-full"
-                    role="status"
-                    aria-label="loading"
-                  >
-                    <span className="sr-only">Loading...</span>
-                  </div>
+                      <button
+                        className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-25"
+                        type="button"
+                        onClick={add}
+                        disabled={!valid}
+                      >
+                        Submit
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { authSubscribe } from "@junobuild/core";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
+
+export const MyContext = createContext();
 
 export const Auth = ({ children }) => {
   const [user, setUser] = useState(undefined);
@@ -15,7 +17,7 @@ export const Auth = ({ children }) => {
   }, []);
 
   return (
-    <>
+    <MyContext.Provider value={{ user }}>
       {user !== undefined && user !== null ? (
         <div>
           {children}
@@ -25,6 +27,6 @@ export const Auth = ({ children }) => {
       ) : (
         <Login />
       )}
-    </>
+    </MyContext.Provider>
   );
 };
