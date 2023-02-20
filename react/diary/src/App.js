@@ -9,8 +9,7 @@ function App() {
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "tfuft-aqaaa-aaaaa-aaaoq-cai",
-        localIdentityCanisterId: "rrkah-fqaaa-aaaaa-aaaaq-cai",
+        satelliteId: "m5wkz-kaaaa-aaaal-ab6aq-cai",
       }))();
   }, []);
 
