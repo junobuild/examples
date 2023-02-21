@@ -35,7 +35,7 @@ export const Modal = () => {
         const filename = `${user.key}-${file.name}`;
 
         const { downloadUrl } = await uploadFile({
-          collection: "data",
+          collection: "images",
           data: file,
           filename,
         });
@@ -46,7 +46,7 @@ export const Modal = () => {
       const key = `${user.key}-${new Date().getTime()}`;
 
       await setDoc({
-        collection: "diaries",
+        collection: "data",
         doc: {
           key,
           data: {

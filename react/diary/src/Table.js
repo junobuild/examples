@@ -16,7 +16,7 @@ export const Table = () => {
 
   const list = async () => {
     const { items } = await listDocs({
-      collection: "diaries",
+      collection: "data",
       filter: {
         matcher: user.key,
       },
