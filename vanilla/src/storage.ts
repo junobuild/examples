@@ -1,4 +1,14 @@
-import { uploadFile } from "@junobuild/core";
+import {listAssets, uploadFile} from "@junobuild/core";
+
+const collection = "images";
+
+const list = async () =>
+    console.log("List",
+        await listAssets({
+            collection,
+            filter: {},
+        })
+    );
 
 const upload = async () => {
     const input: HTMLInputElement | null = document.querySelector("#file");
@@ -15,7 +25,7 @@ const upload = async () => {
 
     const {downloadUrl} = await uploadFile({
         data,
-        collection: 'images'
+        collection
     });
 
     const div = document.querySelector("#result");
@@ -35,4 +45,8 @@ export const initStorage = () => {
     document
         .querySelector("#upload")
         ?.addEventListener("click", upload, { passive: true });
+
+    document
+        .querySelector("#list_assets")
+        ?.addEventListener("click", list, { passive: true });
 };
