@@ -1,6 +1,21 @@
 {
   "satellite": {
     "satelliteId": "xo2hm-lqaaa-aaaal-ab3oa-cai",
-    "source": "dist"
+    "source": "dist",
+    "storage": {
+      "headers": [{
+        "source": "**/*.png",
+        "headers": [
+          [
+            "Cache-Control",
+            "max-age=9988776655"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            "*"
+          ]
+        ]
+      }]
+    }
   }
 }
