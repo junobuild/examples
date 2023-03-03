@@ -13,7 +13,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^2.0.1",
-		"@sveltejs/kit": "^1.8.6",
+		"@sveltejs/kit": "^1.9.3",
 		"@typescript-eslint/eslint-plugin": "^5.54.0",
 		"@typescript-eslint/parser": "^5.54.0",
 		"autoprefixer": "^10.4.13",
@@ -31,7 +31,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@junobuild/core": "^0.0.6",
+		"@junobuild/core": "^0.0.7",
 		"nanoid": "^4.0.1"
 	}
 }
