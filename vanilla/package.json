@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "rsync -aqz node_modules/@junobuild/core/dist/workers/*.js public/workers/"
   },
   "devDependencies": {
     "typescript": "^4.9.5",
@@ -14,6 +15,6 @@
     "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
-    "@junobuild/core": "^0.0.7"
+    "@junobuild/core": "^0.0.8"
   }
 }

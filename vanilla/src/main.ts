@@ -4,7 +4,10 @@ import {initDoc} from "./doc";
 import {initStorage} from "./storage";
 
 document.addEventListener("DOMContentLoaded", async () => await initJuno({
-  satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai",
+  satelliteId: "tfuft-aqaaa-aaaaa-aaaoq-cai",
+  workers: {
+    auth: true
+  }
 }), {once: true});
 
 document
