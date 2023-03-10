@@ -10,8 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@dfinity/agent": "^0.15.3",
-    "@junobuild/core": "^0.0.5",
+    "@dfinity/agent": "^0.15.4",
+    "@junobuild/core": "^0.0.8",
     "node-fetch": "^3.3.0"
   }
 }
