@@ -1,4 +1,5 @@
 import { getDoc, setDoc, listDocs, type Doc, delDoc } from "@junobuild/core";
+import { nanoid } from 'nanoid'
 
 interface Example {
     yolo: boolean;
@@ -7,7 +8,7 @@ interface Example {
 
 let record: Doc<Example> | undefined;
 
-const key = "my_id";
+const key = nanoid();
 
 const set = async (k?: string) => {
   record = await setDoc<Example>({
