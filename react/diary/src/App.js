@@ -3,13 +3,13 @@ import { Table } from "./Table";
 import { Modal } from "./Modal";
 import { initJuno } from "@junobuild/core";
 import { Auth } from "./Auth";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai"
+        satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai",
       }))();
   }, []);
 
