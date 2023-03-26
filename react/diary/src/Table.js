@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { listDocs } from "@junobuild/core";
-import { MyContext } from "./Auth";
+import { AuthContext } from "./Auth";
 
 export const Table = () => {
-  const { user } = useContext(MyContext);
+  const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
 
   useEffect(() => {

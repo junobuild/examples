@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { setDoc, uploadFile } from "@junobuild/core";
-import { MyContext } from "./Auth";
+import { AuthContext } from "./Auth";
 
 export const Modal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -9,7 +9,7 @@ export const Modal = () => {
   const [progress, setProgress] = useState(false);
   const [file, setFile] = useState();
 
-  const { user } = useContext(MyContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     setValid(inputText !== "" && user !== undefined && user !== null);
