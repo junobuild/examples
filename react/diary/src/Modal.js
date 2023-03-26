@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { setDoc, uploadFile } from "@junobuild/core";
 import { AuthContext } from "./Auth";
+import { nanoid } from "nanoid";
 
 export const Modal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -43,10 +44,10 @@ export const Modal = () => {
         url = downloadUrl;
       }
 
-      const key = `${user.key}-${new Date().getTime()}`;
+      const key = nanoid();
 
       await setDoc({
-        collection: "data",
+        collection: "notes",
         doc: {
           key,
           data: {

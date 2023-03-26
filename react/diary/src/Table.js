@@ -16,10 +16,8 @@ export const Table = () => {
 
   const list = async () => {
     const { items } = await listDocs({
-      collection: "data",
-      filter: {
-        matcher: user.key,
-      },
+      collection: "notes",
+      filter: {},
     });
 
     setItems(items);
