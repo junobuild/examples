@@ -1,19 +1,6 @@
-# NodeJS
+# Juno Examples - NodeJS
 
-A sample NodeJS script that showcases queries to [Juno](https://juno.build).
+A collection of NodeJS scripts for [Juno](https://juno.build).
 
-## Getting started
+- [basic](./basic): a simple script that performs a `get`
 
-Make sure you have [node.js](https://nodejs.org) LTS installed.
-
-```bash
-git clone https://github.com/buildwithjuno/examples
-cd examples/node
-npm ci
-```
-
-## Local development
-
-```bash
-npm run start
-```

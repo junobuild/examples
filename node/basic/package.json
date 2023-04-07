@@ -1,5 +1,5 @@
 {
-  "name": "@junobuild/example-node",
+  "name": "@junobuild/example-node-basic",
   "version": "0.0.1",
   "description": "A sample NodeJS script that showcases queries to Juno.",
   "main": "index.mjs",
