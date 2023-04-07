@@ -1,0 +1,23 @@
+{
+  "name": "@junobuild/example-node-admin",
+  "version": "0.0.1",
+  "description": "A sample admin NodeJS script that read a JSON file and save its data to Juno.",
+  "main": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "format": "prettier . --write",
+    "start": "node index.mjs"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@junobuild/core": "^0.0.8",
+    "conf": "^11.0.1",
+    "dotenv": "^16.0.3",
+    "node-fetch": "^3.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.7",
+    "prettier-plugin-organize-imports": "^3.2.2"
+  }
+}

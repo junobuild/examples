@@ -1,0 +1,16 @@
+[
+  {
+    "__id__": "1",
+    "added": 1680527184535,
+    "description": "Something something.",
+    "verified": true,
+    "website": "https://hello.com/"
+  },
+  {
+    "__id__": "2",
+    "added": 1680527184111,
+    "description": "Hello World.",
+    "verified": false,
+    "website": "https://world.com/"
+  }
+]
