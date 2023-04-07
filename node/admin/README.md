@@ -17,3 +17,7 @@ npm ci
 ```bash
 npm run start
 ```
+
+## Configuration
+
+If you wish to use this script to upload your own data, see [.env](.env) for configuration options.
