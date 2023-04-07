@@ -1,25 +1,67 @@
 #!/usr/bin/env node
 
-import { getDoc } from "@junobuild/core";
+import * as dotenv from "dotenv";
+dotenv.config();
+
+console.log(process.env)
+
+import { getDoc, setDoc } from "@junobuild/core";
 import fetch from "node-fetch";
 import { getIdentity } from "./auth.mjs";
+import { readFile } from "fs/promises";
+
+console.log("HERE", process.env.JUNO_CLI_AUTH_PROJECT_NAME);
 
 const identity = getIdentity();
 
-const get = async () =>
-  console.log(
-    "Get",
-    await getDoc({
-      collection: "demo",
-      key: "my_id",
-      satellite: {
-        identity,
-        satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai",
-        fetch,
-      },
-    })
-  );
+const readData = async () => {
+  const buffer = await readFile(process.env.DATA_SRC);
+  return JSON.parse(buffer.toString("utf-8"));
+};
 
-console.log("This is a demo client in NodeJS");
+const satellite = {
+  identity,
+  satelliteId: process.env.JUNO_SATELLITE_ID,
+  fetch,
+};
 
-await get();
+const collection = process.env.JUNO_DATASTORE_COLLECTION;
+const keyField = process.env.DATA_KEY_FIELD;
+
+const get = async (key) =>
+  getDoc({
+    collection,
+    key,
+    satellite,
+  });
+
+const set = async (entry) => {
+  const key = entry[keyField];
+
+  const existingEntry = await get(key);
+
+  await setDoc({
+    collection,
+    satellite,
+    doc: {
+      ...(existingEntry !== undefined && existingEntry),
+      key,
+      data: entry,
+    },
+  });
+
+  console.log(`Key ${key} set.`);
+};
+
+const loadData = async () => {
+  const data = await readData();
+
+  const promises = data.map((entry) => set(entry));
+  await Promise.all(promises);
+};
+
+console.log("Start.");
+
+await loadData();
+
+console.log("Done.");

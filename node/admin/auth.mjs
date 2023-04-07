@@ -1,7 +1,9 @@
 import { Ed25519KeyIdentity } from "@dfinity/identity/lib/cjs/identity/ed25519.js";
 import Conf from "conf";
 
-const config = new Conf({ projectName: "juno" });
+const projectName = process.env.JUNO_CLI_AUTH_PROJECT_NAME;
+console.log(projectName)
+const config = new Conf({ projectName });
 
 const getToken = () => {
   const use = config.get("use");

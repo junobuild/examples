@@ -13,6 +13,7 @@
   "dependencies": {
     "@junobuild/core": "^0.0.8",
     "conf": "^11.0.1",
+    "dotenv": "^16.0.3",
     "node-fetch": "^3.3.0"
   },
   "devDependencies": {
