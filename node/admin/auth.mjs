@@ -4,8 +4,7 @@ import Conf from "conf";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const projectName = process.env.JUNO_CLI_AUTH_PROJECT_NAME;
-const config = new Conf({ projectName });
+const config = new Conf({ projectName: "juno" });
 
 const getToken = () => {
   const use = config.get("use");
