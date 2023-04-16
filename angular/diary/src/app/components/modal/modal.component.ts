@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { setDoc } from '@junobuild/core';
 import { nanoid } from 'nanoid';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-modal',
@@ -19,6 +20,7 @@ import { nanoid } from 'nanoid';
     MatButtonModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatToolbarModule,
   ],
 })
 export class ModalComponent {
@@ -49,6 +51,10 @@ export class ModalComponent {
     } finally {
       this.diaryForm.enable();
     }
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
   private async save() {

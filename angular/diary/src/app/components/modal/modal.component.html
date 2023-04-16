@@ -4,7 +4,13 @@
     <textarea matInput rows="5" formControlName="entry"></textarea>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" [disabled]="diaryForm.disabled">
-    Submit
-  </button>
+  <mat-toolbar-row>
+    <button type="button" mat-raised-button [disabled]="diaryForm.disabled" (click)="close()">
+      Close
+    </button>
+
+    <button mat-raised-button color="primary" [disabled]="diaryForm.disabled">
+      Submit
+    </button>
+  </mat-toolbar-row>
 </form>

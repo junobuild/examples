@@ -12,3 +12,8 @@ form {
   flex-direction: column;
   align-items: center;
 }
+
+mat-toolbar-row {
+  display: flex;
+  gap: 1rem;
+}
