@@ -6,6 +6,7 @@ import { signIn, signOut } from '@junobuild/core';
 import { AuthService } from '../../services/auth.service';
 import { ModalComponent } from '../modal/modal.component';
 import { TableComponent } from '../table/table.component';
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -36,5 +37,7 @@ export class HomeComponent {
       height: '400px',
       width: '600px',
     });
+
+    // dialogRef.afterClosed().pipe(take(1)).subscribe(() => this.li)
   }
 }
