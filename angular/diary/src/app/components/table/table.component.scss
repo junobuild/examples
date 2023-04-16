@@ -3,7 +3,8 @@ table {
   table-layout: fixed;
 }
 
-th, td {
+th,
+td {
   overflow: hidden;
   width: 50%;
   text-overflow: ellipsis;

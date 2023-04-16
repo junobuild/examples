@@ -1,11 +1,11 @@
 import { Component, Inject } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { type Doc } from '@junobuild/core';
 import { Observable } from 'rxjs';
 import { DocsService } from '../../services/docs.service';
 import type { Entry } from '../../types/entry';
-import {MatIconModule} from "@angular/material/icon";
 
 @Component({
   selector: 'app-table',

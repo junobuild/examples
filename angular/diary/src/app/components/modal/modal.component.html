@@ -4,7 +4,11 @@
     <textarea matInput rows="5" formControlName="entry"></textarea>
   </mat-form-field>
 
-  <input type="file" (change)="onFileChanged($event)" [disabled]="diaryForm.disabled"/>
+  <input
+    type="file"
+    (change)="onFileChanged($event)"
+    [disabled]="diaryForm.disabled"
+  />
 
   <mat-toolbar-row>
     <button

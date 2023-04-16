@@ -1,15 +1,15 @@
-import {Component, Inject} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import {setDoc, uploadFile, User} from '@junobuild/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { setDoc, uploadFile, User } from '@junobuild/core';
 import { nanoid } from 'nanoid';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {AuthService} from "../../services/auth.service";
-import {catchError, filter, from, NEVER, switchMap, take} from "rxjs";
+import { catchError, filter, from, NEVER, switchMap, take } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-modal',
@@ -36,32 +36,34 @@ export class ModalComponent {
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<ModalComponent>,
     private snackBar: MatSnackBar,
-    @Inject(AuthService) private authService: AuthService,
+    @Inject(AuthService) private authService: AuthService
   ) {}
 
   async onSubmit() {
     this.diaryForm.disable();
 
-    this.authService.user$.pipe(
-      filter(user => user !== null),
-      switchMap(user => from(this.save(user as User))),
-      take(1),
-      catchError((err: unknown) => {
-        console.error(err);
+    this.authService.user$
+      .pipe(
+        filter((user) => user !== null),
+        switchMap((user) => from(this.save(user as User))),
+        take(1),
+        catchError((err: unknown) => {
+          console.error(err);
 
-        this.snackBar.open('Error', 'Dismiss', {
-          panelClass: ['error'],
-        });
+          this.snackBar.open('Error', 'Dismiss', {
+            panelClass: ['error'],
+          });
 
-        this.diaryForm.enable();
+          this.diaryForm.enable();
 
-        return NEVER;
-      })
-    ).subscribe(() => {
-      this.dialogRef.close();
+          return NEVER;
+        })
+      )
+      .subscribe(() => {
+        this.dialogRef.close();
 
-      this.snackBar.open('Success!', 'Dismiss');
-    });
+        this.snackBar.open('Success!', 'Dismiss');
+      });
   }
 
   close() {
@@ -80,7 +82,7 @@ export class ModalComponent {
       const filename = `${user.key}-${this.file.name}`;
 
       const { downloadUrl } = await uploadFile({
-        collection: "images",
+        collection: 'images',
         data: this.file,
         filename,
       });
