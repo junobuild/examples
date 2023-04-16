@@ -1,10 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { listDocs, type Doc } from '@junobuild/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { type Doc } from '@junobuild/core';
+import { Observable } from 'rxjs';
+import { DocsService } from '../../services/docs.service';
 import type { Entry } from '../../types/entry';
-import {Observable} from "rxjs";
-import {DocsService} from "../../services/docs.service";
-import {BrowserModule} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-table',
@@ -18,6 +18,5 @@ export class TableComponent {
 
   docs$: Observable<Doc<Entry>[]> = this.docsService.docs$;
 
-  constructor(@Inject(DocsService) private docsService: DocsService) {
-  }
+  constructor(@Inject(DocsService) private docsService: DocsService) {}
 }

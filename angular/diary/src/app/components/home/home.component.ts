@@ -3,10 +3,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { signIn, signOut } from '@junobuild/core';
+import { take } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { DocsService } from '../../services/docs.service';
 import { ModalComponent } from '../modal/modal.component';
 import { TableComponent } from '../table/table.component';
-import {take} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ export class HomeComponent {
 
   constructor(
     @Inject(AuthService) private authService: AuthService,
-    @Inject(MatDialog) private dialog: MatDialog
+    @Inject(MatDialog) private dialog: MatDialog,
+    @Inject(DocsService) private docsService: DocsService
   ) {}
 
   openModal() {
@@ -38,6 +40,9 @@ export class HomeComponent {
       width: '600px',
     });
 
-    // dialogRef.afterClosed().pipe(take(1)).subscribe(() => this.li)
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe(() => this.docsService.reload());
   }
 }
