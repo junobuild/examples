@@ -1,4 +1,4 @@
-# Juno Examples - React
+# Juno Examples - Angular
 
 A collection of examples developed with Angular on [Juno](https://juno.build).
 
