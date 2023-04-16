@@ -5,13 +5,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { signIn, signOut } from '@junobuild/core';
 import { AuthService } from '../../services/auth.service';
 import { ModalComponent } from '../modal/modal.component';
+import { TableComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [BrowserModule, MatButtonModule, ModalComponent, MatDialogModule],
+  imports: [
+    BrowserModule,
+    MatButtonModule,
+    ModalComponent,
+    MatDialogModule,
+    TableComponent,
+  ],
 })
 export class HomeComponent {
   readonly signedIn$ = this.authService.signedIn$;

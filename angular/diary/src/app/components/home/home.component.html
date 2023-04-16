@@ -10,6 +10,8 @@
   </p>
 
   <ng-container *ngIf="signedIn$ | async; else notSignedIn">
+    <app-table />
+
     <button mat-raised-button color="primary" (click)="openModal()">
       Add an entry
     </button>

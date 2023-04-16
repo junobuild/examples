@@ -59,7 +59,7 @@ export class ModalComponent {
       doc: {
         key,
         data: {
-          text: this.diaryForm.value,
+          text: this.diaryForm.value.entry,
         },
       },
     });
