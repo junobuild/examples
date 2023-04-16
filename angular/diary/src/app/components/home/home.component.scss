@@ -1,0 +1,12 @@
+main {
+  padding: 1rem;
+}
+
+button {
+  display: block;
+  margin: 0 0 1rem;
+
+  &:first-of-type {
+    margin-top: 2rem;
+  }
+}
