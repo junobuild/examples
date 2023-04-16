@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { authSubscribe, User } from '@junobuild/core';
-import { bindCallback, map, Observable, startWith } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

@@ -9,14 +9,15 @@
     .
   </p>
 
-  <button
-    *ngIf="signedIn$ | async; else notSignedIn"
-    mat-raised-button
-    color="primary"
-    (click)="signOut()"
-  >
-    Sign-out
-  </button>
+  <ng-container *ngIf="signedIn$ | async; else notSignedIn">
+    <button mat-raised-button color="primary" (click)="openModal()">
+      Add an entry
+    </button>
+
+    <button mat-raised-button (click)="signOut()">
+      Sign-out
+    </button>
+  </ng-container>
 
   <ng-template #notSignedIn>
     <button mat-raised-button color="primary" (click)="signIn()">
