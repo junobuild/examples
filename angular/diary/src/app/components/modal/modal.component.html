@@ -1,1 +1,10 @@
-<p>modal works!</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="diaryForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Your diary entry</mat-label>
+    <textarea matInput rows="5" formControlName="entry"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="diaryForm.disabled">
+    Submit
+  </button>
+</form>

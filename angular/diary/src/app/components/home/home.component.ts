@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { signIn, signOut } from '@junobuild/core';
 import { AuthService } from '../../services/auth.service';
 import { ModalComponent } from '../modal/modal.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',

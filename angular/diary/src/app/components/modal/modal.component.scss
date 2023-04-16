@@ -1,0 +1,14 @@
+mat-form-field {
+  width: 100%;
+  padding: 1rem;
+}
+
+textarea {
+  resize: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
