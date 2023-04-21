@@ -11,6 +11,6 @@ export class AuthService {
   );
 
   readonly signedIn$: Observable<boolean> = this.user$.pipe(
-    map((user) => user !== null && user !== undefined)
+    map((user) => user !== null)
   );
 }

@@ -15,9 +15,9 @@ import type { Entry } from '../../types/entry';
   standalone: true,
 })
 export class TableComponent {
-  displayedColumns: string[] = ['key', 'text', 'url'];
+  readonly displayedColumns: string[] = ['key', 'text', 'url'];
 
-  docs$: Observable<Doc<Entry>[]> = this.docsService.docs$;
+  readonly docs$: Observable<Doc<Entry>[]> = this.docsService.docs$;
 
-  constructor(@Inject(DocsService) private docsService: DocsService) {}
+  constructor(@Inject(DocsService) private readonly docsService: DocsService) {}
 }

@@ -41,7 +41,7 @@ export class DocsService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  constructor(@Inject(AuthService) private authService: AuthService) {}
+  constructor(@Inject(AuthService) private readonly authService: AuthService) {}
 
   reload() {
     this.reloadSubject.next();

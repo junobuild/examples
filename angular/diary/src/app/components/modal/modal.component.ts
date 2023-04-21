@@ -36,7 +36,7 @@ export class ModalComponent {
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<ModalComponent>,
     private snackBar: MatSnackBar,
-    @Inject(AuthService) private authService: AuthService
+    @Inject(AuthService) private readonly authService: AuthService
   ) {}
 
   async onSubmit() {
