@@ -1,0 +1,23 @@
+{
+  "name": "@junobuild/example-node-admin-read-save-documents",
+  "version": "0.0.1",
+  "description": "A sample admin NodeJS script to set a controller for Juno's satellite.",
+  "main": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "format": "prettier .. --write",
+    "start": "node index.mjs"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@junobuild/admin": "^0.0.11",
+    "conf": "^11.0.1",
+    "dotenv": "^16.0.3",
+    "node-fetch": "^3.3.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.2"
+  }
+}
