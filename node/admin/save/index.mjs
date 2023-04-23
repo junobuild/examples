@@ -2,7 +2,7 @@
 
 import {getDoc, listDocs, setDoc} from "@junobuild/core";
 import fetch from "node-fetch";
-import { getIdentity } from "./auth.mjs";
+import { getIdentity } from "../utils/auth.mjs";
 import { readFile } from "fs/promises";
 
 const identity = getIdentity();

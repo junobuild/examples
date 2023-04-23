@@ -1,6 +1,6 @@
-# NodeJS - Admin Example
+# NodeJS - Admin Example - Read And Save Data
 
-A sample admin NodeJS script that read a JSON file and save its data to [Juno](https://juno.build).
+A sample admin NodeJS script that reads a JSON file and save its data to [Juno](https://juno.build).
 
 ## Getting started
 

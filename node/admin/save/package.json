@@ -1,11 +1,11 @@
 {
-  "name": "@junobuild/example-node-admin",
+  "name": "@junobuild/example-node-admin-read-save-documents",
   "version": "0.0.1",
-  "description": "A sample admin NodeJS script that read a JSON file and save its data to Juno.",
+  "description": "A sample admin NodeJS script that reads a JSON file and save its data to Juno.",
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "format": "prettier . --write",
+    "format": "prettier .. --write",
     "start": "node index.mjs"
   },
   "author": "",
