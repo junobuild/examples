@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
 import { setDoc, uploadFile } from "@junobuild/core";
-import { AuthContext } from "./Auth";
 import { nanoid } from "nanoid";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "./Auth";
 
 export const Modal = () => {
   const [showModal, setShowModal] = useState(false);
