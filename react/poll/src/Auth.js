@@ -3,10 +3,11 @@ import { createContext, useEffect, useState } from "react";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
 import { Spinner } from "./Spinner";
+import { Main } from "./Main";
 
 export const AuthContext = createContext();
 
-export const Auth = ({ children }) => {
+export const Auth = () => {
   const [user, setUser] = useState(undefined);
   const [busy, setBusy] = useState(undefined);
 
@@ -18,15 +19,7 @@ export const Auth = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, setBusy }}>
-      {user !== undefined && user !== null ? (
-        <div>
-          {children}
-
-          <Logout />
-        </div>
-      ) : (
-        <Login />
-      )}
+      <Main />
 
       {busy ? <Spinner /> : undefined}
     </AuthContext.Provider>

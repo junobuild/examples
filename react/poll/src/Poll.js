@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "./Auth";
 import { getDoc, setDoc } from "@junobuild/core";
+import { POLL_COLLECTION } from "./constants";
 
 export const Poll = () => {
   const {
@@ -34,16 +35,14 @@ export const Poll = () => {
 
     setBusy(true);
 
-    const collection = "poll-dev";
-
     try {
       const myVote = await getDoc({
-        collection,
+        collection: POLL_COLLECTION,
         key,
       });
 
       await setDoc({
-        collection: "poll-dev",
+        collection: POLL_COLLECTION,
         doc: {
           ...(myVote !== undefined && myVote),
           key,

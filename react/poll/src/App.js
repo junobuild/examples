@@ -42,9 +42,7 @@ function App() {
                       .
                     </p>
 
-                    <Auth>
-                      <Poll />
-                    </Auth>
+                    <Auth />
                   </>
                 ) : undefined}
               </div>
