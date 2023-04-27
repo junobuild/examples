@@ -2,8 +2,7 @@ import { initJuno } from "@junobuild/core";
 import { useEffect } from "react";
 import { Auth } from "./Auth";
 import { Background } from "./Background";
-import { Modal } from "./Modal";
-import { Table } from "./Table";
+import { Poll } from "./Poll";
 
 function App() {
   useEffect(() => {
@@ -37,9 +36,7 @@ function App() {
                 </p>
 
                 <Auth>
-                  <Table />
-
-                  <Modal />
+                  <Poll />
                 </Auth>
               </div>
             </div>
