@@ -14,7 +14,7 @@ export const Results = () => {
       });
 
       setVotes(items);
-      setTotal(length);
+      setTotal(Number(length));
     } catch (err) {
       setVotes([]);
     }
