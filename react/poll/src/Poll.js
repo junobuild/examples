@@ -1,6 +1,6 @@
+import { getDoc, setDoc } from "@junobuild/core";
 import { useContext, useState } from "react";
 import { AuthContext } from "./Auth";
-import { getDoc, setDoc } from "@junobuild/core";
 import { POLL_COLLECTION } from "./constants";
 
 export const Poll = () => {

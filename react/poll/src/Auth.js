@@ -1,9 +1,7 @@
 import { authSubscribe } from "@junobuild/core";
 import { createContext, useEffect, useState } from "react";
-import { Login } from "./Login";
-import { Logout } from "./Logout";
-import { Spinner } from "./Spinner";
 import { Main } from "./Main";
+import { Spinner } from "./Spinner";
 
 export const AuthContext = createContext();
 

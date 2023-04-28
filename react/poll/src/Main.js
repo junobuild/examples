@@ -1,12 +1,12 @@
+import { getDoc } from "@junobuild/core";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Auth";
-import { getDoc } from "@junobuild/core";
 import { POLL_COLLECTION } from "./constants";
-import { Logout } from "./Logout";
 import { Login } from "./Login";
-import { Spinner } from "./Spinner";
+import { Logout } from "./Logout";
 import { Poll } from "./Poll";
 import { Results } from "./Results";
+import { Spinner } from "./Spinner";
 
 export const Main = () => {
   const { user } = useContext(AuthContext);

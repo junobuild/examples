@@ -1,8 +1,8 @@
-import {useContext, useEffect, useState} from "react";
 import { listDocs } from "@junobuild/core";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "./Auth";
+import { Bar } from "./Bar";
 import { POLL_COLLECTION } from "./constants";
-import {Bar} from "./Bar";
-import {AuthContext} from "./Auth";
 
 export const Results = () => {
   const { user } = useContext(AuthContext);
@@ -49,8 +49,8 @@ export const Results = () => {
   return (
     <div className="flex flex-col gap-2 mt-10">
       <Bar text="Awesome 🔥" value={awesome} color="bg-indigo-600" />
-      <Bar text="Yes 😃" value={yes}  color="bg-indigo-300" />
-      <Bar text="No 🥲" value={no}  color="bg-indigo-100" />
+      <Bar text="Yes 😃" value={yes} color="bg-indigo-300" />
+      <Bar text="No 🥲" value={no} color="bg-indigo-100" />
     </div>
   );
 };

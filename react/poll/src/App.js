@@ -2,7 +2,6 @@ import { initJuno } from "@junobuild/core";
 import { useEffect, useState } from "react";
 import { Auth } from "./Auth";
 import { Background } from "./Background";
-import { Poll } from "./Poll";
 
 function App() {
   const [ready, setReady] = useState(false);
@@ -20,9 +19,9 @@ function App() {
   return (
     <>
       <div className="isolate bg-white">
-        <main className="flex items-center justify-center h-screen">
-          <div className="relative px-6 pb-20 lg:px-8">
-            <div className="mx-auto max-w-2xl pt-16 relative z-10">
+        <main className="flex justify-center h-screen">
+          <div className="relative px-6 pt-8 tall:pt-16 lg:px-8">
+            <div className="mx-auto max-w-2xl py-16 relative z-10">
               <div className="text-center">
                 {ready ? (
                   <>

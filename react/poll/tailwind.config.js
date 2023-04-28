@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       transitionProperty: {
-        'width': 'width'
+        width: "width",
+      },
+      screens: {
+        tall: { raw: "(min-height: 668px)" },
       },
     },
   },
