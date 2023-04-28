@@ -58,7 +58,7 @@ export const Results = () => {
   useEffect(() => map({ category: "no", setRatio: setNo }), [votes]);
 
   return (
-    <div className="flex flex-col gap-2 mt-10">
+    <div className="flex flex-col gap-2 mt-6">
       <Bar text="Awesome 🔥" value={awesome} color="bg-indigo-600" />
       <Bar text="Yes 😃" value={yes} color="bg-indigo-300" />
       <Bar text="No 🥲" value={no} color="bg-indigo-100" />

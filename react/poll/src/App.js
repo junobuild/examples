@@ -29,7 +29,7 @@ function App() {
                       Did you like David's presentation?
                     </h1>
                     <p className="mt-6 text-lg leading-8 text-gray-600">
-                      A live polling app build with{" "}
+                      A live polling dapp build with{" "}
                       <a
                         href="https://juno.build"
                         rel="noopener noreferrer"
