@@ -32,7 +32,7 @@ export const Login = () => {
     );
 
   return (
-    <div className="mt-10 flex flex-col items-center justify-center gap-3 max-w-sm mx-auto">
+    <div className="mt-12 flex flex-col items-center justify-center gap-3 max-w-sm mx-auto">
       <button
         type="button"
         onClick={signInII}

@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "./Auth";
 import { POLL_COLLECTION } from "./constants";
 
-export const Poll = () => {
+export const Poll = ({reload}) => {
   const {
     user: { key },
     setBusy,
@@ -51,6 +51,8 @@ export const Poll = () => {
           },
         },
       });
+
+      await reload();
     } catch (err) {
       console.error(err);
     }

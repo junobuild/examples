@@ -35,6 +35,8 @@ export const Main = () => {
     }
   };
 
+  const reload = async () => await load();
+
   useEffect(() => {
     (async () => await load())();
   }, [user]);
@@ -50,7 +52,7 @@ export const Main = () => {
               {hasVoted === true ? (
                 <p className="mt-5">You have already taken part in the poll.</p>
               ) : (
-                <Poll />
+                <Poll reload={reload} />
               )}
 
               <Logout />
