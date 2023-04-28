@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { listDocs } from "@junobuild/core";
 import { POLL_COLLECTION } from "./constants";
 import {Bar} from "./Bar";
+import {AuthContext} from "./Auth";
 
 export const Results = () => {
+  const { user } = useContext(AuthContext);
+
   const [votes, setVotes] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -12,6 +15,10 @@ export const Results = () => {
   const [no, setNo] = useState([]);
 
   const load = async () => {
+    if (user === undefined) {
+      return;
+    }
+
     try {
       const { items, length } = await listDocs({
         collection: POLL_COLLECTION,
@@ -22,12 +29,13 @@ export const Results = () => {
       setTotal(Number(length));
     } catch (err) {
       setVotes([]);
+      console.error(err);
     }
   };
 
   useEffect(() => {
     (async () => await load())();
-  }, []);
+  }, [user]);
 
   const map = ({ category, setRatio }) => {
     const selection = votes.filter(({ data: { vote } }) => vote === category);

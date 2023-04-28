@@ -62,7 +62,7 @@ export const Poll = () => {
     <form className="flex flex-col gap-2 mt-10" onSubmit={onSubmit}>
       {answers.map(({ value, text }, id) => (
         <div
-          className="flex items-center border-2 border-solid rounded-md px-3"
+          className="flex items-center border-2 border-solid bg-white/60 rounded-md px-3"
           key={id}
         >
           <input

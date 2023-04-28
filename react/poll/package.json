@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@junobuild/core": "^0.0.12",
+    "@junobuild/core": "^0.0.13",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "nanoid": "^3.3.6",
+    "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
@@ -38,9 +38,9 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "prettier": "2.8.4",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "prettier": "2.8.8",
     "prettier-plugin-organize-imports": "^3.2.2",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.3.2"
   }
 }

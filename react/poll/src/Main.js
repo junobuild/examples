@@ -6,7 +6,7 @@ import { Logout } from "./Logout";
 import { Login } from "./Login";
 import { Spinner } from "./Spinner";
 import { Poll } from "./Poll";
-import {Results} from "./Results";
+import { Results } from "./Results";
 
 export const Main = () => {
   const { user } = useContext(AuthContext);
@@ -14,6 +14,15 @@ export const Main = () => {
   const [hasVoted, setHasVoted] = useState(undefined);
 
   const load = async () => {
+    if (user === undefined) {
+      return;
+    }
+
+    if (user === null) {
+      setHasVoted(undefined);
+      return;
+    }
+
     try {
       const myVote = await getDoc({
         collection: POLL_COLLECTION,
@@ -30,19 +39,29 @@ export const Main = () => {
     (async () => await load())();
   }, [user]);
 
-  return hasVoted !== undefined ? (
+  return (
     <>
-      {user !== undefined && user !== null ? (
-        <>
-          {hasVoted === true ? <Results /> : <Poll />}
+      {hasVoted === false ? undefined : <Results />}
 
-          <Logout />
+      {user !== null ? (
+        <>
+          {hasVoted !== undefined ? (
+            <>
+              {hasVoted === true ? (
+                <p className="mt-5">You have already taken part in the poll.</p>
+              ) : (
+                <Poll />
+              )}
+
+              <Logout />
+            </>
+          ) : (
+            <Spinner />
+          )}
         </>
-      ) : (
+      ) : user !== undefined ? (
         <Login />
-      )}
+      ) : undefined}
     </>
-  ) : (
-    <Spinner />
   );
 };

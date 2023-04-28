@@ -40,7 +40,7 @@ export const Login = () => {
       >
         <div className="flex items-center justify-center gap-1.5">
           <IconII />
-          Continue with Internet Identity
+          Vote with Internet Identity
         </div>
       </button>
 
@@ -51,7 +51,7 @@ export const Login = () => {
       >
         <div className="flex items-center justify-center gap-1.5">
           <IconNFID />
-          Continue with NFID
+          Vote with NFID
         </div>
       </button>
     </div>
