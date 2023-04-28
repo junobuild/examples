@@ -15,10 +15,6 @@ export const Results = () => {
   const [no, setNo] = useState([]);
 
   const load = async () => {
-    if (user === undefined) {
-      return;
-    }
-
     try {
       const { items, length } = await listDocs({
         collection: POLL_COLLECTION,
@@ -34,7 +30,15 @@ export const Results = () => {
   };
 
   useEffect(() => {
-    (async () => await load())();
+    if (user === undefined) {
+      return;
+    }
+
+    // We do not catch the promise on purpose
+    load();
+
+    const id = setInterval(async () => load(), 5000);
+    return () => clearInterval(id);
   }, [user]);
 
   const map = ({ category, setRatio }) => {
