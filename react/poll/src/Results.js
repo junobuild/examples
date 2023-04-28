@@ -39,6 +39,8 @@ export const Results = () => {
 
     const id = setInterval(async () => load(), 5000);
     return () => clearInterval(id);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const map = ({ category, setRatio }) => {
@@ -46,8 +48,13 @@ export const Results = () => {
     setTimeout(() => setRatio(selection.length / total), 250);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => map({ category: "awesome", setRatio: setAwesome }), [votes]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => map({ category: "yes", setRatio: setYes }), [votes]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => map({ category: "no", setRatio: setNo }), [votes]);
 
   return (

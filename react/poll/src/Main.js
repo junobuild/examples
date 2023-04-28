@@ -39,6 +39,8 @@ export const Main = () => {
 
   useEffect(() => {
     (async () => await load())();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
