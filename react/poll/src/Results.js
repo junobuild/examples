@@ -16,13 +16,13 @@ export const Results = () => {
 
   const load = async () => {
     try {
-      const { items, length } = await listDocs({
+      const { items, items_length } = await listDocs({
         collection: POLL_COLLECTION,
         filter: {},
       });
 
       setVotes(items);
-      setTotal(Number(length));
+      setTotal(Number(items_length));
     } catch (err) {
       setVotes([]);
       console.error(err);
