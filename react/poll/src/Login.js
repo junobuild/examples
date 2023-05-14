@@ -1,4 +1,4 @@
-import { NFIDProvider, signIn } from "@junobuild/core";
+import {InternetIdentityProvider, NFIDProvider, signIn} from "@junobuild/core";
 import { useContext } from "react";
 import { AuthContext } from "./Auth";
 import { IconII } from "./IconII";
@@ -19,14 +19,22 @@ export const Login = () => {
     setBusy(false);
   };
 
-  const signInII = async () => login(async () => signIn());
+  const signInII = async () =>
+    login(async () =>
+      signIn({
+        provider: new InternetIdentityProvider({
+          domain: "ic0.app",
+        }),
+      })
+    );
 
   const signInNFID = async () =>
     login(async () =>
       signIn({
         provider: new NFIDProvider({
           appName: "David presentation",
-          logoUrl: "https://somewhere.com/your_logo.png",
+          logoUrl:
+            "https://y7m4b-fiaaa-aaaal-acgna-cai.raw.icp0.io/logo512.png",
         }),
       })
     );
