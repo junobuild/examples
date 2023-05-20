@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@junobuild/core": "^0.0.18",
+    "nanoid": "^4.0.2",
     "pinia": "^2.0.36",
     "vue": "^3.3.2"
   },

@@ -4,6 +4,7 @@ import Background from './components/Background.vue'
 import Table from '@/components/Table.vue'
 import { onMounted } from 'vue'
 import { initJuno } from '@junobuild/core'
+import Modal from '@/components/Modal.vue'
 
 onMounted(
   async () =>
@@ -38,6 +39,8 @@ onMounted(
 
             <Auth>
               <Table />
+
+              <Modal />
             </Auth>
 
             <Background />

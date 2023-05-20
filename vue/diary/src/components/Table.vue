@@ -5,12 +5,12 @@ import { onMounted, ref } from 'vue'
 const items = ref([])
 
 const list = async () => {
-  const { items } = await listDocs({
+  const { items: data } = await listDocs({
     collection: 'notes',
     filter: {}
   })
 
-  items.value = items
+  items.value = data
 }
 
 onMounted(async () => await list())
@@ -29,9 +29,14 @@ onMounted(async () => await list())
           >
             {{ index + 1 }}
           </span>
-          <div class="line-clamp-3 text-left grow">{{ item.text }}</div>
-          <div v-if="item.url !== undefined">
-            <a aria-label="Open data" rel="noopener noreferrer" href="{{item.url}}" target="_blank">
+          <div class="line-clamp-3 text-left grow">{{ item.data.text }}</div>
+          <div v-if="item.data.url !== undefined">
+            <a
+              aria-label="Open data"
+              rel="noopener noreferrer"
+              href="{{item.data.url}}"
+              target="_blank"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
