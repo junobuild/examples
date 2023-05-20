@@ -18,6 +18,11 @@ const valid = computed(() => inputText.value !== '' && user !== undefined && use
 const setShowModal = (value) => (showModal.value = value)
 const setFile = (f) => (file.value = f)
 
+const reload = () => {
+  let event = new Event('reload')
+  window.dispatchEvent(event)
+}
+
 const add = async () => {
   // Demo purpose therefore edge case not properly handled
   if ([null, undefined].includes(user.value)) {
@@ -56,8 +61,7 @@ const add = async () => {
 
     setShowModal(false)
 
-    // TODO
-    // reload();
+    reload();
   } catch (err) {
     console.error(err)
   }

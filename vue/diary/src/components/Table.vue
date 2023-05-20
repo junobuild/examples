@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { listDocs } from '@junobuild/core'
-import { onMounted, ref } from 'vue'
+import {onMounted, onUnmounted, ref} from 'vue'
 
 const items = ref([])
 
@@ -13,7 +13,12 @@ const list = async () => {
   items.value = data
 }
 
-onMounted(async () => await list())
+onMounted(async () => {
+    window.addEventListener("reload", list);
+    await list()
+})
+
+onUnmounted(() => window.removeEventListener("reload", list))
 </script>
 
 <template>
@@ -34,7 +39,7 @@ onMounted(async () => await list())
             <a
               aria-label="Open data"
               rel="noopener noreferrer"
-              href="{{item.data.url}}"
+              :href="item.data.url"
               target="_blank"
             >
               <svg
