@@ -61,7 +61,7 @@ const add = async () => {
 
     setShowModal(false)
 
-    reload();
+    reload()
   } catch (err) {
     console.error(err)
   }

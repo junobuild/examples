@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { listDocs } from '@junobuild/core'
-import {onMounted, onUnmounted, ref} from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const items = ref([])
 
@@ -14,11 +14,11 @@ const list = async () => {
 }
 
 onMounted(async () => {
-    window.addEventListener("reload", list);
-    await list()
+  window.addEventListener('reload', list)
+  await list()
 })
 
-onUnmounted(() => window.removeEventListener("reload", list))
+onUnmounted(() => window.removeEventListener('reload', list))
 </script>
 
 <template>

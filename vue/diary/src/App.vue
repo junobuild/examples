@@ -9,8 +9,7 @@ import Modal from '@/components/Modal.vue'
 onMounted(
   async () =>
     await initJuno({
-      satelliteId: 'st75y-vaaaa-aaaaa-aaalq-cai',
-      localIdentityCanisterId: 'rrkah-fqaaa-aaaaa-aaaaq-cai'
+      satelliteId: 'pycrs-xiaaa-aaaal-ab6la-cai'
     })
 )
 </script>
