@@ -1,4 +1,24 @@
-## Introduction
+# Next.js + Tailwind
+
+A sample app with Next.js and Tailwind that showcases authentication, datastore and storage usage.
+
+## Getting started
+
+Make sure you have [node.js](https://nodejs.org) LTS installed.
+
+```bash
+git clone https://github.com/buildwithjuno/examples
+cd next/diary
+npm ci
+```
+
+## Local development
+
+```
+npm run dev
+```
+
+## Client side only
 
 The Internet Computer, including Juno, does not currently support Server Side Rendering. Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
 
