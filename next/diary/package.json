@@ -1,0 +1,26 @@
+{
+  "name": "diary",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "npx prettier --write ."
+  },
+  "dependencies": {
+    "@junobuild/core": "^0.0.20",
+    "nanoid": "^4.0.2",
+    "next": "13.4.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2"
+  }
+}
