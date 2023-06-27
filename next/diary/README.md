@@ -9,10 +9,10 @@ In `next.config.js` file:
 ```javascript
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-}
+  output: "export",
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
 ```
 
 After `npm run build`, the bundle output directory called `out` can be used as the source of the content to upload to a Juno's satellite.
