@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -8,7 +8,6 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { setDoc, uploadFile, User } from '@junobuild/core';
 import { nanoid } from 'nanoid';
-import { catchError, filter, from, NEVER, switchMap, take } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -26,44 +25,34 @@ import { AuthService } from '../../services/auth.service';
   ],
 })
 export class ModalComponent {
+  private readonly authService = inject(AuthService);
+  private formBuilder = inject(FormBuilder);
+  private dialogRef = inject<MatDialogRef<ModalComponent>>(MatDialogRef);
+  private snackBar = inject(MatSnackBar);
+
   diaryForm = this.formBuilder.group({
     entry: '',
   });
 
   private file: File | undefined;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<ModalComponent>,
-    private snackBar: MatSnackBar,
-    @Inject(AuthService) private readonly authService: AuthService
-  ) {}
-
   async onSubmit() {
-    this.diaryForm.disable();
-
-    this.authService.user$
-      .pipe(
-        filter((user) => user !== null),
-        switchMap((user) => from(this.save(user as User))),
-        take(1),
-        catchError((err: unknown) => {
-          console.error(err);
-
-          this.snackBar.open('Error', 'Dismiss', {
-            panelClass: ['error'],
-          });
-
-          this.diaryForm.enable();
-
-          return NEVER;
-        })
-      )
-      .subscribe(() => {
+    const user = this.authService.user();
+    if (user) {
+      try {
+        this.diaryForm.disable();
+        await this.save(user);
         this.dialogRef.close();
-
         this.snackBar.open('Success!', 'Dismiss');
-      });
+      } catch (err) {
+        console.error(err);
+        this.snackBar.open('Error', 'Dismiss', {
+          panelClass: ['error'],
+        });
+      } finally {
+        this.diaryForm.enable();
+      }
+    }
   }
 
   close() {

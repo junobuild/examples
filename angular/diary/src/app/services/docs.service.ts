@@ -1,9 +1,10 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable, Signal } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import type { Doc } from '@junobuild/core';
 import { listDocs } from '@junobuild/core';
 import type { Observable } from 'rxjs';
 import {
-  combineLatest,
+  combineLatestWith,
   from,
   map,
   of,
@@ -19,13 +20,12 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class DocsService {
+  private readonly authService = inject(AuthService);
   private reloadSubject = new Subject<void>();
 
-  docs$: Observable<Doc<Entry>[]> = combineLatest([
-    this.authService.user$,
-    this.reloadSubject.pipe(startWith(undefined)),
-  ]).pipe(
-    switchMap(([user, _]) => {
+  docs$: Observable<Doc<Entry>[]> = toObservable(this.authService.user).pipe(
+    combineLatestWith(this.reloadSubject.pipe(startWith(undefined))),
+    switchMap(([user]) => {
       if (user === null) {
         return of([]);
       }
@@ -40,8 +40,7 @@ export class DocsService {
     startWith([]),
     shareReplay({ bufferSize: 1, refCount: true })
   );
-
-  constructor(@Inject(AuthService) private readonly authService: AuthService) {}
+  docs: Signal<Doc<Entry>[]> = toSignal(this.docs$, { initialValue: [] });
 
   reload() {
     this.reloadSubject.next();
