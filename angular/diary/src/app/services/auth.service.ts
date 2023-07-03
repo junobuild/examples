@@ -1,16 +1,20 @@
-import { Injectable } from '@angular/core';
+import {
+  computed,
+  Injectable,
+  Signal,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { authSubscribe, User } from '@junobuild/core';
-import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  readonly user$: Observable<User | null> = new Observable((observer) =>
-    authSubscribe((user) => observer.next(user))
-  );
+  user: WritableSignal<User | null> = signal(null);
+  readonly signedIn: Signal<boolean> = computed(() => this.user() !== null);
 
-  readonly signedIn$: Observable<boolean> = this.user$.pipe(
-    map((user) => user !== null)
-  );
+  constructor() {
+    authSubscribe((user) => this.user.set(user));
+  }
 }

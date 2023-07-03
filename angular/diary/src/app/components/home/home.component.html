@@ -9,7 +9,7 @@
     .
   </p>
 
-  <ng-container *ngIf="signedIn$ | async; else notSignedIn">
+  <ng-container *ngIf="signedIn(); else notSignedIn">
     <app-table />
 
     <button mat-raised-button color="primary" (click)="openModal()">
