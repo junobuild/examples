@@ -15,28 +15,28 @@ import { AuthService } from './auth.service';
 })
 export class DocsService {
   private readonly authService = inject(AuthService);
-  private reloadSignal: WritableSignal<number> = signal(0);
   docs: WritableSignal<Doc<Entry>[]> = signal([]);
 
   constructor() {
-    effect(
-      async () => {
-        const user = this.authService.user();
-        if (user) {
-          // we need to read reloadSignal for the effect to work
-          console.log(`Loading entries ${this.reloadSignal()}`);
-          const { items } = await listDocs<Entry>({
-            collection: 'notes',
-            filter: {},
-          });
-          this.docs.set(items);
-        } else this.docs.set([]);
-      },
-      { allowSignalWrites: true }
-    );
+    effect(async () => await this.loadDocs(this.authService.signedIn()), {
+      allowSignalWrites: true,
+    });
   }
 
-  reload() {
-    this.reloadSignal.update((count) => count + 1);
+  async reload() {
+    await this.loadDocs(this.authService.signedIn());
+  }
+
+  private async loadDocs(signedIn: boolean) {
+    if (!signedIn) {
+      this.docs.set([]);
+      return;
+    }
+
+    const { items } = await listDocs<Entry>({
+      collection: 'notes',
+    });
+
+    this.docs.set(items);
   }
 }
