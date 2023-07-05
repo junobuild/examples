@@ -100,7 +100,7 @@ export const Table = () => {
 
                   <button
                     className="text-sm rounded-md font-semibold leading-7 hover:bg-grey-500 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grey-600"
-                    onClick={async () => delItem(item)}
+                    onClick={async () => await delItem(item)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
