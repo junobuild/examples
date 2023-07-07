@@ -1,4 +1,4 @@
-import { delDoc } from "@junobuild/core";
+import { delDoc, deleteAsset, listAssets } from "@junobuild/core";
 import { useState } from "react";
 import { Spinner } from "./Spinner";
 
@@ -13,9 +13,27 @@ export const Delete = ({ item, reload }) => {
     } = doc;
 
     if (url !== undefined) {
-      // TODO: delete asset here
-      // 1. use listAssets to get the asset
-      // 2. use deleteAsset
+      const { pathname } = new URL(url);
+
+      const { assets } = await listAssets({
+        collection: "images",
+        filter: {
+          matcher: {
+            key: pathname,
+          },
+        },
+      });
+
+      if (assets.length !== 1) {
+        setInProgress(false);
+        alert("More than one corresponding asset found");
+        return;
+      }
+
+      await deleteAsset({
+        collection: "images",
+        storageFile: assets[0],
+      });
     }
 
     await delDoc({
