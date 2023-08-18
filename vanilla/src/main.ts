@@ -22,10 +22,12 @@ document.addEventListener(
         },
       }),
       initAnalytics({
-        satelliteId: "fai3u-3uaaa-aaaaa-qaa2a-cai",
-        orbiterId: "fhj5a-wmaaa-aaaaa-qaa2q-cai",
-        pageViewProxyUrl: "http://127.0.0.1:5001/juno-proxy-api/us-central1/pageView",
-        trackEventProxyUrl: "http://127.0.0.1:5001/juno-proxy-api/us-central1/trackEvent",
+        satelliteId: "e7aid-ymaaa-aaaaa-qaa6q-cai",
+        orbiterId: "eybox-vuaaa-aaaaa-qaa6a-cai",
+        pageViewProxyUrl:
+          "http://127.0.0.1:5001/juno-proxy-api/us-central1/pageView",
+        trackEventProxyUrl:
+          "http://127.0.0.1:5001/juno-proxy-api/us-central1/trackEvent",
       }),
     ]);
   },
@@ -45,10 +47,10 @@ document.querySelector("#track")?.addEventListener(
   async () => {
     await trackEvent({
       name: "My event",
-      data: {
-        hello: "world"
+      metadata: {
+        hello: "world",
       },
-    })
+    });
   },
   { passive: true }
 );
