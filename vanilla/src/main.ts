@@ -25,9 +25,9 @@ document.addEventListener(
         satelliteId: "e7aid-ymaaa-aaaaa-qaa6q-cai",
         orbiterId: "eybox-vuaaa-aaaaa-qaa6a-cai",
         pageViewProxyUrl:
-          "http://127.0.0.1:5001/juno-proxy-api/us-central1/pageView",
+          "http://127.0.0.1:5001/juno-proxy-api/europe-west1/pageView",
         trackEventProxyUrl:
-          "http://127.0.0.1:5001/juno-proxy-api/us-central1/trackEvent",
+          "http://127.0.0.1:5001/juno-proxy-api/europe-west1/trackEvent",
       }),
     ]);
   },
@@ -46,9 +46,9 @@ document.querySelector("#track")?.addEventListener(
   "click",
   async () => {
     await trackEvent({
-      name: "My event",
+      name: "Yolo yolo",
       metadata: {
-        hello: "world",
+        hello: "world world",
       },
     });
   },
