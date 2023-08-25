@@ -15,15 +15,15 @@ document.addEventListener(
   async () => {
     await Promise.all([
       initJuno({
-        satelliteId: "htxyu-tmaaa-aaaaa-qaauq-cai",
+        satelliteId: "asrmz-lmaaa-aaaaa-qaaeq-cai",
         localIdentityCanisterId: "rrkah-fqaaa-aaaaa-aaaaq-cai",
         workers: {
           auth: true,
         },
       }),
       initAnalytics({
-        satelliteId: "e7aid-ymaaa-aaaaa-qaa6q-cai",
-        orbiterId: "eybox-vuaaa-aaaaa-qaa6a-cai",
+        satelliteId: "asrmz-lmaaa-aaaaa-qaaeq-cai",
+        orbiterId: "a3shf-5eaaa-aaaaa-qaafa-cai",
         pageViewProxyUrl:
           "http://127.0.0.1:5001/juno-proxy-api/europe-west1/pageView",
         trackEventProxyUrl:
