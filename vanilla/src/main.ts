@@ -23,7 +23,7 @@ document.addEventListener(
       }),
       initAnalytics({
         satelliteId: "asrmz-lmaaa-aaaaa-qaaeq-cai",
-        orbiterId: "a3shf-5eaaa-aaaaa-qaafa-cai",
+        orbiterId: "a4tbr-q4aaa-aaaaa-qaafq-cai",
         pageViewProxyUrl:
           "http://127.0.0.1:5001/juno-proxy-api/europe-west1/pageView",
         trackEventProxyUrl:
