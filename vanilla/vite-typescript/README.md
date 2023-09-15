@@ -1,4 +1,4 @@
-# Vanilla
+# Vanilla - TypeScript + Vite
 
 A sample app in vanilla TypeScript that showcases authentication, datastore and storage usage.
 
