@@ -7,5 +7,5 @@ This repository provides access to sample code, applications, and microservices 
 - [react](./react/README.md): a collection of examples developed with React
 - [angular](./angular/README.md): a collection of examples developed with Angular
 - [vue](./vue/README.md): a collection of examples developed with Vue
-- [vanilla](./vanilla): a sample app in vanilla Javascript that showcases authentication, datastore and storage usage
+- [vanilla](./vanilla/README.md): a collection of examples developed without frameworks
 - [node](./node): a collection of NodeJS scripts
