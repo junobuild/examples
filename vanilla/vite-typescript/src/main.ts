@@ -8,57 +8,28 @@ import {
 import "./style.css";
 import { initDoc } from "./doc";
 import { initStorage } from "./storage";
-import { initOrbiter, trackEvent } from "@junobuild/analytics";
+import { initOrbiter } from "@junobuild/analytics";
+import { initAnalytics } from "./analytics";
 
 document.addEventListener(
   "DOMContentLoaded",
   async () => {
     await Promise.all([
       initJuno({
-        satelliteId: "hbrpn-74aaa-aaaaa-qaaxq-cai",
+        satelliteId: "b77ix-eeaaa-aaaaa-qaada-cai",
         localIdentityCanisterId: "rrkah-fqaaa-aaaaa-aaaaq-cai",
         workers: {
           auth: true,
         },
       }),
       initOrbiter({
-        satelliteId: "hbrpn-74aaa-aaaaa-qaaxq-cai",
-        orbiterId: "f3nhr-bmaaa-aaaaa-qaayq-cai",
+        satelliteId: "b77ix-eeaaa-aaaaa-qaada-cai",
+        orbiterId: "asrmz-lmaaa-aaaaa-qaaeq-cai",
         env: "dev",
       }),
     ]);
   },
   { once: true }
-);
-
-document
-  .querySelector("#push")
-  ?.addEventListener(
-    "click",
-    () => history.pushState(null, "", "nested/index.html"),
-    { passive: true }
-  );
-
-document.querySelector("#track")?.addEventListener(
-  "click",
-  async () => {
-    await trackEvent({
-      name: "Yolo yolo 2",
-      metadata: {
-        hello: "world world",
-        hello1: "world world",
-        hello2: "world world",
-        hello3: "world world",
-        hello4: "world world",
-        hello5: "world world",
-        hello6: "world world",
-        hello7: "world world",
-        hello8: "world world",
-        hello9: "world world",
-      },
-    });
-  },
-  { passive: true }
 );
 
 document
@@ -73,5 +44,6 @@ authSubscribe((user: User | null) => {
   console.log("User", user);
 });
 
+initAnalytics();
 initDoc();
 initStorage();
