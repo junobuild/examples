@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Juno Vanilla Example</title>
+
+    <script type="module">
+        import {authSubscribe, initJuno, signIn, signOut} from "https://cdn.jsdelivr.net/npm/@junobuild/core@latest/+esm";
+        import {getDoc, setDoc, listDocs, deleteDoc} from "https://cdn.jsdelivr.net/npm/@junobuild/core@latest/+esm";
+        import {listAssets, uploadFile} from "https://cdn.jsdelivr.net/npm/@junobuild/core@latest/+esm";
+        import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid@latest/+esm";
+
+        document.addEventListener("DOMContentLoaded", async () => await initJuno({
+            satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai"
+        }), {once: true});
+
+        /**
+         * Authentication
+         */
+
+        document
+            .querySelector("#signin")
+            ?.addEventListener("click", signIn, { passive: true });
+
+        document
+            .querySelector("#signout")
+            ?.addEventListener("click", signOut, { passive: true });
+
+        authSubscribe((user) => {
+            console.log("User", user);
+        });
+
+        /**
+         * Datastore
+         * - Set
+         * - Get
+         * - Delete
+         * - List
+         */
+
+        let record;
+        const key = nanoid();
+
+        const set = async () => {
+            record = await setDoc({
+                collection: "demo",
+                doc: {
+                    key,
+                    data: {
+                        yolo: true,
+                        hello: "world",
+                    },
+                    // This is necessary to update an entry. Juno verify the timestamp when an update is performed to be sure the most recent entry is updated.
+                    ...(record !== undefined && {updated_at: record.updated_at}),
+                },
+            });
+
+            console.log("Set done", record);
+        };
+
+        const del = async () => {
+            if (record === undefined) {
+                return;
+            }
+
+            await deleteDoc({
+                collection: "demo",
+                doc: record,
+            });
+
+            record = undefined;
+
+            console.log("Delete done");
+        };
+
+        const get = async () => {
+            record = await getDoc({
+                collection: "demo",
+                key,
+            });
+
+            console.log("Get done", record);
+        }
+
+        const list = async () =>
+            console.log("List",
+                await listDocs({
+                    collection: "demo",
+                    filter: {},
+                })
+            );
+
+        document
+            .querySelector("#set")
+            ?.addEventListener("click", async () => await set(), { passive: true });
+        document
+            .querySelector("#read")
+            ?.addEventListener("click", get, { passive: true });
+        document
+            .querySelector("#list")
+            ?.addEventListener("click", list, { passive: true });
+        document
+            .querySelector("#delete")
+            ?.addEventListener("click", del, { passive: true });
+
+        /**
+         * Storage
+         */
+
+        const listImages = async () =>
+            console.log("List",
+                await listAssets({
+                    collection: "images",
+                    filter: {},
+                })
+            );
+
+        const upload = async () => {
+            const input = document.querySelector("#file");
+
+            if (!input) {
+                return;
+            }
+
+            const data = input.files?.[0];
+
+            if (!data) {
+                return;
+            }
+
+            const {downloadUrl} = await uploadFile({
+                data,
+                collection: "images"
+            });
+
+            const div = document.querySelector("#result");
+
+            if (!div) {
+                return;
+            }
+
+            const img = document.createElement('img');
+            img.src = downloadUrl;
+
+            div.append(img);
+        };
+
+        document
+            .querySelector("#upload")
+            ?.addEventListener("click", upload, { passive: true });
+
+        document
+            .querySelector("#list_assets")
+            ?.addEventListener("click", listImages, { passive: true });
+    </script>
+</head>
+<body>
+<div id="app">
+    <article>
+        <p>The output of most command is printed in the debugger console. Note also that all buttons are always displayed and enabled for simplicity reason.</p>
+    </article>
+    <hr />
+    <button id="signin">Sign in</button>
+    <button id="signout">Sign Out</button>
+    <hr/>
+    <button id="set">Set</button>
+    <button id="read">Read</button>
+    <button id="list">List</button>
+    <button id="delete">Delete</button>
+    <hr/>
+    <button id="list_assets">List assets</button>
+    <hr/>
+    <input id="file" type="file">Upload</input>
+    <button id="upload">Upload</button>
+    <div id="result"></div>
+</div>
+</body>
+</html>
