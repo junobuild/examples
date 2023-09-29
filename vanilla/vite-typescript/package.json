@@ -15,7 +15,7 @@
     "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
-    "@junobuild/analytics": "file:../../juno-js/packages/analytics",
-    "@junobuild/core": "^0.0.18"
+    "@junobuild/analytics": "^0.0.10",
+    "@junobuild/core": "^0.0.32"
   }
 }
