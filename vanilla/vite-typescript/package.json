@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "postinstall": "rsync -aqz node_modules/@junobuild/core/dist/workers/*.js public/workers"
+    "postinstall": "rsync -aqz node_modules/@junobuild/core/dist/workers/*.js public/workers && rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.js public/workers"
   },
   "devDependencies": {
     "typescript": "^5.0.4",
