@@ -1,4 +1,4 @@
-import { getDoc, setDoc, listDocs, type Doc, delDoc } from "@junobuild/core";
+import { getDoc, setDoc, listDocs, type Doc, deleteDoc } from "@junobuild/core";
 import { nanoid } from 'nanoid'
 
 interface Example {
@@ -39,7 +39,7 @@ const del = async () => {
         return;
     }
 
-    await delDoc<Example>({
+    await deleteDoc<Example>({
         collection: "demo",
         doc: record,
     });
