@@ -7,7 +7,7 @@ A sample admin NodeJS script that reads a JSON file and save its data to [Juno](
 Make sure you have [node.js](https://nodejs.org) LTS installed.
 
 ```bash
-git clone https://github.com/buildwithjuno/examples
+git clone https://github.com/junobuild/examples
 cd examples/node/admin/save
 npm ci
 ```

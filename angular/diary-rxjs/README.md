@@ -7,7 +7,7 @@ A sample app with Angular that showcases authentication, datastore and storage u
 Make sure you have [node.js](https://nodejs.org) LTS installed.
 
 ```bash
-git clone https://github.com/buildwithjuno/examples
+git clone https://github.com/junobuild/examples
 cd angular/diary
 npm ci
 ```

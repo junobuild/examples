@@ -7,7 +7,7 @@ A sample app with Next.js and Tailwind that showcases authentication, datastore 
 Make sure you have [node.js](https://nodejs.org) LTS installed.
 
 ```bash
-git clone https://github.com/buildwithjuno/examples
+git clone https://github.com/junobuild/examples
 cd next/diary
 npm ci
 ```

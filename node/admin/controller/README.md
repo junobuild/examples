@@ -7,7 +7,7 @@ A sample admin NodeJS script to manually set a controller to a [Juno](https://ju
 Make sure you have [node.js](https://nodejs.org) LTS installed.
 
 ```bash
-git clone https://github.com/buildwithjuno/examples
+git clone https://github.com/junobuild/examples
 cd examples/node/admin/controller
 npm ci
 ```

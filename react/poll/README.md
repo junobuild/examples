@@ -11,7 +11,7 @@ A demo of this sample dapp is available at [https://y7m4b-fiaaa-aaaal-acgna-cai.
 Make sure you have [node.js](https://nodejs.org) LTS installed.
 
 ```bash
-git clone https://github.com/buildwithjuno/examples
+git clone https://github.com/junobuild/examples
 cd react/poll
 npm ci
 ```
