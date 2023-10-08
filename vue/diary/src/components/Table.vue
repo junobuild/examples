@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { listDocs } from '@junobuild/core'
+import { type Doc, listDocs } from '@junobuild/core'
 import { onMounted, onUnmounted, ref } from 'vue'
+import type { Note } from '@/types/note'
 
-const items = ref([])
+const items = ref<Doc<Note>[]>([])
 
 const list = async () => {
-  const { items: data } = await listDocs({
+  const { items: data } = await listDocs<Note>({
     collection: 'notes',
     filter: {}
   })

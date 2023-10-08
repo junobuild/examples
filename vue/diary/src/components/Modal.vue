@@ -4,19 +4,20 @@ import { useAuthStore } from '@/stores/auth.store'
 import { storeToRefs } from 'pinia'
 import { setDoc, uploadFile } from '@junobuild/core'
 import { nanoid } from 'nanoid'
+import type { Note } from '@/types/note'
 
 const showModal = ref(false)
 const inputText = ref('')
 const progress = ref(false)
-const file = ref(undefined)
+const file = ref<File | undefined>(undefined)
 
 const store = useAuthStore()
 const { user } = storeToRefs(store)
 
 const valid = computed(() => inputText.value !== '' && user !== undefined && user !== null)
 
-const setShowModal = (value) => (showModal.value = value)
-const setFile = (f) => (file.value = f)
+const setShowModal = (value: boolean) => (showModal.value = value)
+const setFile = (f: File | undefined) => (file.value = f)
 
 const reload = () => {
   let event = new Event('reload')
@@ -25,7 +26,7 @@ const reload = () => {
 
 const add = async () => {
   // Demo purpose therefore edge case not properly handled
-  if ([null, undefined].includes(user.value)) {
+  if (user.value === null || user.value === undefined) {
     return
   }
 
@@ -48,7 +49,7 @@ const add = async () => {
 
     const key = nanoid()
 
-    await setDoc({
+    await setDoc<Note>({
       collection: 'notes',
       doc: {
         key,
@@ -68,6 +69,9 @@ const add = async () => {
 
   progress.value = false
 }
+
+const onChangeFile = ($event: Event) =>
+  setFile(($event as unknown as { target: EventTarget & HTMLInputElement }).target?.files?.[0])
 </script>
 
 <template>
@@ -100,7 +104,7 @@ const add = async () => {
           <input
             type="file"
             class="my-4 text-slate-500 text-lg leading-relaxed"
-            @change="(event) => setFile(event.target.files?.[0])"
+            @change="onChangeFile"
             :disabled="progress"
           />
         </div>
