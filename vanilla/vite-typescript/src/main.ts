@@ -8,7 +8,6 @@ import {
 import "./style.css";
 import { initDoc } from "./doc";
 import { initStorage } from "./storage";
-import { initOrbiter } from "@junobuild/analytics";
 import { initAnalytics } from "./analytics";
 
 document.addEventListener(
@@ -16,16 +15,10 @@ document.addEventListener(
   async () => {
     await Promise.all([
       initJuno({
-        satelliteId: "b77ix-eeaaa-aaaaa-qaada-cai",
-        localIdentityCanisterId: "rrkah-fqaaa-aaaaa-aaaaq-cai",
+        satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai",
         workers: {
           auth: true,
         },
-      }),
-      initOrbiter({
-        satelliteId: "b77ix-eeaaa-aaaaa-qaada-cai",
-        orbiterId: "asrmz-lmaaa-aaaaa-qaaeq-cai",
-        env: "dev",
       }),
     ]);
   },
