@@ -18,5 +18,8 @@
     "astro": "^3.4.3",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@junobuild/core": "^0.0.33"
   }
 }
