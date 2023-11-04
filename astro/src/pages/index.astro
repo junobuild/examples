@@ -1,23 +1,7 @@
----
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
----
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
 	<body>
-		<Header title={SITE_TITLE} />
 		<main>
-			<h1>👋 Hello!</h1>
-			<p>
-				Welcome to this sample website build with <a href="https://juno.build" target="_blank" rel="noreferrer noopener">Juno</a> and <a href="https://astro.build/" target="_blank" rel="noreferrer noopener">Astro</a>.
-			</p>
-
 			<button id="insert">Insert a document</button>
 			<p style="min-height: 10em">Document persisted key: <output id="result"></output></p>
 
@@ -35,6 +19,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					{ once: true }
 				);
 
+				// Insert a document in Juno's datastore
 				const insert = async () => {
 					const doc = await setDoc({
 						collection: "demo",
@@ -55,6 +40,5 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				document.querySelector('#insert')?.addEventListener("click", insert, {passive: true})
 			</script>
 		</main>
-		<Footer />
 	</body>
 </html>
