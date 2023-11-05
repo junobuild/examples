@@ -1,44 +1,60 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
 <!doctype html>
 <html lang="en">
-	<body>
-		<main>
-			<button id="insert">Insert a document</button>
-			<p style="min-height: 10em">Document persisted key: <output id="result"></output></p>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <button id="insert">Insert a document</button>
+      <p style="min-height: 10em">
+        Document persisted key: <output id="result"></output>
+      </p>
 
-			<script>
-				import {initJuno, setDoc} from "@junobuild/core";
+      <script>
+        import { initJuno, setDoc } from "@junobuild/core";
 
-				// Initialize Juno
-				document.addEventListener(
-					"DOMContentLoaded",
-					async () => {
-						await initJuno({
-							satelliteId: "nkzsw-gyaaa-aaaal-ada3a-cai",
-						});
-					},
-					{ once: true }
-				);
+        // Initialize Juno
+        document.addEventListener(
+          "DOMContentLoaded",
+          async () => {
+            await initJuno({
+              satelliteId: "nkzsw-gyaaa-aaaal-ada3a-cai",
+            });
+          },
+          { once: true },
+        );
 
-				// Insert a document in Juno's datastore
-				const insert = async () => {
-					const doc = await setDoc({
-						collection: "demo",
-						doc: {
-							key: `my-key-${new Date().getTime()}`,
-							data: {
-								hello: "world",
-							},
-						},
-					});
+        // Insert a document in Juno's datastore
+        const insert = async () => {
+          const doc = await setDoc({
+            collection: "demo",
+            doc: {
+              key: `my-key-${new Date().getTime()}`,
+              data: {
+                hello: "world",
+              },
+            },
+          });
 
-					const result = document.querySelector('#result');
-					if (result !== null) {
-						result.textContent = doc.key;
-					}
-				};
+          const result = document.querySelector("#result");
+          if (result !== null) {
+            result.textContent = doc.key;
+          }
+        };
 
-				document.querySelector('#insert')?.addEventListener("click", insert, {passive: true})
-			</script>
-		</main>
-	</body>
+        document
+          .querySelector("#insert")
+          ?.addEventListener("click", insert, { passive: true });
+      </script>
+    </main>
+    <Footer />
+  </body>
 </html>
