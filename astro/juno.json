@@ -1,6 +1,24 @@
 {
   "satellite": {
     "satelliteId": "nkzsw-gyaaa-aaaal-ada3a-cai",
-    "source": "dist"
+    "source": "dist",
+    "storage": {
+      "headers": [
+        {
+          "source": "**/*.jpg",
+          "headers": [
+            ["Cache-Control", "max-age=31536000"],
+            ["Access-Control-Allow-Origin", "*"]
+          ]
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/blog/redirect",
+          "location": "/blog/first-post/index.html",
+          "code": 301
+        }
+      ]
+    }
   }
 }
