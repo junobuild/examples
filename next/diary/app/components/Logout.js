@@ -1,4 +1,4 @@
-import { signOut } from "@junobuild/core";
+import { signOut } from "@junobuild/core-peer";
 
 export const Logout = () => {
   return (

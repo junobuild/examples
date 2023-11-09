@@ -1,4 +1,4 @@
-import { signIn } from "@junobuild/core";
+import { signIn } from "@junobuild/core-peer";
 
 export const Login = () => {
   return (

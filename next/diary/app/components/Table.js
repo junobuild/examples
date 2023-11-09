@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { listDocs } from "@junobuild/core";
+import { listDocs } from "@junobuild/core-peer";
 import { AuthContext } from "./Auth";
 
 export const Table = () => {

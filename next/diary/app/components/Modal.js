@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { setDoc, uploadFile } from "@junobuild/core";
+import { setDoc, uploadFile } from "@junobuild/core-peer";
 import { AuthContext } from "./Auth";
 import { nanoid } from "nanoid";
 

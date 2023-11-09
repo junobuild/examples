@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { authSubscribe } from "@junobuild/core";
+import { authSubscribe } from "@junobuild/core-peer";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
 
