@@ -18,6 +18,12 @@
           "location": "/blog/first-post/index.html",
           "code": 301
         }
+      ],
+      "rewrites": [
+        {
+          "source": "/blog/**",
+          "destination": "/blog/first-post/index.html"
+        }
       ]
     }
   }
