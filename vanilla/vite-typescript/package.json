@@ -10,12 +10,12 @@
     "postinstall": "rsync -aqz node_modules/@junobuild/core/dist/workers/*.js public/workers && rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.js public/workers"
   },
   "devDependencies": {
-    "typescript": "^5.0.4",
-    "vite": "^4.3.9",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2",
     "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
-    "@junobuild/analytics": "^0.0.10",
-    "@junobuild/core": "^0.0.32"
+    "@junobuild/analytics": "^0.0.13",
+    "@junobuild/core": "^0.0.37"
   }
 }
