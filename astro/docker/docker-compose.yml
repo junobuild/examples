@@ -4,8 +4,8 @@ services:
     ports:
       - 5987:5987
     volumes:
-      - react_diary_dapp:/juno/.juno
+      - astro_dapp:/juno/.juno
       - ./juno.dev.json:/juno/juno.dev.json
 
 volumes:
-  react_diary_dapp:
+  astro_dapp:
