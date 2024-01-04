@@ -3,12 +3,6 @@
     "collections": {
       "db": [
         {
-          "collection": "demo",
-          "read": "public",
-          "write": "public",
-          "memory": "heap"
-        },
-        {
           "collection": "counter",
           "read": "public",
           "write": "public",
