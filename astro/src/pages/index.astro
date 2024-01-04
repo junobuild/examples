@@ -13,13 +13,21 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   <body>
     <Header title={SITE_TITLE} />
     <main>
-      <button id="insert">Insert a document</button>
-      <p style="min-height: 10em">
-        Document persisted key: <output id="result"></output>
-      </p>
+      <button id="login" style="display: none">Sign-in</button>
+      <button id="logout" style="display: none">Sign-out</button>
+      <button id="count" style="display: none">Count</button>
+
+      <h2 id="result" style="display: none"></h2>
 
       <script>
-        import { initJuno, setDoc } from "@junobuild/core";
+        import {
+          initJuno,
+          setDoc,
+          authSubscribe,
+          signIn,
+          signOut,
+          getDoc,
+        } from "@junobuild/core";
 
         // Initialize Juno
         document.addEventListener(
@@ -27,35 +35,117 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           async () => {
             await initJuno({
               satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
-              container: import.meta.env.PUBLIC_CONTAINER
+              container: import.meta.env.PUBLIC_CONTAINER,
             });
           },
           { once: true },
         );
 
-        // Insert a document in Juno's datastore
-        const insert = async () => {
-          const doc = await setDoc({
-            collection: "demo",
-            doc: {
-              key: `my-key-${new Date().getTime()}`,
-              data: {
-                hello: "world",
-              },
-            },
+        let user = undefined;
+
+        authSubscribe((u) => {
+          user = u;
+
+          document.querySelector("#login").style.display =
+            user === null ? "block" : "none";
+          document.querySelector("#logout").style.display =
+            user !== undefined && user !== null ? "block" : "none";
+          document.querySelector("#count").style.display =
+            user !== undefined && user !== null ? "block" : "none";
+          document.querySelector("#result").style.display =
+            user !== undefined && user !== null ? "block" : "none";
+        });
+
+        let counter = undefined;
+        authSubscribe(async (user) => {
+          if (user === null) {
+            counter = undefined;
+            return;
+          }
+
+          counter = await getDoc({
+            collection: "counter",
+            key: user.key,
           });
 
+          displayCounter();
+        });
+
+        const displayCounter = () => {
           const result = document.querySelector("#result");
           if (result !== null) {
-            result.textContent = doc.key;
+            result.textContent = counter?.data.counter ?? 0;
+          }
+        };
+
+        // Insert a document in Juno's datastore
+        const count = async () => {
+          if (!user) {
+            console.error("Ummm this is unexpected, you are not signed in...");
+            return;
+          }
+
+          const count = document.querySelector("#count");
+          if (count !== null) {
+            count.disabled = true;
+          }
+
+          try {
+            counter = await setDoc({
+              collection: "counter",
+              doc: {
+                ...(counter !== undefined && counter),
+                key: user.key,
+                data: {
+                  counter: (counter?.data.counter ?? 0) + 1,
+                },
+              },
+            });
+
+            displayCounter();
+          } catch (err) {
+            console.error(err);
+          }
+
+          if (count !== null) {
+            count.disabled = false;
           }
         };
 
         document
-          .querySelector("#insert")
-          ?.addEventListener("click", insert, { passive: true });
+          .querySelector("#count")
+          ?.addEventListener("click", count, { passive: true });
+
+        document
+          .querySelector("#login")
+          ?.addEventListener("click", signIn, { passive: true });
+        document
+          .querySelector("#logout")
+          ?.addEventListener("click", signOut, { passive: true });
       </script>
     </main>
     <Footer />
-  </body>
+  </body><style>
+    button {
+      display: block;
+      border: 1px solid rgb(var(--gray));
+      margin: 0 0 1rem;
+      padding: 0.5rem 1rem;
+      width: auto;
+      overflow: visible;
+      background: white;
+      color: inherit;
+      font: inherit;
+      -webkit-font-smoothing: inherit;
+      -moz-osx-font-smoothing: inherit;
+      -webkit-appearance: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button[disabled] {
+      background: transparent;
+      color: rgb(var(--gray));
+    }
+  </style>
 </html>

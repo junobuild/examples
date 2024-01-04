@@ -7,6 +7,12 @@
           "read": "public",
           "write": "public",
           "memory": "heap"
+        },
+        {
+          "collection": "counter",
+          "read": "public",
+          "write": "public",
+          "memory": "stable"
         }
       ]
     }

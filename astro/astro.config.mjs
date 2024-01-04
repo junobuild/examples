@@ -8,8 +8,10 @@ export default defineConfig({
   site: "https://nkzsw-gyaaa-aaaal-ada3a-cai.icp0.io",
   integrations: [mdx(), sitemap()],
   vite: {
-    plugins: [juno({
-      container: true
-    })],
+    plugins: [
+      juno({
+        container: true,
+      }),
+    ],
   },
 });
