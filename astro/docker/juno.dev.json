@@ -1,0 +1,14 @@
+{
+  "satellite": {
+    "collections": {
+      "db": [
+        {
+          "collection": "demo",
+          "read": "public",
+          "write": "public",
+          "memory": "heap"
+        }
+      ]
+    }
+  }
+}

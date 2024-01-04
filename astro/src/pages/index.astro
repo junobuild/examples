@@ -26,7 +26,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           "DOMContentLoaded",
           async () => {
             await initJuno({
-              satelliteId: "nkzsw-gyaaa-aaaal-ada3a-cai",
+              satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
+              container: import.meta.env.PUBLIC_CONTAINER
             });
           },
           { once: true },
