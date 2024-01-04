@@ -6,10 +6,16 @@ import { Auth } from "./Auth";
 import { useEffect } from "react";
 
 function App() {
+  // Turn this on to try ou Juno Docker
+  const CONTAINER = false;
+
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "f62k6-laaaa-aaaal-acq7q-cai",
+        satelliteId: CONTAINER
+          ? "jx5yt-yyaaa-aaaal-abzbq-cai"
+          : "f62k6-laaaa-aaaal-acq7q-cai",
+        container: CONTAINER,
       }))();
   }, []);
 

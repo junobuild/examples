@@ -1,0 +1,11 @@
+services:
+  juno-satellite:
+    image: junobuild/satellite:latest
+    ports:
+      - 5987:5987
+    volumes:
+      - react_diary_dapp_2:/juno/.juno
+      - ./juno.dev.json:/juno/juno.dev.json
+
+volumes:
+  react_diary_dapp_2:

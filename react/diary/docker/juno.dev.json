@@ -1,0 +1,22 @@
+{
+  "satellite": {
+    "collections": {
+      "db": [
+        {
+          "collection": "notes",
+          "read": "managed",
+          "write": "managed",
+          "memory": "heap"
+        }
+      ],
+      "storage": [
+        {
+          "collection": "images",
+          "read": "managed",
+          "write": "managed",
+          "memory": "stable"
+        }
+      ]
+    }
+  }
+}
