@@ -4,8 +4,8 @@
       "db": [
         {
           "collection": "counter",
-          "read": "public",
-          "write": "public",
+          "read": "managed",
+          "write": "managed",
           "memory": "stable"
         }
       ]
