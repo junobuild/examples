@@ -20,6 +20,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       <h2 id="result" style="display: none"></h2>
 
       <script>
+        // @ts-nocheck
+
         import {
           initJuno,
           setDoc,
@@ -85,7 +87,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             return;
           }
 
-          const count = document.querySelector("#count");
+          const count = document.querySelector("#count") as HTMLElement;
           if (count !== null) {
             count.disabled = true;
           }
