@@ -1,0 +1,18 @@
+[package]
+name = "satellite"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid.workspace = true
+ic-cdk.workspace = true
+ic-cdk-macros.workspace = true
+serde.workspace = true
+junobuild-satellite = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/satellite" }
+junobuild-macros = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/macros" }
+junobuild-utils = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/utils" }
+shared = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/shared" }
+
