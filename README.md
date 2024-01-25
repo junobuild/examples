@@ -10,3 +10,4 @@ This repository provides access to sample code, applications, and microservices 
 - [astro](./astro/README.md): an example developed with Astro
 - [vanilla](./vanilla/README.md): a collection of examples developed without frameworks
 - [node](./node): a collection of NodeJS scripts
+- [rust](./rust): blockchainless functions / hooks examples
