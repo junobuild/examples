@@ -1,0 +1,20 @@
+{
+  "name": "@junobuild/hooks",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@junobuild/vite-plugin": "^0.0.6",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-compression": "^0.5.1"
+  },
+  "dependencies": {
+    "@junobuild/core": "^0.0.44"
+  }
+}
