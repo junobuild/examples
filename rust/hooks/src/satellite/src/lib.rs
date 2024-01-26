@@ -66,4 +66,9 @@ async fn on_delete_many_docs(_context: OnDeleteManyDocsContext) -> Result<(), St
     Ok(())
 }
 
+#[ic_cdk::query]
+fn say() {
+    print("Hello".to_string());
+}
+
 include_satellite!();
