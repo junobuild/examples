@@ -8,6 +8,15 @@ export default () => {
         })],
         server: {
             port: 5175
-        }
+        },
+        define: {
+            global: {},
+        },
+        build: {
+            commonjsOptions: { include: [] },
+        },
+        optimizeDeps: {
+            disabled: false,
+        },
     };
 };

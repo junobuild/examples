@@ -6,19 +6,24 @@ use junobuild_satellite::{
 use ic_cdk::print;
 
 #[on_set_doc(collections = ["demo"])]
-async fn on_set_doc(_context: OnSetDocContext) -> Result<(), String> {
+async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     print("Hi, how are you doing?");
+    print(format!("{:?}", context.data.data.after.owner));
 
     Ok(())
 }
 
-#[on_set_many_docs]
-async fn on_set_many_docs(_context: OnSetManyDocsContext) -> Result<(), String> {
+#[on_set_many_docs(collections = ["demo_2"])]
+async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {
+    print(format!("Many docs called {}", context.data.len()));
+
     Ok(())
 }
 
 #[on_delete_doc]
 async fn on_delete_doc(_context: OnDeleteDocContext) -> Result<(), String> {
+    print("Bye bye");
+
     Ok(())
 }
 

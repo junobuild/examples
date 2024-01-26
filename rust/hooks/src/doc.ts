@@ -1,4 +1,10 @@
-import { getDoc, setDoc, type Doc, deleteDoc } from "@junobuild/core";
+import {
+  getDoc,
+  setDoc,
+  type Doc,
+  deleteDoc,
+  setManyDocs,
+} from "@junobuild/core";
 import { nanoid } from "nanoid";
 
 interface Example {
@@ -26,6 +32,38 @@ const set = async () => {
   });
 
   console.log("Set done", record);
+};
+
+const setMany = async () => {
+  let tmpKey = nanoid();
+
+  const doc1 = {
+    collection: "demo",
+    doc: {
+      key: tmpKey,
+      data: {
+        yolo: true,
+        hello: "world_" + tmpKey,
+      },
+    },
+  };
+
+  const doc2 = {
+    collection: "demo_2",
+    doc: {
+      key: tmpKey,
+      data: {
+        yolo: true,
+        hello: "world_" + tmpKey,
+      },
+    },
+  };
+
+  const result = await setManyDocs({
+    docs: [doc1, doc2],
+  });
+
+  console.log("Set many done", result);
 };
 
 const del = async () => {
@@ -60,6 +98,9 @@ export const initDoc = () => {
   document
     .querySelector("#say")
     ?.addEventListener("click", async () => await set(), { passive: true });
+  document
+    .querySelector("#sayMany")
+    ?.addEventListener("click", async () => await setMany(), { passive: true });
   document
     .querySelector("#read")
     ?.addEventListener("click", get, { passive: true });
