@@ -9,12 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@junobuild/vite-plugin": "^0.0.6",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
     "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
+    "@junobuild/admin": "^0.0.44",
     "@junobuild/core": "file:../../../juno-js/packages/core"
   }
 }
