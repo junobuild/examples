@@ -1,8 +1,12 @@
 use ic_cdk::print;
-use junobuild_macros::{on_delete_doc, on_delete_many_docs, on_set_doc, on_set_many_docs};
+use junobuild_macros::{
+    on_delete_asset, on_delete_doc, on_delete_many_assets,
+    on_delete_many_docs, on_set_doc, on_set_many_docs, on_upload_asset,
+};
 use junobuild_satellite::{
-    include_satellite, set_doc_store, OnDeleteDocContext, OnDeleteManyDocsContext, OnSetDocContext,
-    OnSetManyDocsContext, SetDoc,
+    include_satellite, set_doc_store, OnDeleteAssetContext, OnDeleteDocContext,
+    OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext, OnSetManyDocsContext,
+    OnUploadAssetContext, SetDoc,
 };
 use junobuild_utils::{decode_doc_data, encode_doc_data};
 use serde::{Deserialize, Serialize};
@@ -63,6 +67,21 @@ async fn on_delete_doc(_context: OnDeleteDocContext) -> Result<(), String> {
 
 #[on_delete_many_docs]
 async fn on_delete_many_docs(_context: OnDeleteManyDocsContext) -> Result<(), String> {
+    Ok(())
+}
+
+#[on_upload_asset]
+async fn on_upload_asset(_context: OnUploadAssetContext) -> Result<(), String> {
+    Ok(())
+}
+
+#[on_delete_asset]
+async fn on_delete_asset(_context: OnDeleteAssetContext) -> Result<(), String> {
+    Ok(())
+}
+
+#[on_delete_many_assets]
+async fn on_delete_many_assets(_context: OnDeleteManyAssetsContext) -> Result<(), String> {
     Ok(())
 }
 
