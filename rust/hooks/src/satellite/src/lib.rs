@@ -71,7 +71,9 @@ async fn on_delete_many_docs(_context: OnDeleteManyDocsContext) -> Result<(), St
 }
 
 #[on_upload_asset]
-async fn on_upload_asset(_context: OnUploadAssetContext) -> Result<(), String> {
+async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
+    print(format!("Asset uploaded {}", context.data.key.full_path));
+
     Ok(())
 }
 

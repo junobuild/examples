@@ -15,7 +15,14 @@
           "memory": "heap"
         }
       ],
-      "storage": []
+      "storage": [
+        {
+          "collection": "images",
+          "read": "managed",
+          "write": "managed",
+          "memory": "heap"
+        }
+      ]
     },
     "controllers": []
   }
