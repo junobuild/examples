@@ -1,4 +1,4 @@
-import service "custom.did";
+import service "satellite_extension.did";
 
 type AssetEncodingNoContent = record {
   modified : nat64;
