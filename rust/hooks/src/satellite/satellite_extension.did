@@ -1,1 +1,1 @@
-service : { say : () -> () query }
+service : { say : () -> () query; version_extension : () -> (text) query }
