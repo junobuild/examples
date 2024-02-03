@@ -4,12 +4,16 @@ import {
   type Doc,
   deleteDoc,
   setManyDocs,
+  unsafeIdentity,
 } from "@junobuild/core";
 import { nanoid } from "nanoid";
+import { Principal } from "@dfinity/principal";
 
 interface Example {
   yolo: boolean;
   hello: string;
+  principal: Principal;
+  value: bigint
 }
 
 let record: Doc<Example> | undefined;
@@ -26,6 +30,8 @@ const set = async () => {
       data: {
         yolo: true,
         hello: "world",
+        principal: (await unsafeIdentity()).getPrincipal(),
+        value: 123n
       },
       ...(record !== undefined && { updated_at: record.updated_at }),
     },

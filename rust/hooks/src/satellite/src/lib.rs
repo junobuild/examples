@@ -9,12 +9,15 @@ use junobuild_satellite::{
     OnUploadAssetContext, SetDoc,
 };
 use junobuild_utils::{decode_doc_data, encode_doc_data};
+use junobuild_utils::{DocDataBigInt, DocDataPrincipal};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 struct Person {
     yolo: bool,
     hello: String,
+    principal: DocDataPrincipal,
+    value: DocDataBigInt,
 }
 
 #[on_set_doc(collections = ["demo"])]
@@ -28,7 +31,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
         context.data.collection
     ));
 
-    print(format!("[on_set_doc] Data: {} {}", data.hello, data.yolo));
+    print(format!("[on_set_doc] Data: {} {}", data.principal.value, data.value.value));
 
     data.hello = format!("{} checked", data.hello);
     data.yolo = false;
