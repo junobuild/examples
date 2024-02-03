@@ -1,7 +1,7 @@
 use ic_cdk::print;
 use junobuild_macros::{
-    on_delete_asset, on_delete_doc, on_delete_many_assets,
-    on_delete_many_docs, on_set_doc, on_set_many_docs, on_upload_asset,
+    on_delete_asset, on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc,
+    on_set_many_docs, on_upload_asset,
 };
 use junobuild_satellite::{
     include_satellite, set_doc_store, OnDeleteAssetContext, OnDeleteDocContext,
@@ -31,7 +31,10 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
         context.data.collection
     ));
 
-    print(format!("[on_set_doc] Data: {} {}", data.principal.value, data.value.value));
+    print(format!(
+        "[on_set_doc] Data: {} {}",
+        data.principal.value, data.value.value
+    ));
 
     data.hello = format!("{} checked", data.hello);
     data.yolo = false;
