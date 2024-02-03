@@ -14,5 +14,4 @@ serde.workspace = true
 junobuild-satellite = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/satellite" }
 junobuild-macros = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/macros" }
 junobuild-utils = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/utils" }
-shared = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/shared" }
 

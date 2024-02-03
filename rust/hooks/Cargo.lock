@@ -750,14 +750,28 @@ dependencies = [
  "ic-representation-independent-hash",
  "ic-response-verification",
  "ic-stable-structures",
+ "junobuild-shared",
  "regex",
  "serde",
  "serde_bytes",
  "serde_cbor",
  "sha2",
- "shared",
  "url",
  "urlencoding",
+]
+
+[[package]]
+name = "junobuild-shared"
+version = "0.0.11"
+dependencies = [
+ "candid",
+ "ciborium",
+ "futures",
+ "ic-cdk",
+ "ic-cdk-macros",
+ "ic-ledger-types",
+ "serde",
+ "time",
 ]
 
 [[package]]
@@ -1035,7 +1049,6 @@ dependencies = [
  "junobuild-satellite",
  "junobuild-utils",
  "serde",
- "shared",
 ]
 
 [[package]]
@@ -1129,20 +1142,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "shared"
-version = "0.0.11"
-dependencies = [
- "candid",
- "ciborium",
- "futures",
- "ic-cdk",
- "ic-cdk-macros",
- "ic-ledger-types",
- "serde",
- "time",
-]
-
-[[package]]
 name = "slab"
 version = "0.4.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1229,9 +1228,9 @@ dependencies = [
 
 [[package]]
 name = "time"
-version = "0.3.32"
+version = "0.3.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fe80ced77cbfb4cb91a94bf72b378b4b6791a0d9b7f09d0be747d1bdff4e68bd"
+checksum = "00b24b79b7a07f10209f19e683ca1e289d80b1e76ffa8c2b779718566a083679"
 dependencies = [
  "deranged",
  "num-conv",
