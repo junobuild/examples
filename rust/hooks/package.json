@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "@junobuild/admin": "^0.0.44",
-    "@junobuild/core": "file:../../../juno-js/packages/core"
+    "@junobuild/core": "^0.0.44-next-2024-02-02"
   }
 }
