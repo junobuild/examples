@@ -762,7 +762,9 @@ dependencies = [
 
 [[package]]
 name = "junobuild-shared"
-version = "0.0.11"
+version = "0.0.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "df7e6ba1fec59d2a839480bd2e3c7d63c7a8e908d03c212cdf66ba7758fdb6b5"
 dependencies = [
  "candid",
  "ciborium",

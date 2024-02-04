@@ -4,9 +4,9 @@ services:
     ports:
       - 5987:5987
     volumes:
-      - my_dapp_new:/juno/.juno
+      - my_dapp_new-2:/juno/.juno
       - ./juno.dev.json:/juno/juno.dev.json
       - ./target/deploy:/juno/target/deploy/
 
 volumes:
-  my_dapp_new:
+  my_dapp_new-2:
