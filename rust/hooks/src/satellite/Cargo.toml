@@ -7,11 +7,12 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-candid.workspace = true
-ic-cdk.workspace = true
-ic-cdk-macros.workspace = true
-serde.workspace = true
-junobuild-satellite = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/satellite" }
-junobuild-macros = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/macros" }
-junobuild-utils = { path = "/Users/daviddalbusco/projects/juno/juno/src/libs/utils" }
+candid = "0.10.2"
+ic-cdk = "0.12.1"
+ic-cdk-macros = "0.8.1"
+serde = "1.0.190"
+serde_cbor = "0.11.2"
+junobuild-satellite = "0.0.15-patch.1"
+junobuild-macros = "0.0.1"
+junobuild-utils = "0.0.1"
 
