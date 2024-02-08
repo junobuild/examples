@@ -38,6 +38,21 @@ const get = async () => {
   });
 
   console.log("Get done", dog);
+
+  if (dog?.data.src === undefined) {
+    return;
+  }
+
+  const div = document.querySelector("#result");
+
+  if (!div) {
+    return;
+  }
+
+  const img = document.createElement("img");
+  img.src = dog.data.src;
+
+  div.append(img);
 };
 
 export const initDoc = () => {

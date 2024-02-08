@@ -4,9 +4,9 @@ services:
     ports:
       - 5987:5987
     volumes:
-      - juno_satellite_3:/juno/.juno
+      - juno_satellite_4:/juno/.juno
       - ./juno.dev.json:/juno/juno.dev.json
       - ./target/deploy:/juno/target/deploy/
 
 volumes:
-  juno_satellite_3:
+  juno_satellite_4:
