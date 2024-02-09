@@ -2,4 +2,5 @@
 
 A collection of examples developed on [Juno](https://juno.build).
 
-- [hooks](./hooks): a sample app that showcases how to write blockchainless functions on Juno
+- [hooks](./hooks): a simple app that showcases how to write serverless Functions on Juno
+- [https-outcalls](./https-outcalls): sample app that showcases how to implement [HTTPS outcalls](https://internetcomputer.org/https-outcalls)

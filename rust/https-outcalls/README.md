@@ -1,6 +1,6 @@
 # Hooks
 
-A sample app that showcases how to use [HTTPS outcalls](https://internetcomputer.org/https-outcalls) on Juno.
+A sample app that showcases how to implement [HTTPS outcalls](https://internetcomputer.org/https-outcalls) on Juno.
 
 ## Getting started
 
@@ -12,14 +12,20 @@ npm ci
 
 ## Local development
 
-To run the frontend app:
+Running the frontend app:
 
 ```
 npm run dev
 ```
 
-To develop the "backend" functions:
+Starting the local development (using Docker):
 
 ```
 juno dev start
+```
+
+Building and deploying the extended [Satellite](src/satellite/src/lib.rs):
+
+```
+juno dev build
 ```
