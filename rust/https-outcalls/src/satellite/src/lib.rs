@@ -43,7 +43,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     let request_headers = vec![];
 
     let request = CanisterHttpRequestArgument {
-        url: url.to_string(),
+        url,
         method: HttpMethod::GET,
         body: None,
         max_response_bytes: None,
