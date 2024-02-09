@@ -54,6 +54,9 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     };
 
     // 2. Execute the HTTP request. A request consumes Cycles(!). In this example we provide 2_000_000_000 Cycles (= 0.002 TCycles).
+    // To estimate the costs see documentation: https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#pricing
+    // Total amount of cycles depends on the subnet size. Therefore, on mainnet it might cost ~13x more than what's required when developing locally. Source: https://forum.dfinity.org/t/http-outcalls-cycles/27439/4
+    // Note: In the future we will have a UI logging panel in console.juno.build to help debug on production. Follow PR https://github.com/junobuild/juno/issues/415.
     match http_request_out(request, 2_000_000_000).await {
         Ok((response,)) => {
             // 3. Use serde_json to transform the response to a structured object.
