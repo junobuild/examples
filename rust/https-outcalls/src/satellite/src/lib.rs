@@ -71,7 +71,6 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
                 serde_json::from_str(&str_body).map_err(|e| e.to_string())?;
 
             // 4. Our goal is to update the document in the Datastore with an update that contains the link to the image fetched from the API we just called.
-            // That's we create such a data.
             let dog: DogData = DogData {
                 src: Some(dog_response.message),
             };
