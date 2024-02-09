@@ -1,5 +1,5 @@
 use ic_cdk::api::management_canister::http_request::{
-    http_request as http_request_out, CanisterHttpRequestArgument, HttpMethod,
+    http_request as http_request_outcall, CanisterHttpRequestArgument, HttpMethod,
 };
 use junobuild_macros::{
     on_delete_asset, on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc,
@@ -59,7 +59,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     // - https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#pricing
     // Total amount of cycles depends on the subnet size. Therefore, on mainnet it might cost ~13x more than what's required when developing locally. Source: https://forum.dfinity.org/t/http-outcalls-cycles/27439/4
     // Note: In the future we will have a UI logging panel in console.juno.build to help debug on production. Follow PR https://github.com/junobuild/juno/issues/415.
-    match http_request_out(request, 2_000_000_000).await {
+    match http_request_outcall(request, 2_000_000_000).await {
         Ok((response,)) => {
             // 3. Use serde_json to transform the response to a structured object.
             let str_body = String::from_utf8(response.body)
