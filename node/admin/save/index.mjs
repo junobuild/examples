@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {getDoc, listDocs, setDoc} from "@junobuild/core";
+import { getDoc, listDocs, setDoc } from "@junobuild/core";
 import fetch from "node-fetch";
 import { getIdentity } from "./auth.mjs";
 import { readFile } from "fs/promises";
@@ -31,7 +31,7 @@ const get = async (key) =>
 const set = async (entry) => {
   const key = entry[keyField];
 
-    console.log(`Set key ${key}: start`);
+  console.log(`Set key ${key}: start`);
 
   const existingEntry = await get(key);
 
@@ -45,7 +45,7 @@ const set = async (entry) => {
     },
   });
 
-    console.log(`Set key ${key}: end`);
+  console.log(`Set key ${key}: end`);
 };
 
 const loadData = async () => {

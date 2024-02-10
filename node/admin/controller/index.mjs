@@ -23,7 +23,7 @@ const profile = process.argv
   ?.replace(`--profile=`, "");
 
 console.log(
-  `About to set ${controllerId} in satellite ${satelliteId} with the help of the mission control ${missionControl.missionControlId}.`
+  `About to set ${controllerId} in satellite ${satelliteId} with the help of the mission control ${missionControl.missionControlId}.`,
 );
 
 try {
