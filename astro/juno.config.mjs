@@ -3,7 +3,10 @@ import { defineConfig } from "@junobuild/config";
 /** @type {import('@junobuild/config').JunoConfig} */
 export default defineConfig({
   satellite: {
-    satelliteId: "nkzsw-gyaaa-aaaal-ada3a-cai",
+    satellitesIds: {
+      production: "nkzsw-gyaaa-aaaal-ada3a-cai",
+      development: "aovwi-4maaa-aaaaa-qaagq-cai",
+    },
     source: "dist",
     storage: {
       headers: [
