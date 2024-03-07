@@ -5,10 +5,10 @@ import { initJuno } from "@junobuild/core";
 import { Auth } from "./Auth";
 import { useEffect } from "react";
 
-function App() {
-  // Turn this on to try ou Juno Docker
-  const CONTAINER = false;
+// Turn this on to try ou Juno Docker
+const CONTAINER = false;
 
+function App() {
   useEffect(() => {
     (async () =>
       await initJuno({
