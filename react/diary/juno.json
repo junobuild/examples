@@ -1,6 +1,6 @@
 {
   "satellite": {
     "satelliteId": "f62k6-laaaa-aaaal-acq7q-cai",
-    "source": "build"
+    "source": "dist"
   }
 }
