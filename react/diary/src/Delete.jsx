@@ -1,6 +1,12 @@
 import { deleteDoc, deleteAsset } from "@junobuild/core";
 import { useState } from "react";
 import { Spinner } from "./Spinner";
+import PropTypes from "prop-types";
+
+Delete.propTypes = {
+  item: PropTypes.object.isRequired,
+  reload: PropTypes.bool.isRequired,
+};
 
 export const Delete = ({ item, reload }) => {
   const [inProgress, setInProgress] = useState(false);
