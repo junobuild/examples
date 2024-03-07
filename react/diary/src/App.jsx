@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <div className="isolate bg-white">
+      <div className="relative isolate bg-white h-[100dvh]">
         <main>
           <div className="relative px-6 lg:px-8">
             <div className="mx-auto max-w-2xl pt-16">
@@ -44,9 +44,9 @@ function App() {
                 </Auth>
               </div>
             </div>
-            <Background />
           </div>
         </main>
+        <Background />
       </div>
     </>
   );
