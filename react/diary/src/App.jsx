@@ -5,17 +5,12 @@ import { initJuno } from "@junobuild/core";
 import { Auth } from "./Auth";
 import { useEffect } from "react";
 
-// Turn this on to try ou Juno Docker
-const CONTAINER = false;
-
 function App() {
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: CONTAINER
-          ? "jx5yt-yyaaa-aaaal-abzbq-cai"
-          : "f62k6-laaaa-aaaal-acq7q-cai",
-        container: CONTAINER,
+        satelliteId: import.meta.env.VITE_SATELLITE_ID,
+        container: import.meta.env.VITE_CONTAINER,
       }))();
   }, []);
 
