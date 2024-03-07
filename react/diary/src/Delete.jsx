@@ -3,11 +3,6 @@ import { useState } from "react";
 import { Spinner } from "./Spinner";
 import PropTypes from "prop-types";
 
-Delete.propTypes = {
-  item: PropTypes.object.isRequired,
-  reload: PropTypes.bool.isRequired,
-};
-
 export const Delete = ({ item, reload }) => {
   const [inProgress, setInProgress] = useState(false);
 
@@ -62,4 +57,9 @@ export const Delete = ({ item, reload }) => {
       {inProgress && <Spinner />}
     </>
   );
+};
+
+Delete.propTypes = {
+  item: PropTypes.object.isRequired,
+  reload: PropTypes.func.isRequired,
 };

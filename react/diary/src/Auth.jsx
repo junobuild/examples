@@ -6,10 +6,6 @@ import PropTypes from "prop-types";
 
 export const AuthContext = createContext();
 
-Auth.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export const Auth = ({ children }) => {
   const [user, setUser] = useState(undefined);
 
@@ -32,4 +28,8 @@ export const Auth = ({ children }) => {
       )}
     </AuthContext.Provider>
   );
+};
+
+Auth.propTypes = {
+  children: PropTypes.node.isRequired,
 };
