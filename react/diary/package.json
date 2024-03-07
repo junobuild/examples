@@ -1,13 +1,14 @@
 {
-  "name": "diary_vite",
+  "name": "@junobuild/example-react-diary",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "npx prettier --write ."
   },
   "dependencies": {
     "@junobuild/core": "^0.0.46",
