@@ -1,7 +1,7 @@
 import { deleteDoc, deleteAsset } from "@junobuild/core";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import {Backdrop} from "./Backdrop";
+import { Backdrop } from "./Backdrop";
 
 export const Delete = ({ item, reload }) => {
   const [inProgress, setInProgress] = useState(false);
@@ -38,11 +38,17 @@ export const Delete = ({ item, reload }) => {
 
   return (
     <>
-      <button role="cell"
+      <button
+        role="cell"
         className="hover:text-lavender-blue-500 active:text-lavender-blue-400"
         onClick={async () => await delItem(item)}
       >
-        <svg width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" fill="currentColor">
+        <svg
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 29 29"
+          fill="currentColor"
+        >
           <g>
             <rect fill="none" className="opacity-25" width="29" height="29" />
             <path

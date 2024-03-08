@@ -7,7 +7,7 @@ export default {
         tall: { raw: "(min-height: 800px)" },
       },
       animation: {
-        fade: 'fadeIn .25s ease-in-out',
+        fade: "fadeIn .25s ease-in-out",
       },
 
       keyframes: {

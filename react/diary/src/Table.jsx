@@ -55,14 +55,19 @@ export const Table = () => {
               role="row"
             >
               <span
-                  role="cell"
+                role="cell"
                 aria-rowindex={index}
                 className="p-1 flex align-center min-w-max"
               >
                 {index + 1} )
               </span>
-              <div role="cell" className="text-ellipsis overflow-hidden grow">{text}</div>
-              <div role="cell" className="flex gap-2 justify-center align-middle">
+              <div role="cell" className="text-ellipsis overflow-hidden grow">
+                {text}
+              </div>
+              <div
+                role="cell"
+                className="flex gap-2 justify-center align-middle"
+              >
                 {url !== undefined ? (
                   <a
                     aria-label="Open data"

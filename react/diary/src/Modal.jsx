@@ -115,10 +115,7 @@ export const Modal = () => {
                 disabled={progress}
               ></textarea>
 
-              <div
-                role="toolbar"
-                className="flex justify-between items-center"
-              >
+              <div role="toolbar" className="flex justify-between items-center">
                 <div>
                   <button
                     aria-label="Attach a file to the entry"
