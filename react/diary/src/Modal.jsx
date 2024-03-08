@@ -139,7 +139,9 @@ export const Modal = () => {
                       </g>
                     </svg>
                     <span className="truncate max-w-48">
-                      <small>{file !== undefined ? file.name : "Attach file"}</small>
+                      <small>
+                        {file !== undefined ? file.name : "Attach file"}
+                      </small>
                     </span>
                   </button>
 
