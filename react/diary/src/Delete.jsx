@@ -1,7 +1,7 @@
 import { deleteDoc, deleteAsset } from "@junobuild/core";
 import { useState } from "react";
-import { Spinner } from "./Spinner";
 import PropTypes from "prop-types";
+import {Backdrop} from "./Backdrop";
 
 export const Delete = ({ item, reload }) => {
   const [inProgress, setInProgress] = useState(false);
@@ -9,25 +9,29 @@ export const Delete = ({ item, reload }) => {
   const delItem = async (doc) => {
     setInProgress(true);
 
-    const {
-      data: { url },
-    } = doc;
+    try {
+      const {
+        data: { url },
+      } = doc;
 
-    if (url !== undefined) {
-      const { pathname: fullPath } = new URL(url);
+      if (url !== undefined) {
+        const { pathname: fullPath } = new URL(url);
 
-      await deleteAsset({
-        collection: "images",
-        fullPath,
+        await deleteAsset({
+          collection: "images",
+          fullPath,
+        });
+      }
+
+      await deleteDoc({
+        collection: "notes",
+        doc,
       });
+
+      await reload();
+    } catch (err) {
+      console.error(err);
     }
-
-    await deleteDoc({
-      collection: "notes",
-      doc,
-    });
-
-    await reload();
 
     setInProgress(false);
   };
@@ -52,7 +56,7 @@ export const Delete = ({ item, reload }) => {
         </svg>
       </button>
 
-      {inProgress && <Spinner />}
+      {inProgress && <Backdrop spinner={true} />}
     </>
   );
 };
