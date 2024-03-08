@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="mx-auto max-w-screen-2xl px-16 md:px-24 h-24 flex items-center justify-between md:justify-start md:gap-24">
+    <footer className="mx-auto max-w-screen-2xl py-16 px-8 md:px-24 h-24 flex items-center justify-between md:justify-start md:gap-24">
       <span className="flex gap-2 items-baseline">
         <svg
           id="Layer_2"

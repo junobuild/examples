@@ -88,7 +88,7 @@ export const Modal = () => {
       {showModal ? (
         <>
           <div
-            className="fixed inset-0 z-50 p-16 md:px-24 md:py-44"
+            className="fixed inset-0 z-50 p-16 md:px-24 md:py-44 animate-fade"
             role="dialog"
           >
             <div className="relative w-full max-w-xl">
@@ -123,7 +123,7 @@ export const Modal = () => {
                   <button
                     aria-label="Attach a file to the entry"
                     onClick={() => uploadElement.current.click()}
-                    className="flex gap-2 items-center"
+                    className="flex gap-2 items-center hover:text-lavender-blue-600 active:text-lavender-blue-400"
                   >
                     <svg
                       width="20"
