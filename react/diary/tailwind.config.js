@@ -1,12 +1,7 @@
-import { fontFamily } from "tailwindcss/defaultTheme";
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    fontFamily: {
-      sans: ["Inter", "sans-serif", ...fontFamily.sans],
-    },
     extend: {
       screens: {
         tall: { raw: "(min-height: 800px)" },
