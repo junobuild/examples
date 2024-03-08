@@ -1,7 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { setDoc, uploadFile } from "@junobuild/core";
 import { AuthContext } from "./Auth";
 import { nanoid } from "nanoid";
+import { Button } from "./Button";
+import { Backdrop } from "./Backdrop";
 
 export const Modal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -9,6 +11,7 @@ export const Modal = () => {
   const [valid, setValid] = useState(false);
   const [progress, setProgress] = useState(false);
   const [file, setFile] = useState();
+  const uploadElement = useRef(null);
 
   const { user } = useContext(AuthContext);
 
@@ -69,24 +72,28 @@ export const Modal = () => {
 
   return (
     <>
-      <div className="mt-10 flex items-center justify-center gap-x-6">
-        <button
-          type="button"
-          onClick={() => setShowModal(true)}
-          className="bg-black rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      <Button onClick={() => setShowModal(true)}>
+        Add an entry{" "}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20"
+          viewBox="0 -960 960 960"
+          width="20"
+          fill="currentColor"
         >
-          Add an entry
-        </button>
-      </div>
+          <path d="M417-417H166v-126h251v-251h126v251h251v126H543v251H417v-251Z" />
+        </svg>
+      </Button>
 
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                <div className="relative p-6 flex-auto">
-                  <textarea
-                    className="
+          <div
+            className="fixed inset-0 z-50 p-16 md:px-24 md:py-44"
+            role="dialog"
+          >
+            <div className="relative w-full max-w-xl">
+              <textarea
+                className="
         form-control
         block
         w-full
@@ -94,66 +101,87 @@ export const Modal = () => {
         py-1.5
         text-base
         font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
         m-0
-        focus:text-gray-700 focus:bg-white focus:border-indigo-600 focus:outline-none
         resize-none
+        border-black border-[3px] rounded-sm bg-white shadow-[5px_5px_0px_rgba(0,0,0,1)]
+        focus:outline-none
       "
-                    rows="5"
-                    placeholder="Your diary entry"
-                    onChange={(e) => {
-                      setInputText(e.target.value);
-                    }}
-                    value={inputText}
-                    disabled={progress}
-                  ></textarea>
+                rows="7"
+                placeholder="Your diary entry"
+                onChange={(e) => {
+                  setInputText(e.target.value);
+                }}
+                value={inputText}
+                disabled={progress}
+              ></textarea>
+
+              <div
+                role="toolbar"
+                className="flex justify-between items-center"
+              >
+                <div>
+                  <button
+                    aria-label="Attach a file to the entry"
+                    onClick={() => uploadElement.current.click()}
+                    className="flex gap-2 items-center"
+                  >
+                    <svg
+                      width="20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 29 29"
+                      fill="currentColor"
+                    >
+                      <g>
+                        <rect
+                          fill="none"
+                          className="opacity-25"
+                          width="29"
+                          height="29"
+                        />
+                        <path d="M8.36,26.92c-2,0-3.88-.78-5.29-2.19C.15,21.81.15,17.06,3.06,14.14L12.57,4.64c.39-.39,1.02-.39,1.41,0s.39,1.02,0,1.41L4.48,15.56c-2.14,2.14-2.14,5.62,0,7.76,1.04,1.04,2.41,1.61,3.88,1.61s2.84-.57,3.88-1.61l12.79-12.79c1.47-1.47,1.47-3.87,0-5.34-1.47-1.47-3.87-1.47-5.34,0l-12.45,12.45c-.73.73-.73,1.91,0,2.64.73.73,1.91.73,2.64,0l9.17-9.17c.39-.39,1.02-.39,1.41,0s.39,1.02,0,1.41l-9.17,9.17c-1.51,1.51-3.96,1.51-5.47,0-1.51-1.51-1.51-3.96,0-5.47L18.26,3.77c2.25-2.25,5.92-2.25,8.17,0s2.25,5.92,0,8.17l-12.79,12.79c-1.41,1.41-3.29,2.19-5.29,2.19Z" />
+                      </g>
+                    </svg>
+                    <span>
+                      <small>Attach file</small>
+                    </span>
+                  </button>
+
                   <input
+                    ref={uploadElement}
                     type="file"
-                    className="my-4 text-slate-500 text-lg leading-relaxed"
+                    className="fixed right-0 -bottom-24 opacity-0"
                     onChange={(event) => setFile(event.target.files?.[0])}
                     disabled={progress}
                   />
                 </div>
 
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  {progress ? (
-                    <div
-                      className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-indigo-600 rounded-full"
-                      role="status"
-                      aria-label="loading"
+                {progress ? (
+                  <div
+                    className="my-8 animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-indigo-600 rounded-full"
+                    role="status"
+                    aria-label="loading"
+                  >
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ) : (
+                  <div className="flex">
+                    <button
+                      className="py-1 px-8 hover:text-lavender-blue-600 active:text-lavender-blue-400"
+                      type="button"
+                      onClick={() => setShowModal(false)}
                     >
-                      <span className="sr-only">Loading...</span>
-                    </div>
-                  ) : (
-                    <>
-                      <button
-                        className="background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none ease-linear transition-all duration-150"
-                        type="button"
-                        onClick={() => setShowModal(false)}
-                      >
-                        Close
-                      </button>
+                      Close
+                    </button>
 
-                      <button
-                        className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-25"
-                        type="button"
-                        onClick={add}
-                        disabled={!valid}
-                      >
-                        Submit
-                      </button>
-                    </>
-                  )}
-                </div>
+                    <Button onClick={add} disabled={!valid}>
+                      Submit
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <Backdrop />
         </>
       ) : null}
     </>
