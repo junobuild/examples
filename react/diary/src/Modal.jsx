@@ -164,7 +164,7 @@ export const Modal = () => {
                     <span className="sr-only">Loading...</span>
                   </div>
                 ) : (
-                  <div className="flex">
+                  <div className="flex my-4">
                     <button
                       className="py-1 px-8 hover:text-lavender-blue-600 active:text-lavender-blue-400"
                       type="button"
