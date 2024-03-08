@@ -34,23 +34,21 @@ export const Delete = ({ item, reload }) => {
 
   return (
     <>
-      <button
-        className="text-sm rounded-md font-semibold leading-7 hover:bg-grey-500 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grey-600"
+      <button role="cell"
+        className="hover:text-lavender-blue-500 active:text-lavender-blue-400"
         onClick={async () => await delItem(item)}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-          />
+        <svg width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" fill="currentColor">
+          <g>
+            <rect fill="none" className="opacity-25" width="29" height="29" />
+            <path
+              fill="#fff"
+              d="M14.5,6.26H5.19l1.26,17.82c.09,1.21,1.09,2.14,2.3,2.14h11.49c1.21,0,2.22-.94,2.3-2.14l1.26-17.82h-9.31Z"
+            />
+            <path d="M26.17,5.26h-6.88v-1.26c0-1.35-1.09-2.44-2.44-2.44h-4.7c-1.35,0-2.44,1.1-2.44,2.44v1.26H2.83c-.55,0-1,.45-1,1s.45,1,1,1h1.43l1.2,16.89c.12,1.72,1.57,3.07,3.3,3.07h11.49c1.73,0,3.18-1.35,3.3-3.07l1.2-16.89h1.43c.55,0,1-.45,1-1s-.45-1-1-1ZM11.71,4c0-.24.2-.44.44-.44h4.7c.24,0,.44.2.44.44v1.26h-5.58v-1.26ZM21.55,24.01c-.05.68-.62,1.21-1.3,1.21h-11.49c-.68,0-1.25-.53-1.3-1.21l-1.18-16.75h16.47l-1.18,16.75Z" />
+            <path d="M11.29,8.71c-.55,0-1,.45-1,1v12.81c0,.55.45,1,1,1s1-.45,1-1v-12.81c0-.55-.45-1-1-1Z" />
+            <path d="M17.71,8.71c-.55,0-1,.45-1,1v12.81c0,.55.45,1,1,1s1-.45,1-1v-12.81c0-.55-.45-1-1-1Z" />
+          </g>
         </svg>
       </button>
 

@@ -34,55 +34,67 @@ export const Table = () => {
   }, [user]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200 mt-8">
-      <header className="px-5 py-4 border-b border-gray-100">
-        <h2 className="font-semibold text-gray-800">Entries</h2>
-      </header>
-      <div className="p-3">
-        <div className="overflow-x-auto">
-          {items.map((item, index) => {
-            const {
-              key,
-              data: { text, url },
-            } = item;
+    <div className="w-full max-w-2xl mt-8" role="table">
+      <div role="row">
+        <span role="columnheader" aria-sort="none">
+          Entries
+        </span>
+      </div>
 
-            return (
-              <div key={key} className="flex items-center gap-6 px-2.5 py-1.5">
-                <span className="px-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max">
-                  {index + 1}
-                </span>
-                <div className="line-clamp-3 text-left grow">{text}</div>
-                <div className="flex gap-2 justify-center align-middle">
-                  {url !== undefined ? (
-                    <a
-                      aria-label="Open data"
-                      rel="noopener noreferrer"
-                      href={url}
-                      target="_blank"
+      <div className="py-2" role="rowgroup">
+        {items.map((item, index) => {
+          const {
+            key,
+            data: { text, url },
+          } = item;
+
+          return (
+            <div
+              key={key}
+              className="flex items-center gap-2 px-3 mb-4 border-black border-[3px] rounded-sm bg-white shadow-[5px_5px_0px_rgba(0,0,0,1)]"
+              role="row"
+            >
+              <span
+                  role="cell"
+                aria-rowindex={index}
+                className="p-1 flex align-center min-w-max"
+              >
+                {index + 1} )
+              </span>
+              <div role="cell" className="text-ellipsis overflow-hidden grow">{text}</div>
+              <div role="cell" className="flex gap-2 justify-center align-middle">
+                {url !== undefined ? (
+                  <a
+                    aria-label="Open data"
+                    rel="noopener noreferrer"
+                    href={url}
+                    target="_blank"
+                    className="hover:text-lavender-blue-500 active:text-lavender-blue-400"
+                  >
+                    <svg
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 29 29"
+                      fill="currentColor"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                      <g>
+                        <rect
+                          fill="none"
+                          className="opacity-25"
+                          width="29"
+                          height="29"
                         />
-                      </svg>
-                    </a>
-                  ) : undefined}
+                        <path d="M8.36,26.92c-2,0-3.88-.78-5.29-2.19C.15,21.81.15,17.06,3.06,14.14L12.57,4.64c.39-.39,1.02-.39,1.41,0s.39,1.02,0,1.41L4.48,15.56c-2.14,2.14-2.14,5.62,0,7.76,1.04,1.04,2.41,1.61,3.88,1.61s2.84-.57,3.88-1.61l12.79-12.79c1.47-1.47,1.47-3.87,0-5.34-1.47-1.47-3.87-1.47-5.34,0l-12.45,12.45c-.73.73-.73,1.91,0,2.64.73.73,1.91.73,2.64,0l9.17-9.17c.39-.39,1.02-.39,1.41,0s.39,1.02,0,1.41l-9.17,9.17c-1.51,1.51-3.96,1.51-5.47,0-1.51-1.51-1.51-3.96,0-5.47L18.26,3.77c2.25-2.25,5.92-2.25,8.17,0s2.25,5.92,0,8.17l-12.79,12.79c-1.41,1.41-3.29,2.19-5.29,2.19Z" />
+                      </g>
+                    </svg>
+                  </a>
+                ) : undefined}
 
-                  <Delete item={item} reload={list} />
-                </div>
+                <Delete item={item} reload={list} />
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
