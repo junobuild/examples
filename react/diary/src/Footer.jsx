@@ -6,7 +6,7 @@ export const Footer = () => {
           id="Layer_2"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1000 220.39"
-          width="100"
+          width="80"
         >
           <g>
             <path d="m238.29,0h220.39v110.19c0,60.82-49.38,110.19-110.19,110.19h0c-60.82,0-110.19-49.38-110.19-110.19V0h0Z" />
@@ -41,7 +41,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
         >
           <svg
-            width="28"
+            width="32"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 49 49"
             fill="currentColor"
@@ -76,7 +76,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
         >
           <svg
-            width="28"
+            width="32"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 49 49"
             fill="currentColor"
@@ -101,7 +101,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
         >
           <svg
-            width="28"
+            width="32"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 49 49"
             fill="currentColor"
@@ -126,7 +126,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
         >
           <svg
-            width="28"
+            width="32"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 49 49"
             fill="currentColor"
