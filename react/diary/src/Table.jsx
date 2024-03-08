@@ -61,7 +61,7 @@ export const Table = () => {
               >
                 {index + 1} )
               </span>
-              <div role="cell" className="text-ellipsis overflow-hidden grow">
+              <div role="cell" className="line-clamp-3 overflow-hidden grow">
                 {text}
               </div>
               <div
