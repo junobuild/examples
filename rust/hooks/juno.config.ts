@@ -2,7 +2,7 @@ import {defineConfig} from '@junobuild/config';
 
 export default defineConfig({
   satellite: {
-    satelliteId: 'xo2hm-lqaaa-aaaal-ab3oa-cai',
+    id: 'cuj6u-c4aaa-aaaaa-qaajq-cai',
     source: 'build'
   }
 });

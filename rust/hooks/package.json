@@ -10,13 +10,13 @@
   },
   "devDependencies": {
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-    "@junobuild/vite-plugin": "^0.0.6",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
+    "@junobuild/vite-plugin": "^0.0.8",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.3",
     "vite-plugin-compression": "^0.5.1"
   },
   "dependencies": {
-    "@junobuild/admin": "^0.0.44",
-    "@junobuild/core": "^0.0.44-next-2024-02-02"
+    "@junobuild/admin": "^0.0.46",
+    "@junobuild/core": "^0.0.47"
   }
 }

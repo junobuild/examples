@@ -1,11 +1,11 @@
 services:
   juno-satellite:
-    image: juno-satellite
+    image: junobuild/satellite:latest
     ports:
       - 5987:5987
     volumes:
       - my_dapp_new-2:/juno/.juno
-      - ./juno.dev.json:/juno/juno.dev.json
+      - ./juno.dev.config.ts:/juno/juno.dev.config.ts
       - ./target/deploy:/juno/target/deploy/
 
 volumes:
