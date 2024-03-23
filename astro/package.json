@@ -15,14 +15,14 @@
     "@astrojs/mdx": "^1.1.3",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.3",
-    "@junobuild/config": "^0.0.2",
-    "@junobuild/vite-plugin": "^0.0.7",
+    "@junobuild/config": "^0.0.4",
+    "@junobuild/vite-plugin": "^0.0.8",
     "astro": "^3.4.3",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.1",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@junobuild/core": "^0.0.43"
+    "@junobuild/core": "^0.0.47"
   }
 }
