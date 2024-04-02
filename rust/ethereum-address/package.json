@@ -1,0 +1,22 @@
+{
+  "name": "@junobuild/ethereum-address",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@junobuild/config": "^0.0.5",
+    "@junobuild/vite-plugin": "^0.0.8",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
+    "vite-plugin-compression": "^0.5.1"
+  },
+  "dependencies": {
+    "@junobuild/core": "^0.0.48"
+  }
+}
