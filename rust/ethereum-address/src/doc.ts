@@ -18,7 +18,7 @@ const get = async () => {
   const key = auth_user.getPrincipal().toText();
 
   const user = await getDoc<User>({
-    collection: "users",
+    collection: "profiles",
     key,
   });
 

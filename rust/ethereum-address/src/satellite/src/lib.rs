@@ -38,7 +38,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 
     set_doc_store(
         context.caller,
-        "users".to_string(),
+        "profiles".to_string(),
         context.data.key,
         doc,
     )?;
