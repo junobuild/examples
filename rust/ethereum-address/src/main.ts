@@ -7,6 +7,7 @@ import {
 } from "@junobuild/core";
 import "./style.css";
 import { initDoc } from "./doc";
+import { initETH } from "./eth";
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -31,3 +32,4 @@ authSubscribe((user: User | null) => {
 });
 
 initDoc();
+initETH();

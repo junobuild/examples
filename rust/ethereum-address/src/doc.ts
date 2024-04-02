@@ -29,7 +29,7 @@ const get = async () => {
     return;
   }
 
-  const output = document.querySelector("#result");
+  const output = document.querySelector("#address");
 
   if (!output) {
     return;
