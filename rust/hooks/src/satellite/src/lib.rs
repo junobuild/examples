@@ -1,10 +1,12 @@
 use ic_cdk::print;
 use junobuild_macros::{
-    on_delete_asset, on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc,
-    on_set_many_docs, on_upload_asset,
+    assert_delete_asset, assert_delete_doc, assert_set_doc, assert_upload_asset, on_delete_asset,
+    on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc, on_set_many_docs,
+    on_upload_asset,
 };
 use junobuild_satellite::{
-    include_satellite, set_doc_store, OnDeleteAssetContext, OnDeleteDocContext,
+    include_satellite, set_doc_store, AssertDeleteAssetContext, AssertDeleteDocContext,
+    AssertSetDocContext, AssertUploadAssetContext, OnDeleteAssetContext, OnDeleteDocContext,
     OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext, OnSetManyDocsContext,
     OnUploadAssetContext, SetDoc,
 };
@@ -97,6 +99,26 @@ async fn on_delete_asset(_context: OnDeleteAssetContext) -> Result<(), String> {
 
 #[on_delete_many_assets]
 async fn on_delete_many_assets(_context: OnDeleteManyAssetsContext) -> Result<(), String> {
+    Ok(())
+}
+
+#[assert_set_doc]
+fn assert_set_doc(_context: AssertSetDocContext) -> Result<(), String> {
+    Ok(())
+}
+
+#[assert_delete_doc]
+fn assert_delete_doc(_context: AssertDeleteDocContext) -> Result<(), String> {
+    Ok(())
+}
+
+#[assert_upload_asset]
+fn assert_upload_asset(_context: AssertUploadAssetContext) -> Result<(), String> {
+    Ok(())
+}
+
+#[assert_delete_asset]
+fn assert_delete_asset(_context: AssertDeleteAssetContext) -> Result<(), String> {
     Ok(())
 }
 
