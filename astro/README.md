@@ -1,6 +1,6 @@
 # Astro
 
-A sample app build with Astro on [Juno](https://juno.build).
+A sample app build with Astro on [Juno](https://juno.build) which we used to test various hosting capabilities.
 
 ## Getting started
 
