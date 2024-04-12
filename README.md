@@ -31,13 +31,14 @@ Templates for popular frameworks are available in the [create-juno repository](h
 - [next-example](https://github.com/junobuild/create-juno/tree/main/templates/nextjs-example)
 - [react-starter](https://github.com/junobuild/create-juno/tree/main/templates/react-starter)
 - [react-example](https://github.com/junobuild/create-juno/tree/main/templates/react-example)
+- [vue-starter](https://github.com/junobuild/create-juno/tree/main/templates/vue-starter)
+- [vue-example](https://github.com/junobuild/create-juno/tree/main/templates/vue-example)
 
 ## 📂 Examples in This Repository
 
 Explore more specific examples directly in this repository:
 
 - [svelte](./svelte/README.md): a collection of examples developed with Svelte
-- [vue](./vue/README.md): a collection of examples developed with Vue
 - [angular](./angular/README.md): a collection of examples developed with Angular
 - [vanilla](./vanilla/README.md): a collection of examples developed without frameworks
 - [node](./node): a collection of NodeJS scripts
