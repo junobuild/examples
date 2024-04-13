@@ -1,9 +1,0 @@
-@mixin tappable {
-	touch-action: manipulation;
-	cursor: pointer;
-}
-
-@mixin initial {
-	touch-action: initial;
-	cursor: initial;
-}
