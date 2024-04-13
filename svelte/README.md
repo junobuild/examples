@@ -1,6 +1,3 @@
-# Juno Examples - Svelte
+# Juno Examples - SvelteKit
 
-A collection of examples developed with SvelteKit on [Juno](https://juno.build).
-
-- [form](./form): a sample app that uses Juno datastore and authentication.
-
+Examples have been moved [create-juno repository](https://github.com/junobuild/create-juno).
