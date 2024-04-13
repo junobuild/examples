@@ -31,6 +31,8 @@ Templates for popular frameworks are available in the [create-juno repository](h
 - [next-example](https://github.com/junobuild/create-juno/tree/main/templates/nextjs-example)
 - [react-starter](https://github.com/junobuild/create-juno/tree/main/templates/react-starter)
 - [react-example](https://github.com/junobuild/create-juno/tree/main/templates/react-example)
+- [sveltekit-starter](https://github.com/junobuild/create-juno/tree/main/templates/sveltekit-starter)
+- [sveltekit-example](https://github.com/junobuild/create-juno/tree/main/templates/sveltekit-example)
 - [vue-starter](https://github.com/junobuild/create-juno/tree/main/templates/vue-starter)
 - [vue-example](https://github.com/junobuild/create-juno/tree/main/templates/vue-example)
 - [angular-starter](https://github.com/junobuild/create-juno/tree/main/templates/angular-starter)
@@ -40,7 +42,6 @@ Templates for popular frameworks are available in the [create-juno repository](h
 
 Explore more specific examples directly in this repository:
 
-- [svelte](./svelte/README.md): a collection of examples developed with Svelte
 - [vanilla](./vanilla/README.md): a collection of examples developed without frameworks
 - [node](./node): a collection of NodeJS scripts
 - [rust](./rust): blockchainless functions/hooks examples
