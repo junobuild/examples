@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write './**/*.{ts,js,mjs,json,scss,css,astro,html,md}'"
+    "format": "prettier --write './**/*.{ts,js,mjs,json,scss,css,astro,html,md}'",
+    "postinstall": "node -e \"require('fs').cpSync('node_modules/@junobuild/analytics/dist/workers/', './public/workers', {recursive: true});\""
   },
   "devDependencies": {
     "@astrojs/check": "^0.3.1",
@@ -23,6 +24,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@junobuild/analytics": "^0.0.22",
     "@junobuild/core": "^0.0.49"
   }
 }

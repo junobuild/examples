@@ -30,15 +30,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           signOut,
           getDoc,
         } from "@junobuild/core";
+        import { initOrbiter } from "@junobuild/analytics";
 
         // Initialize Juno
         document.addEventListener(
           "DOMContentLoaded",
           async () => {
-            await initJuno({
-              satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
-              container: import.meta.env.PUBLIC_CONTAINER,
-            });
+            await Promise.allSettled([
+              initJuno({
+                satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
+                container: import.meta.env.PUBLIC_CONTAINER,
+              }),
+              initOrbiter({
+                orbiterId: import.meta.env.PUBLIC_ORBITER_ID,
+                satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
+                container: import.meta.env.PUBLIC_CONTAINER,
+              }),
+            ]);
           },
           { once: true },
         );
@@ -127,27 +135,28 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       </script>
     </main>
     <Footer />
-  </body><style>
-    button {
-      display: block;
-      border: 1px solid rgb(var(--gray));
-      margin: 0 0 1rem;
-      padding: 0.5rem 1rem;
-      width: auto;
-      overflow: visible;
-      background: white;
-      color: inherit;
-      font: inherit;
-      -webkit-font-smoothing: inherit;
-      -moz-osx-font-smoothing: inherit;
-      -webkit-appearance: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+    <style>
+      button {
+        display: block;
+        border: 1px solid rgb(var(--gray));
+        margin: 0 0 1rem;
+        padding: 0.5rem 1rem;
+        width: auto;
+        overflow: visible;
+        background: white;
+        color: inherit;
+        font: inherit;
+        -webkit-font-smoothing: inherit;
+        -moz-osx-font-smoothing: inherit;
+        -webkit-appearance: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
 
-    button[disabled] {
-      background: transparent;
-      color: rgb(var(--gray));
-    }
-  </style>
+      button[disabled] {
+        background: transparent;
+        color: rgb(var(--gray));
+      }
+    </style>
+  </body>
 </html>
