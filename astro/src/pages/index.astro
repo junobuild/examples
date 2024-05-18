@@ -37,15 +37,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           "DOMContentLoaded",
           async () => {
             await Promise.allSettled([
-              initJuno({
-                satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
-                container: import.meta.env.PUBLIC_CONTAINER,
-              }),
-              initOrbiter({
-                orbiterId: import.meta.env.PUBLIC_ORBITER_ID,
-                satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
-                container: import.meta.env.PUBLIC_CONTAINER,
-              }),
+              initJuno(),
+              initOrbiter(),
             ]);
           },
           { once: true },
