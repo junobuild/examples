@@ -15,7 +15,8 @@ document.addEventListener(
   async () => {
     await Promise.all([
       initJuno({
-        satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai",
+        satelliteId: "be2us-64aaa-aaaaa-qaabq-cai",
+        container: true,
         workers: {
           auth: true,
         },
