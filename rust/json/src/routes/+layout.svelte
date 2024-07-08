@@ -22,10 +22,7 @@
 			Example App
 		</h1>
 		<p class="dark:text-white py-4 md:max-w-lg">
-			Explore this demo app built with SvelteKit, Tailwind, and
-			<a href="https://juno.build" rel="noopener noreferrer" target="_blank" class="underline">
-				Juno</a
-			>, showcasing a practical application of these technologies.
+			Admin view.
 		</p>
 
 		<Auth>
