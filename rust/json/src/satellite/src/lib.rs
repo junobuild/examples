@@ -1,16 +1,24 @@
+use ic_cdk::id;
 use junobuild_macros::{
     assert_delete_asset, assert_delete_doc, assert_set_doc, assert_upload_asset, on_delete_asset,
     on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc, on_set_many_docs,
     on_upload_asset,
 };
-use junobuild_satellite::{include_satellite, AssertDeleteAssetContext, AssertDeleteDocContext, AssertSetDocContext, AssertUploadAssetContext, OnDeleteAssetContext, OnDeleteDocContext, OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext, OnSetManyDocsContext, OnUploadAssetContext, set_doc_store, SetDoc};
+use junobuild_satellite::{
+    include_satellite, set_asset_handler, set_doc_store, AssertDeleteAssetContext,
+    AssertDeleteDocContext, AssertSetDocContext, AssertUploadAssetContext, OnDeleteAssetContext,
+    OnDeleteDocContext, OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext,
+    OnSetManyDocsContext, OnUploadAssetContext, SetDoc,
+};
+use junobuild_storage::http::types::HeaderField;
+use junobuild_storage::types::store::AssetKey;
+use junobuild_utils::{decode_doc_data, encode_doc_data, encode_doc_data_to_string};
 use serde::{Deserialize, Serialize};
-use junobuild_utils::{decode_doc_data, encode_doc_data};
 
 #[derive(Serialize, Deserialize)]
 struct Note {
     text: String,
-    url: Option<String>
+    url: Option<String>,
 }
 
 #[on_set_doc]
@@ -32,22 +40,33 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     set_doc_store(
         context.caller,
         context.data.collection,
-        context.data.key,
+        context.data.key.clone(),
         doc,
     )?;
 
-    // We want to build a JSON file
-    // No problemo.
+    let json = encode_doc_data_to_string(&note)?;
 
-    // We want to upload the JSON file to the memory so that it becomes
-    // Available on the web
-    // 1. Set the json file directly
+    let name = format!("{}.json", context.data.key).clone();
 
-    // create_asset_with_content(Asset {
-    //     full_path: "/myfile.json",
-    //     content: json_for_the_note(s)
-    // })
+    ic_cdk::print(format!("Json: {} {}", name, json));
 
+    let collection = "notes".to_string();
+
+    let key: AssetKey = AssetKey {
+        name: name.clone(),
+        full_path: format!("/{}/{}", collection, name.clone()).to_string(),
+        token: None,
+        collection,
+        owner: id(),
+        description: None,
+    };
+
+    let headers = vec![HeaderField(
+        "content-type".to_string(),
+        "application/json".to_string(),
+    )];
+
+    set_asset_handler(&key, &json, &headers)?;
 
     Ok(())
 }
