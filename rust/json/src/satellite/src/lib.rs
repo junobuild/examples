@@ -1,3 +1,6 @@
+mod notes;
+
+use crate::notes::{generate_list_of_notes, insert_asset};
 use ic_cdk::id;
 use junobuild_macros::{
     assert_delete_asset, assert_delete_doc, assert_set_doc, assert_upload_asset, on_delete_asset,
@@ -48,25 +51,9 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 
     let name = format!("{}.json", context.data.key).clone();
 
-    ic_cdk::print(format!("Json: {} {}", name, json));
+    insert_asset(&name, &json)?;
 
-    let collection = "notes".to_string();
-
-    let key: AssetKey = AssetKey {
-        name: name.clone(),
-        full_path: format!("/{}/{}", collection, name.clone()).to_string(),
-        token: None,
-        collection,
-        owner: id(),
-        description: None,
-    };
-
-    let headers = vec![HeaderField(
-        "content-type".to_string(),
-        "application/json".to_string(),
-    )];
-
-    set_asset_handler(&key, &json, &headers)?;
+    generate_list_of_notes()?;
 
     Ok(())
 }
