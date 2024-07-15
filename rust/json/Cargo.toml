@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/satellite"
+]
+resolver = "2"
