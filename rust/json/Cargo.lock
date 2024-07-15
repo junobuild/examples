@@ -1138,6 +1138,7 @@ dependencies = [
  "ic-cdk-macros",
  "junobuild-macros",
  "junobuild-satellite",
+ "junobuild-shared",
  "junobuild-storage",
  "junobuild-utils",
  "serde",
