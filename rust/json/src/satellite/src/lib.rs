@@ -1,20 +1,17 @@
 mod notes;
 
 use crate::notes::{generate_list_of_notes, insert_asset};
-use ic_cdk::id;
 use junobuild_macros::{
     assert_delete_asset, assert_delete_doc, assert_set_doc, assert_upload_asset, on_delete_asset,
     on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc, on_set_many_docs,
     on_upload_asset,
 };
 use junobuild_satellite::{
-    include_satellite, set_asset_handler, set_doc_store, AssertDeleteAssetContext,
+    include_satellite, set_doc_store, AssertDeleteAssetContext,
     AssertDeleteDocContext, AssertSetDocContext, AssertUploadAssetContext, OnDeleteAssetContext,
     OnDeleteDocContext, OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext,
     OnSetManyDocsContext, OnUploadAssetContext, SetDoc,
 };
-use junobuild_storage::http::types::HeaderField;
-use junobuild_storage::types::store::AssetKey;
 use junobuild_utils::{decode_doc_data, encode_doc_data, encode_doc_data_to_string};
 use serde::{Deserialize, Serialize};
 
