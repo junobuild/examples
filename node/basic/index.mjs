@@ -1,22 +1,40 @@
 #!/usr/bin/env node
 
-import {getDoc} from "@junobuild/core";
-import fetch from 'node-fetch';
-import {AnonymousIdentity} from '@dfinity/agent';
+import { getDoc, setDoc } from "@junobuild/core-peer";
+import { AnonymousIdentity } from "@dfinity/agent";
+import { nanoid } from "nanoid";
+
+const satellite = {
+  identity: new AnonymousIdentity(),
+  satelliteId: "jx5yt-yyaaa-aaaal-abzbq-cai",
+  container: true,
+};
+
+const id = nanoid();
+
+const set = async () =>
+  setDoc({
+    collection: "demo",
+    doc: {
+      key: id,
+      data: {
+        hello: "world",
+      },
+    },
+    satellite,
+  });
 
 const get = async () =>
-    console.log("Get",
-        await getDoc({
-            collection: "demo",
-            key: "my_id",
-            satellite: {
-                identity: new AnonymousIdentity(),
-                satelliteId: "xo2hm-lqaaa-aaaal-ab3oa-cai",
-                fetch,
-            }
-        })
-    );
+  console.log(
+    "Get",
+    await getDoc({
+      collection: "demo",
+      key: id,
+      satellite,
+    }),
+  );
 
 console.log("This is a demo client in NodeJS");
 
+await set();
 await get();
