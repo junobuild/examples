@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 
-import { deleteAsset, getAsset, uploadBlob } from "@junobuild/core-peer";
+import {
+  deleteAsset,
+  getAsset,
+  listAssets,
+  uploadBlob,
+} from "@junobuild/core-peer";
 import { AnonymousIdentity } from "@dfinity/agent";
 import { readFile } from "node:fs/promises";
 
@@ -38,7 +43,18 @@ const get = async () =>
     }),
   );
 
+const list = async () =>
+  console.log(
+    "List",
+    await listAssets({
+      collection,
+      filter: {},
+      satellite,
+    }),
+  );
+
 console.log("This is a demo for handling assets in NodeJS");
 
 await upload();
 await get();
+await list();
