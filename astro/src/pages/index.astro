@@ -23,7 +23,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         // @ts-nocheck
 
         import {
-          initJuno,
+          initSatellite,
           setDoc,
           authSubscribe,
           signIn,
@@ -37,7 +37,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           "DOMContentLoaded",
           async () => {
             await Promise.allSettled([
-              initJuno(),
+              initSatellite(),
               initOrbiter(),
             ]);
           },
