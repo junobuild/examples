@@ -2,10 +2,9 @@
 
 import { getIdentity } from "./auth.mjs";
 import { setCustomDomains, listCustomDomains } from "@junobuild/admin";
-import fetch from "node-fetch";
 import { assertNonNullish } from "@junobuild/utils";
 
-const identity = getIdentity();
+const identity = await getIdentity();
 
 const satelliteId = process.env.JUNO_SATELLITE_ID;
 
@@ -14,14 +13,13 @@ assertNonNullish(satelliteId, "Satellite ID undefined.");
 const satellite = {
   identity,
   satelliteId,
-  fetch,
 };
 
 const domain = process.argv
   .find((arg) => arg.indexOf(`--domain`) > -1)
   ?.replace(`--domain=`, "");
 
-assertNonNullish(bn_id, "BN ID undefined.");
+assertNonNullish(domain, "Domain undefined.");
 
 console.log(
   `About to add ${domain} - without BN ID - to Satellite ${satelliteId}.`,
