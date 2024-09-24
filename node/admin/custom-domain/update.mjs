@@ -28,7 +28,7 @@ assertNonNullish(domain, "Domain undefined.");
 assertNonNullish(bn_id, "BN ID undefined.");
 
 console.log(
-  `About to set ${domain} with BN ID ${bn_id} in satellite ${satelliteId}.`,
+  `About to update ${domain} with BN ID ${bn_id} in Satellite ${satelliteId}.`,
 );
 
 try {

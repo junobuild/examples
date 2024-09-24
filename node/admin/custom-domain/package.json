@@ -2,11 +2,12 @@
   "name": "@junobuild/example-node-custom-domain",
   "version": "0.0.1",
   "description": "A sample admin NodeJS script to set a custom domain entity in Juno's satellite.",
-  "main": "index.mjs",
+  "main": "update.mjs",
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "start": "node index.mjs"
+    "update": "node update.mjs",
+    "add": "node add.mjs"
   },
   "author": "",
   "license": "MIT",

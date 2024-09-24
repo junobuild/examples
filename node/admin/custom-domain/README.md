@@ -1,6 +1,6 @@
 # NodeJS - Admin script to set a BN id
 
-An admin NodeJS script to manually set a BN id to a [Juno](https://juno.build) satellite.
+Admin scripts to manually set or update a custom domain to a [Juno](https://juno.build) Satellite's configuration.
 
 ## Getting started
 
@@ -18,10 +18,23 @@ Configure your satellite ID in [.env](.env).
 
 - `JUNO_SATELLITE_ID`: the satellite ID to which you want to set the BN id
 
-## Execution and development
+## Set BN ID in an existing Custom Domain
 
-Run following command in your terminal to execute the script.
+To associate a BN ID with an already configured custom domain, run the following command in your terminal to execute the script.
+
+> Replace `<your-domain-name>` and `<BN-id-to-set>` with your values.
 
 ```bash
 npm run start -- --domain=<your-domain-name> --bnid=<BN-id-to-set>
+```
+
+## Add a Custom Domain
+
+If you want to add a new custom domain without setting a BN ID, use the following command.
+
+> This will only add the domain, without assigning a BN ID.
+> This is more of a workaround than a standard behavior.
+
+```bash
+npm run start -- --domain=<your-domain-name>
 ```
