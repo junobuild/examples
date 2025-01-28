@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import { getDoc, listDocs, setDoc } from "@junobuild/core";
-import fetch from "node-fetch";
+import { getDoc, setDoc } from "@junobuild/core";
 import { getIdentity } from "./auth.mjs";
 import { readFile } from "fs/promises";
 
@@ -15,7 +14,6 @@ const readData = async () => {
 const satellite = {
   identity,
   satelliteId: process.env.JUNO_SATELLITE_ID,
-  fetch,
 };
 
 const collection = process.env.JUNO_DATASTORE_COLLECTION;

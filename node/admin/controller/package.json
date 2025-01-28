@@ -13,12 +13,12 @@
   "dependencies": {
     "@dfinity/identity": "^2.2.0",
     "@dfinity/principal": "^2.2.0",
-    "@junobuild/admin": "^0.0.11",
-    "conf": "^11.0.1",
-    "dotenv": "^16.0.3"
+    "@junobuild/admin": "^0.1.2",
+    "conf": "^13.1.0",
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
-    "prettier": "^2.8.8",
-    "prettier-plugin-organize-imports": "^3.2.2"
+    "prettier": "^3.4.2",
+    "prettier-plugin-organize-imports": "^4.1.0"
   }
 }

@@ -1,4 +1,4 @@
-import { Ed25519KeyIdentity } from "@dfinity/identity/lib/cjs/identity/ed25519.js";
+import { Ed25519KeyIdentity } from "@dfinity/identity";
 import Conf from "conf";
 
 import * as dotenv from "dotenv";

@@ -12,6 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@dfinity/identity": "^2.2.0",
     "@dfinity/utils": "^2.9.0",
     "@junobuild/admin": "^0.1.2",
     "@junobuild/cli-tools": "^0.1.0",
