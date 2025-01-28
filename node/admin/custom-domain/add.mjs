@@ -2,7 +2,7 @@
 
 import { getIdentity } from "./auth.mjs";
 import { setCustomDomains, listCustomDomains } from "@junobuild/admin";
-import { assertNonNullish } from "@junobuild/utils";
+import { assertNonNullish } from "@dfinity/utils";
 
 const identity = await getIdentity();
 

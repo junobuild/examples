@@ -12,15 +12,15 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@junobuild/admin": "^0.0.56",
-    "@junobuild/cli-tools": "^0.0.14",
-    "@junobuild/utils": "^0.0.25",
-    "conf": "^13.0.1",
-    "dotenv": "^16.4.5",
+    "@dfinity/utils": "^2.9.0",
+    "@junobuild/admin": "^0.1.2",
+    "@junobuild/cli-tools": "^0.1.0",
+    "conf": "^13.1.0",
+    "dotenv": "^16.4.7",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-organize-imports": "^4.1.0"
   }
 }

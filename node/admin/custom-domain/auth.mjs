@@ -1,7 +1,7 @@
 import { Ed25519KeyIdentity } from "@dfinity/identity/lib/cjs/identity/ed25519.js";
 import Conf from "conf";
-import prompts from 'prompts';
-import {assertAnswerCtrlC} from '@junobuild/cli-tools';
+import prompts from "prompts";
+import { assertAnswerCtrlC } from "@junobuild/cli-tools";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -29,17 +29,17 @@ const readConfig = async () => {
     const encryptionKey = await askForPassword();
     return new Conf({ projectName: "juno", encryptionKey });
   }
-}
+};
 
 const askForPassword = async (
-    message = 'Please provide the password for your CLI configuration.'
+  message = "Please provide the password for your CLI configuration.",
 ) => {
-  const {encryptionKey} = await prompts([
+  const { encryptionKey } = await prompts([
     {
-      type: 'password',
-      name: 'encryptionKey',
-      message
-    }
+      type: "password",
+      name: "encryptionKey",
+      message,
+    },
   ]);
 
   assertAnswerCtrlC(encryptionKey);
