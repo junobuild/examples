@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { getDoc, setDoc } from "@junobuild/core-peer";
+import { getDoc, setDoc } from "@junobuild/core";
 import { AnonymousIdentity } from "@dfinity/agent";
 import { nanoid } from "nanoid";
 

@@ -10,7 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@junobuild/core-peer": "^0.0.20",
+    "@dfinity/agent": "^2.2.0",
+    "@junobuild/core": "^0.1.1",
     "nanoid": "^5.0.7"
   }
 }
