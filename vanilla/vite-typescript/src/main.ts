@@ -1,6 +1,6 @@
 import {
   authSubscribe,
-  initJuno,
+  initSatellite,
   signIn,
   signOut,
   type User,
@@ -14,7 +14,7 @@ document.addEventListener(
   "DOMContentLoaded",
   async () => {
     await Promise.all([
-      initJuno({
+      initSatellite({
         satelliteId: "be2us-64aaa-aaaaa-qaabq-cai",
         container: true,
         workers: {
