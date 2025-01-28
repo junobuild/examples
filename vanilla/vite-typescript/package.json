@@ -12,8 +12,7 @@
   "devDependencies": {
     "@junobuild/config": "^0.0.17",
     "typescript": "^5.7.3",
-    "vite": "^6.0.11",
-    "vite-plugin-compression": "^0.5.1"
+    "vite": "^6.0.11"
   },
   "dependencies": {
     "@junobuild/analytics": "^0.0.31",
