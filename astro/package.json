@@ -16,15 +16,15 @@
     "@astrojs/mdx": "^4.0.7",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
-    "@junobuild/config": "^0.0.14",
-    "@junobuild/vite-plugin": "^0.0.16",
+    "@junobuild/config": "^0.0.17",
+    "@junobuild/vite-plugin": "^0.0.19",
     "astro": "^5.1.10",
-    "prettier": "^3.0.3",
-    "prettier-plugin-astro": "^0.12.1",
-    "typescript": "^5.2.2"
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@junobuild/analytics": "^0.0.27",
-    "@junobuild/core": "^0.0.59"
+    "@junobuild/analytics": "^0.0.31",
+    "@junobuild/core": "^0.1.0"
   }
 }
