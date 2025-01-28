@@ -10,13 +10,13 @@
     "postinstall": "rsync -aqz node_modules/@junobuild/core/dist/workers/*.js public/workers && rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.js public/workers"
   },
   "devDependencies": {
-    "@junobuild/config": "^0.0.17",
+    "@junobuild/config": "^0.1.0",
     "typescript": "^5.7.3",
     "vite": "^6.0.11"
   },
   "dependencies": {
-    "@junobuild/analytics": "^0.0.31",
-    "@junobuild/core": "^0.1.0",
-    "@junobuild/storage": "^0.1.1"
+    "@junobuild/analytics": "^0.1.0",
+    "@junobuild/core": "^0.1.1",
+    "@junobuild/storage": "^0.1.2"
   }
 }
