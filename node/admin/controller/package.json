@@ -11,10 +11,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@dfinity/identity": "^2.2.0",
+    "@dfinity/principal": "^2.2.0",
     "@junobuild/admin": "^0.0.11",
     "conf": "^11.0.1",
-    "dotenv": "^16.0.3",
-    "node-fetch": "^3.3.1"
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "prettier": "^2.8.8",
