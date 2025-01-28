@@ -5,7 +5,7 @@ import {
   listAssets,
   SatelliteOptions,
   uploadBlob,
-} from "@junobuild/core-peer";
+} from "@junobuild/core";
 import { AnonymousIdentity } from "@dfinity/agent";
 import { readFile } from "node:fs/promises";
 import type { AssetKey } from "@junobuild/storage";

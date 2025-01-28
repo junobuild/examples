@@ -10,12 +10,13 @@
   "license": "MIT",
   "description": "",
   "devDependencies": {
-    "@types/node": "^20.14.11",
-    "typescript": "^5.5.3",
-    "vite": "^5.3.4",
-    "vite-node": "^2.0.3"
+    "@types/node": "^22.12.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "vite-node": "^3.0.4"
   },
   "dependencies": {
-    "@junobuild/core-peer": "^0.0.20"
+    "@dfinity/agent": "^2.2.0",
+    "@junobuild/core": "^0.1.1"
   }
 }

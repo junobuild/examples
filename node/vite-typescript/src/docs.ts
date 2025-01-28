@@ -1,7 +1,7 @@
-import { getDoc, setDoc } from "@junobuild/core-peer";
+import { getDoc, setDoc } from "@junobuild/core";
 import { AnonymousIdentity } from "@dfinity/agent";
 import { nanoid } from "nanoid";
-import type { SatelliteOptions } from "@junobuild/core-peer";
+import type { SatelliteOptions } from "@junobuild/core";
 
 const satellite: SatelliteOptions = {
   identity: new AnonymousIdentity(),
