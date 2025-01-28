@@ -36,10 +36,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         document.addEventListener(
           "DOMContentLoaded",
           async () => {
-            await Promise.allSettled([
-              initSatellite(),
-              initOrbiter(),
-            ]);
+            await Promise.allSettled([initSatellite(), initOrbiter()]);
           },
           { once: true },
         );
