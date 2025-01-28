@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
 import {
-  deleteAsset,
   getAsset,
   listAssets,
   uploadBlob,
-} from "@junobuild/core-peer";
+} from "@junobuild/core";
 import { AnonymousIdentity } from "@dfinity/agent";
 import { readFile } from "node:fs/promises";
 
