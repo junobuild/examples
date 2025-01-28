@@ -7,9 +7,9 @@
     <title>Juno Vanilla Example</title>
 
     <script type="module">
-        import {authSubscribe, initJuno, signIn, signOut} from "https://cdn.jsdelivr.net/npm/@junobuild/core@latest/+esm";
-        import {getDoc, setDoc, listDocs, deleteDoc} from "https://cdn.jsdelivr.net/npm/@junobuild/core@latest/+esm";
-        import {listAssets, uploadFile} from "https://cdn.jsdelivr.net/npm/@junobuild/core@latest/+esm";
+        import {authSubscribe, initJuno, signIn, signOut} from "https://cdn.jsdelivr.net/npm/@junobuild/core-standalone@latest/+esm";
+        import {getDoc, setDoc, listDocs, deleteDoc} from "https://cdn.jsdelivr.net/npm/@junobuild/core-standalone@latest/+esm";
+        import {listAssets, uploadFile} from "https://cdn.jsdelivr.net/npm/@junobuild/core-standalone@latest/+esm";
         import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid@latest/+esm";
 
         document.addEventListener("DOMContentLoaded", async () => await initJuno({
