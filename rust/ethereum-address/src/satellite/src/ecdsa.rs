@@ -1,5 +1,7 @@
 use candid::Principal;
-use ic_cdk::api::management_canister::ecdsa::{ecdsa_public_key, EcdsaCurve, EcdsaKeyId, EcdsaPublicKeyArgument};
+use ic_cdk::api::management_canister::ecdsa::{
+    ecdsa_public_key, EcdsaCurve, EcdsaKeyId, EcdsaPublicKeyArgument,
+};
 
 enum EcdsaKeyIds {
     #[allow(unused)]
@@ -19,7 +21,7 @@ impl EcdsaKeyIds {
                 Self::TestKey1 => "test_key_1",
                 Self::ProductionKey1 => "key_1",
             }
-                .to_string(),
+            .to_string(),
         }
     }
 }
@@ -30,8 +32,8 @@ pub async fn ecdsa_pubkey_of(principal: &Principal) -> Vec<u8> {
         derivation_path: principal_to_derivation_path(principal),
         key_id: EcdsaKeyIds::TestKeyLocalDevelopment.to_key_id(),
     })
-        .await
-        .expect("failed to get public key");
+    .await
+    .expect("failed to get public key");
     key.public_key
 }
 

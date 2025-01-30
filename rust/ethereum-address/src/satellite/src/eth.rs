@@ -1,4 +1,4 @@
-use ethers_core::abi::ethereum_types::{Address};
+use ethers_core::abi::ethereum_types::Address;
 use ethers_core::utils::keccak256;
 use k256::PublicKey;
 
@@ -17,4 +17,3 @@ pub fn pubkey_bytes_to_address(pubkey_bytes: &[u8]) -> String {
 
     ethers_core::utils::to_checksum(&Address::from_slice(&hash[12..32]), None)
 }
-

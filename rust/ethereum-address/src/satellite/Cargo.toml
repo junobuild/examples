@@ -8,13 +8,11 @@ crate-type = ["cdylib"]
 
 [dependencies]
 candid = "0.10.2"
-ic-cdk = "0.12.1"
-ic-cdk-macros = "0.8.1"
+ic-cdk = "0.17.0"
 serde = "1.0.190"
-serde_cbor = "0.11.2"
-junobuild-satellite = "0.0.16-patch.2"
-junobuild-macros = "0.0.2"
-junobuild-utils = "0.0.1"
+junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc"] }
+junobuild-macros = "0.0.3"
+junobuild-utils = "0.0.4"
 ethers-core = "2.0.14"
 k256 = "0.13.3"
 
