@@ -1,6 +1,6 @@
 import {
   authSubscribe,
-  initJuno,
+  initSatellite,
   signIn,
   signOut,
   type User,
@@ -11,7 +11,7 @@ import { initDoc } from "./doc";
 document.addEventListener(
   "DOMContentLoaded",
   async () =>
-    await initJuno({
+    await initSatellite({
       satelliteId: import.meta.env.VITE_SATELLITE_ID,
       container: import.meta.env.VITE_CONTAINER,
     }),
