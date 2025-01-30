@@ -1,13 +1,7 @@
 use ic_cdk::print;
-use junobuild_macros::{
-    assert_delete_asset, assert_delete_doc, assert_set_doc, assert_upload_asset, on_delete_asset,
-    on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc, on_set_many_docs,
-    on_upload_asset,
-};
+use junobuild_macros::{on_delete_doc, on_set_doc, on_set_many_docs, on_upload_asset};
 use junobuild_satellite::{
-    include_satellite, set_doc_store, AssertDeleteAssetContext, AssertDeleteDocContext,
-    AssertSetDocContext, AssertUploadAssetContext, OnDeleteAssetContext, OnDeleteDocContext,
-    OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext, OnSetManyDocsContext,
+    include_satellite, set_doc_store, OnDeleteDocContext, OnSetDocContext, OnSetManyDocsContext,
     OnUploadAssetContext, SetDoc,
 };
 use junobuild_utils::{decode_doc_data, encode_doc_data};
@@ -52,7 +46,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     let doc: SetDoc = SetDoc {
         data: encode_data,
         description: context.data.data.after.description,
-        updated_at: Some(context.data.data.after.updated_at),
+        version: context.data.data.after.version,
     };
 
     // We save the document for the same caller as the one who triggered the original on_set_doc, in the same collection with the same key as well.
@@ -80,11 +74,6 @@ async fn on_delete_doc(_context: OnDeleteDocContext) -> Result<(), String> {
     Ok(())
 }
 
-#[on_delete_many_docs]
-async fn on_delete_many_docs(_context: OnDeleteManyDocsContext) -> Result<(), String> {
-    Ok(())
-}
-
 #[on_upload_asset]
 async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
     print(format!("Asset uploaded {}", context.data.key.full_path));
@@ -92,39 +81,9 @@ async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
     Ok(())
 }
 
-#[on_delete_asset]
-async fn on_delete_asset(_context: OnDeleteAssetContext) -> Result<(), String> {
-    Ok(())
-}
-
-#[on_delete_many_assets]
-async fn on_delete_many_assets(_context: OnDeleteManyAssetsContext) -> Result<(), String> {
-    Ok(())
-}
-
-#[assert_set_doc]
-fn assert_set_doc(_context: AssertSetDocContext) -> Result<(), String> {
-    Ok(())
-}
-
-#[assert_delete_doc]
-fn assert_delete_doc(_context: AssertDeleteDocContext) -> Result<(), String> {
-    Ok(())
-}
-
-#[assert_upload_asset]
-fn assert_upload_asset(_context: AssertUploadAssetContext) -> Result<(), String> {
-    Ok(())
-}
-
-#[assert_delete_asset]
-fn assert_delete_asset(_context: AssertDeleteAssetContext) -> Result<(), String> {
-    Ok(())
-}
-
 #[ic_cdk::query]
 fn say() {
-    print("Hello".to_string());
+    print("Hello");
 }
 
 include_satellite!();
