@@ -1,9 +1,9 @@
 import {
-  authSubscribe,
-  initJuno,
-  signIn,
-  signOut,
-  type User,
+    authSubscribe,
+    initSatellite,
+    signIn,
+    signOut,
+    type User,
 } from "@junobuild/core";
 import "./style.css";
 import { initDoc } from "./doc";
@@ -12,7 +12,7 @@ import { initETH } from "./eth";
 document.addEventListener(
   "DOMContentLoaded",
   async () =>
-    await initJuno({
+    await initSatellite({
       satelliteId: import.meta.env.VITE_SATELLITE_ID,
       container: import.meta.env.VITE_CONTAINER,
     }),
