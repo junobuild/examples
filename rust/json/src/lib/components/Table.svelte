@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Note } from '$lib/types/note';
-	import { type Doc, listDocs } from '@junobuild/core-peer';
+	import { type Doc, listDocs } from '@junobuild/core';
 	import Delete from '$lib/components/Delete.svelte';
 	import { userNotSignedIn, userSignedIn } from '$lib/derived/user.derived';
 

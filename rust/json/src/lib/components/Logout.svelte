@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { signOut } from '@junobuild/core-peer';
+	import { signOut } from '@junobuild/core';
 </script>
 
 <button

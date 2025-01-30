@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import type { Note } from '$lib/types/note';
-	import { deleteAsset, deleteDoc, type Doc } from '@junobuild/core-peer';
+	import { deleteAsset, deleteDoc, type Doc } from '@junobuild/core';
 	import Backdrop from '$lib/components/Backdrop.svelte';
 
 	export let doc: Doc<Note>;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import { authSubscribe } from '@junobuild/core-peer';
+	import { authSubscribe } from '@junobuild/core';
 	import { userStore } from '$lib/stores/user.store';
 	import { userSignedIn } from '$lib/derived/user.derived';
 	import Logout from '$lib/components/Logout.svelte';

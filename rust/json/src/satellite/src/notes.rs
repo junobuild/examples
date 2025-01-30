@@ -53,5 +53,5 @@ pub fn insert_asset(name: &String, json: &String) -> Result<(), String> {
         "application/json".to_string(),
     )];
 
-    set_asset_handler(&key, &json, &headers)
+    set_asset_handler(&key, &json.as_bytes().to_vec(), &headers)
 }
