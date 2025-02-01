@@ -25,7 +25,7 @@ To associate a BN ID with an already configured custom domain, run the following
 > Replace `<your-domain-name>` and `<BN-id-to-set>` with your values.
 
 ```bash
-npm run start -- --domain=<your-domain-name> --bnid=<BN-id-to-set>
+npm run update -- --domain=<your-domain-name> --bnid=<BN-id-to-set>
 ```
 
 ## Add a Custom Domain
@@ -36,5 +36,5 @@ If you want to add a new custom domain without setting a BN ID, use the followin
 > This is more of a workaround than a standard behavior.
 
 ```bash
-npm run start -- --domain=<your-domain-name>
+npm run add -- --domain=<your-domain-name>
 ```
