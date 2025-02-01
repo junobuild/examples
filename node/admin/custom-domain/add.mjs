@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { getIdentity } from "./auth.mjs";
-import { setCustomDomains, listCustomDomains } from "@junobuild/admin";
+import { setCustomDomain } from "@junobuild/admin";
 import { assertNonNullish } from "@dfinity/utils";
 
 const identity = await getIdentity();
@@ -26,23 +26,11 @@ console.log(
 );
 
 try {
-  const domains = await listCustomDomains({
+  await setCustomDomain({
     satellite,
-  });
-
-  const toBigIntNanoSeconds = (date) => BigInt(date.getTime()) * BigInt(1e6);
-  const now = toBigIntNanoSeconds(new Date());
-
-  await setCustomDomains({
-    satellite,
-    domains: [
-      ...(domains ?? []).filter(({ domain: d }) => d !== domain),
-      {
-        domain,
-        created_at: now,
-        updated_at: now,
-      },
-    ],
+    domain: {
+      domain,
+    },
   });
 
   console.log("Done.");
