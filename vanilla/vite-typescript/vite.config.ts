@@ -1,7 +1,8 @@
-export default () => {
-    return {
-        server: {
-            port: 5174
-        }
-    };
-};
+import {nodePolyfills} from 'vite-plugin-node-polyfills';
+
+export default () => ({
+    plugins: [nodePolyfills()],
+    server: {
+        port: 5174
+    }
+});
