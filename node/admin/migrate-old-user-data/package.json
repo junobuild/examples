@@ -1,0 +1,27 @@
+{
+  "name": "@junobuild/example-node-migrate-old-user-data",
+  "version": "0.0.1",
+  "description": "A sample admin NodeJS script to set a custom domain entity in Juno's satellite.",
+  "main": "list.mjs",
+  "type": "module",
+  "scripts": {
+    "format": "prettier .. --write",
+    "list": "node list.mjs"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@dfinity/identity": "^2.3.0",
+    "@dfinity/utils": "^2.10.1",
+    "@junobuild/admin": "^0.1.5",
+    "@junobuild/cli-tools": "^0.1.3",
+    "@junobuild/core": "^0.1.8",
+    "conf": "^13.1.0",
+    "dotenv": "^16.4.7",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0"
+  }
+}
