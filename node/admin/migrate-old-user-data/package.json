@@ -2,11 +2,12 @@
   "name": "@junobuild/example-node-migrate-old-user-data",
   "version": "0.0.1",
   "description": "A sample admin NodeJS script to set a custom domain entity in Juno's satellite.",
-  "main": "list.mjs",
+  "main": "migrate.mjs",
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "list": "node list.mjs"
+    "list": "node migrate.mjs --list",
+    "migrate": "node migrate.mjs"
   },
   "author": "",
   "license": "MIT",
