@@ -21,6 +21,6 @@ export default defineConfig({
     },
   },
   orbiter: {
-    id: '<DEV_SATELLITE_ID>',
+    id: '<DEV_ORBITER_ID>',
   }
 });
