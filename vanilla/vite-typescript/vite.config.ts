@@ -1,8 +1,9 @@
-import {nodePolyfills} from 'vite-plugin-node-polyfills';
+import { nodePolyfills } from "vite-plugin-node-polyfills";
+import juno from "@junobuild/vite-plugin";
 
 export default () => ({
-    plugins: [nodePolyfills()],
-    server: {
-        port: 5174
-    }
+  plugins: [nodePolyfills(), juno()],
+  server: {
+    port: 5174,
+  },
 });
