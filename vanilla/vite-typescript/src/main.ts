@@ -9,21 +9,21 @@ import "./style.css";
 import { initDoc } from "./doc";
 import { initStorage } from "./storage";
 import { initAnalytics } from "./analytics";
+import { initOrbiter } from "../../../../juno-js/packages/analytics";
 
 document.addEventListener(
   "DOMContentLoaded",
   async () => {
     await Promise.all([
       initSatellite({
-        satelliteId: "be2us-64aaa-aaaaa-qaabq-cai",
-        container: true,
         workers: {
           auth: true,
         },
       }),
+      initOrbiter(),
     ]);
   },
-  { once: true }
+  { once: true },
 );
 
 document

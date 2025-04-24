@@ -2,7 +2,10 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "xo2hm-lqaaa-aaaal-ab3oa-cai",
+    ids: {
+      development: '<DEV_SATELLITE_ID>',
+      production: '<PROD_SATELLITE_ID>'
+    },
     source: "dist",
     predeploy: ["npm run build"],
     storage: {
@@ -17,4 +20,7 @@ export default defineConfig({
       ],
     },
   },
+  orbiter: {
+    id: '<DEV_SATELLITE_ID>',
+  }
 });
