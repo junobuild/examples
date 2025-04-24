@@ -9,7 +9,7 @@ import "./style.css";
 import { initDoc } from "./doc";
 import { initStorage } from "./storage";
 import { initAnalytics } from "./analytics";
-import { initOrbiter } from "../../../../juno-js/packages/analytics";
+import { initOrbiter } from "@junobuild/analytics";
 
 document.addEventListener(
   "DOMContentLoaded",
