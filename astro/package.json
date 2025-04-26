@@ -13,18 +13,18 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.8",
+    "@astrojs/mdx": "^4.2.5",
     "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
-    "@junobuild/config": "^0.1.0",
-    "@junobuild/vite-plugin": "^0.0.19",
-    "astro": "^5.2.5",
-    "prettier": "^3.4.2",
+    "@astrojs/sitemap": "^3.3.1",
+    "@junobuild/config": "^0.1.8",
+    "@junobuild/vite-plugin": "^3.4.0",
+    "astro": "^5.7.5",
+    "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@junobuild/analytics": "^0.1.1",
-    "@junobuild/core": "^0.1.3"
+    "@junobuild/analytics": "^0.1.8",
+    "@junobuild/core": "^0.1.11"
   }
 }
