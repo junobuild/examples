@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 import { getIdentity } from "./auth.mjs";
-import { assertNonNullish } from "@dfinity/utils";
+import { assertNonNullish, jsonReplacer, nonNullish } from "@dfinity/utils";
 import { orbiterLocalActor } from "./actor.mjs";
 import { listFiles, readData } from "./utils.mjs";
+import { Principal } from "@dfinity/principal";
 
 const identity = await getIdentity();
 
@@ -24,6 +25,7 @@ console.log("╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝�
 console.log(`\n[Your CLI identity: ${identity.getPrincipal().toText()}]\n`);
 
 const orbiterId = process.env.ORBITER_ID;
+const satelliteId = process.env.SATELLITE_ID;
 
 assertNonNullish(orbiterId, "Orbiter ID undefined.");
 
@@ -33,7 +35,7 @@ const args = process.argv.slice(2);
 
 const groupSize = 10;
 
-const uploadPageViews = async (data) => {
+const batchUploadPageViews = async (data) => {
   let batches = [];
 
   for (let start = 0; start < data.length; start += groupSize) {
@@ -41,9 +43,48 @@ const uploadPageViews = async (data) => {
     batches.push(batch);
   }
 
-  console.log(batches)
+  for await (const result of batchUpload({ batches })) {
+  }
 
-  return { length: batches.length };
+  return { length: data.length };
+};
+
+async function* batchUpload({ batches, limit = 12 }) {
+  for (let i = 0; i < batches.length; i = i + limit) {
+    const batch = batches.slice(i, i + limit);
+    const result = await Promise.all(
+      batch.map((data) => uploadPageViews(data)),
+    );
+    yield result;
+  }
+}
+
+const uploadPageViews = async (data) => {
+  const setPageViewsData = data.map(
+    ([
+      key,
+      { version: ___, created_at: _, updated_at: __, satellite_id, ...value },
+    ]) => [
+      key,
+      {
+        ...value,
+        updated_at: [],
+        version: [],
+        satellite_id: nonNullish(satelliteId)
+          ? Principal.fromText(satelliteId)
+          : satellite_id,
+      },
+    ],
+  );
+
+  const result = await set_page_views(setPageViewsData);
+
+  if ("Err" in result) {
+    console.log("Error uploading page views:", JSON.stringify(result, jsonReplacer));
+    return;
+  }
+
+  console.log("Upload page views success:", result);
 };
 
 try {
@@ -53,7 +94,7 @@ try {
 
   for (const file of files) {
     const data = await readData(file);
-    const { length } = await uploadPageViews(data);
+    const { length } = await batchUploadPageViews(data);
     total += length;
   }
 

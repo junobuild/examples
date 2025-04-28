@@ -11,7 +11,7 @@ import { join } from "node:path";
 export const readData = async (file) => {
   const content = await readFile(file, "utf-8");
 
-  const data = fromNullable(JSON.parse(content, jsonReviver));
+  const data = JSON.parse(content, jsonReviver);
 
   assertNonNullish(data);
 
