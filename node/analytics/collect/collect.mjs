@@ -27,7 +27,7 @@ console.log(`\n[Your CLI identity: ${identity.getPrincipal().toText()}]\n`);
 
 const orbiterId = process.env.ORBITER_ID;
 
-assertNonNullish(orbiterId, "Satellite ID undefined.");
+assertNonNullish(orbiterId, "Orbiter ID undefined.");
 
 const { get_page_views } = await orbiterActor({ orbiterId, identity });
 
