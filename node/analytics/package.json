@@ -1,0 +1,27 @@
+{
+  "name": "@junobuild/example-node-analytics",
+  "version": "0.0.1",
+  "description": "A NodeJS script download analytics data.",
+  "main": "analytics.mjs",
+  "type": "module",
+  "scripts": {
+    "format": "prettier .. --write",
+    "list": "node analytics.mjs"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@dfinity/identity": "^2.4.1",
+    "@dfinity/utils": "^2.13.0",
+    "@junobuild/analytics": "^0.1.8",
+    "@junobuild/cli-tools": "^0.1.9",
+    "@junobuild/core": "^0.1.11",
+    "conf": "^13.1.0",
+    "dotenv": "^16.5.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0"
+  }
+}
