@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
 import { getIdentity } from "./auth.mjs";
-import { assertNonNullish } from "@dfinity/utils";
+import { assertNonNullish, jsonReplacer } from "@dfinity/utils";
 import { orbiterActor } from "./actor.mjs";
 import { buildPeriods } from "./utils.mjs";
+import { writeFile, mkdir } from "node:fs/promises";
+import { join } from "node:path";
 
 const identity = await getIdentity();
 
@@ -31,24 +33,30 @@ const { get_page_views } = await orbiterActor({ orbiterId, identity });
 
 const args = process.argv.slice(2);
 
-const collectPageViews = async ({ from, to }) => {
+const collectPageViews = async ({ from, to, fromText, toText }) => {
   const pageViews = await get_page_views({
     satellite_id: [],
     from,
     to,
   });
 
-  console.log(pageViews);
+  const outputFile = join(OUTPUT_DIR, `analytics-${fromText}-${toText}.json`);
+
+  await writeFile(outputFile, JSON.stringify(pageViews, jsonReplacer, 2));
 };
+
+const OUTPUT_DIR = join(process.cwd(), "output");
 
 try {
   const periods = buildPeriods(args);
+
+  await mkdir(OUTPUT_DIR, { recursive: true });
 
   for (const period of periods) {
     await collectPageViews(period);
   }
 
-  console.log("Analytics saved.");
+  console.log("Analytics collected.");
 } catch (err) {
   console.error(err);
 }

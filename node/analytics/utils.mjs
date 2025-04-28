@@ -1,6 +1,6 @@
 import { hasArgs, nextArg } from "@junobuild/cli-tools";
 import { assertNonNullish, notEmptyString, toNullable } from "@dfinity/utils";
-import { eachHourOfInterval } from "date-fns";
+import { eachHourOfInterval, format } from "date-fns";
 
 /**
  * Convert a Date to nanoseconds
@@ -45,9 +45,14 @@ export const buildPeriods = (args) => {
 
   const periods = [];
   for (let i = 0; i <= hours.length - 2; i++) {
+    const from = hours[i];
+    const to = hours[i + 1];
+
     periods.push({
-      from: toNullable(toBigIntNanoSeconds(hours[i])),
-      to: toNullable(toBigIntNanoSeconds(hours[i + 1])),
+      from: toNullable(toBigIntNanoSeconds(from)),
+      fromText: format(from, "yyyyMMdd-HHmm"),
+      to: toNullable(toBigIntNanoSeconds(to)),
+      toText: format(to, "yyyyMMdd-HHmm"),
     });
   }
 
