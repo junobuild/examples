@@ -6,9 +6,11 @@ import {
   jsonReviver,
 } from "@dfinity/utils";
 import { readdir, readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const readData = async (file) => {
   const content = await readFile(file, "utf-8");
+
   const data = fromNullable(JSON.parse(content, jsonReviver));
 
   assertNonNullish(data);
@@ -27,7 +29,7 @@ export const listFiles = async (args) => {
   const hasPath = hasArgs({ args, options: ["-p", "--path"] });
 
   const path = hasPath
-    ? (nextArg({ args, option: "-p" }) ?? nextArg({ args, option: "--pah" }))
+    ? (nextArg({ args, option: "-p" }) ?? nextArg({ args, option: "--path" }))
     : undefined;
 
   assertNonNullish(path);
@@ -36,5 +38,7 @@ export const listFiles = async (args) => {
     throw new Error("Path must be provided.");
   }
 
-  return await readdir(path);
+  const files = await readdir(path);
+
+  return files.map((file) => join(path, file));
 };
