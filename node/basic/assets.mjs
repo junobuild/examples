@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 
-import {
-  getAsset,
-  listAssets,
-  uploadBlob,
-} from "@junobuild/core";
+import { getAsset, listAssets, uploadBlob } from "@junobuild/core";
 import { AnonymousIdentity } from "@dfinity/agent";
 import { readFile } from "node:fs/promises";
 
