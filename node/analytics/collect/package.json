@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "analytics": "node collect.mjs"
+    "collect": "node collect.mjs"
   },
   "author": "",
   "license": "MIT",
