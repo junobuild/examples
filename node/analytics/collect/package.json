@@ -1,7 +1,7 @@
 {
-  "name": "@junobuild/example-node-analytics",
+  "name": "@junobuild/example-node-analytics-collect",
   "version": "0.0.1",
-  "description": "A NodeJS script download analytics data.",
+  "description": "A NodeJS script to collect analytics data.",
   "main": "collect.mjs",
   "type": "module",
   "scripts": {
