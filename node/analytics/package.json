@@ -2,11 +2,11 @@
   "name": "@junobuild/example-node-analytics",
   "version": "0.0.1",
   "description": "A NodeJS script download analytics data.",
-  "main": "analytics.mjs",
+  "main": "collect.mjs",
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "analytics": "node analytics.mjs"
+    "analytics": "node collect.mjs"
   },
   "author": "",
   "license": "MIT",
