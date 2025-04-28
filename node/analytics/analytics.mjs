@@ -43,6 +43,8 @@ const collectPageViews = async ({ from, to, fromText, toText }) => {
   const outputFile = join(OUTPUT_DIR, `analytics-${fromText}-${toText}.json`);
 
   await writeFile(outputFile, JSON.stringify(pageViews, jsonReplacer, 2));
+
+  return { length: pageViews.length };
 };
 
 const OUTPUT_DIR = join(process.cwd(), "output");
@@ -52,11 +54,14 @@ try {
 
   await mkdir(OUTPUT_DIR, { recursive: true });
 
+  let total = 0;
+
   for (const period of periods) {
-    await collectPageViews(period);
+    const { length } = await collectPageViews(period);
+    total += length;
   }
 
-  console.log("Analytics collected.");
+  console.log(`Analytics collected. ${total} page view's entries found.`);
 } catch (err) {
   console.error(err);
 }
