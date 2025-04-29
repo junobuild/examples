@@ -33,7 +33,7 @@ const { set_page_views } = await orbiterLocalActor({ orbiterId, identity });
 
 const args = process.argv.slice(2);
 
-const groupSize = 10;
+const groupSize = 1000;
 
 const batchUploadPageViews = async (data) => {
   let batches = [];
