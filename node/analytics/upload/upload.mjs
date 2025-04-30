@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 
-import { getIdentity } from "./auth.mjs";
 import { assertNonNullish, jsonReplacer, nonNullish } from "@dfinity/utils";
 import { orbiterLocalActor } from "./actor.mjs";
 import { listFiles, readData } from "./utils.mjs";
 import { Principal } from "@dfinity/principal";
+import { AnonymousIdentity } from "@dfinity/agent";
+import * as dotenv from "dotenv";
 
-const identity = await getIdentity();
+dotenv.config();
+
+const identity = new AnonymousIdentity();
 
 console.log("");
 // prettier-ignore
