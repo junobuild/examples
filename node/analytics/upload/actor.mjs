@@ -6,7 +6,7 @@ const { HttpAgent, Actor } = pkgAgent;
 export const orbiterLocalActor = async ({ orbiterId, identity }) => {
   const agent = await HttpAgent.create({
     identity,
-    host: 'http://127.0.0.1:5987/',
+    host: "http://127.0.0.1:5987/",
     shouldFetchRootKey: true,
   });
 
