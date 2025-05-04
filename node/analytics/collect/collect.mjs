@@ -30,17 +30,26 @@ const orbiterId = process.env.ORBITER_ID;
 
 assertNonNullish(orbiterId, "Orbiter ID undefined.");
 
-const { get_page_views, get_track_events } = await orbiterActor({
-  orbiterId,
-  identity,
-});
+const { get_page_views, get_track_events, get_performance_metrics } =
+  await orbiterActor({
+    orbiterId,
+    identity,
+  });
 
 const args = process.argv.slice(2);
 
 const trackEvents = hasArgs({ args, options: ["-t", "--track-events"] });
+const performanceMetrics = hasArgs({
+  args,
+  options: ["-p", "--performance-metrics"],
+});
 
 const collectAnalytics = async ({ from, to, fromText, toText }) => {
-  const fn = trackEvents ? get_track_events : get_page_views;
+  const fn = trackEvents
+    ? get_track_events
+    : performanceMetrics
+      ? get_performance_metrics
+      : get_page_views;
 
   const data = await fn({
     satellite_id: [],
@@ -58,7 +67,11 @@ const collectAnalytics = async ({ from, to, fromText, toText }) => {
 const OUTPUT_DIR = join(
   process.cwd(),
   "output",
-  trackEvents ? "track-events" : "page-views",
+  trackEvents
+    ? "track-events"
+    : performanceMetrics
+      ? "performance-metrics"
+      : "page-views",
 );
 
 try {

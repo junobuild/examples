@@ -37,3 +37,11 @@ To collect tracked events, run the same command as above but provide the argumen
 ```bash
 npm run collect -- --from 2025-04-02 --to 2025-04-03 --track-events
 ```
+
+## Get Performance Metrics
+
+To collect performance metrics, run the same command as above but provide the arguments `--performance-metrics`.
+
+```bash
+npm run collect -- --from 2025-04-02 --to 2025-04-03 --performance-metrics
+```
