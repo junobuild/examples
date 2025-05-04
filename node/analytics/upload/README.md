@@ -30,5 +30,21 @@ The `--path` argument must point to a folder containing data formatted similarly
 The script will process all files in the specified folder.
 
 ```bash
-npm run upload -- --path ./output
+npm run upload -- --path ./output/page-views
+```
+
+## Upload Track Events
+
+Run following command to upload tracked events:
+
+```bash
+npm run upload -- --path ./output/track-events --track-evets
+```
+
+## Upload Performance Metric
+
+Run following command to upload performance metrics:
+
+```bash
+npm run upload -- --path ./output/performance-metrics --performance-metrics
 ```
