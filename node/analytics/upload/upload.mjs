@@ -1,11 +1,18 @@
 #!/usr/bin/env node
 
-import { assertNonNullish, jsonReplacer, nonNullish } from "@dfinity/utils";
-import { orbiterLocalActor } from "./actor.mjs";
+import {
+  assertNonNullish,
+  fromNullable,
+  isNullish,
+  jsonReplacer,
+  nonNullish, toNullable
+} from "@dfinity/utils";
 import { listFiles, readData } from "./utils.mjs";
 import { Principal } from "@dfinity/principal";
 import { AnonymousIdentity } from "@dfinity/agent";
 import * as dotenv from "dotenv";
+import { hasArgs } from "@junobuild/cli-tools";
+import UAParser from "ua-parser-js";
 
 dotenv.config();
 
@@ -66,24 +73,51 @@ const uploadPageViews = async (data) => {
   const setPageViewsData = data.map(
     ([
       key,
-      { version: ___, created_at: _, updated_at: __, satellite_id, ...value },
-    ]) => [
-      key,
       {
-        ...value,
-        updated_at: [],
-        version: [],
-        satellite_id: nonNullish(satelliteId)
-          ? Principal.fromText(satelliteId)
-          : satellite_id,
+        version: ___,
+        created_at: _,
+        updated_at: __,
+        satellite_id,
+        user_agent,
+        ...value
       },
-    ],
+    ]) => {
+      const userAgent = fromNullable(user_agent);
+
+      const parser = new UAParser(userAgent);
+      const { browser, os, device } = parser.getResult();
+
+      const client =
+        isNullish(browser.name) || isNullish(os.name)
+          ? undefined
+          : {
+              browser: browser.name,
+              os: os.name,
+              device: device.type,
+            };
+
+      return [
+        key,
+        {
+          ...value,
+          client: toNullable(client),
+          updated_at: [],
+          version: [],
+          satellite_id: nonNullish(satelliteId)
+            ? Principal.fromText(satelliteId)
+            : satellite_id,
+        },
+      ];
+    },
   );
 
   const result = await set_page_views(setPageViewsData);
 
   if ("Err" in result) {
-    console.log("Error uploading page views:", JSON.stringify(result, jsonReplacer));
+    console.log(
+      "Error uploading page views:",
+      JSON.stringify(result, jsonReplacer),
+    );
     return;
   }
 
