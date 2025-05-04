@@ -32,12 +32,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         } from "@junobuild/core";
         import { initOrbiter } from "@junobuild/analytics";
 
-        // Initialize Juno
+        // Initialize Satellite
         document.addEventListener(
           "DOMContentLoaded",
           async () => {
-            await Promise.allSettled([initSatellite(), initOrbiter()]);
+            await initSatellite();
           },
+          { once: true },
+        );
+
+        // Initialize Analytics
+        document.addEventListener(
+          "DOMContentLoaded",
+          initOrbiter,
           { once: true },
         );
 
