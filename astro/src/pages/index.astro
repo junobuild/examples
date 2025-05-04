@@ -44,7 +44,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         // Initialize Analytics
         document.addEventListener(
           "DOMContentLoaded",
-          initOrbiter,
+          () =>
+            initOrbiter({
+              options: {
+                performance: true,
+                userAgentParser: true
+              },
+            }),
           { once: true },
         );
 
@@ -99,7 +105,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
           try {
             trackEvent({
-              name: "about-to-count"
+              name: "about-to-count",
             });
 
             counter = await setDoc({
@@ -114,7 +120,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             });
 
             trackEvent({
-              name: "count-success"
+              name: "count-success",
             });
 
             displayCounter();
