@@ -6,6 +6,7 @@ import { orbiterActor } from "./actor.mjs";
 import { buildPeriods } from "./utils.mjs";
 import { writeFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
+import { hasArgs } from "@junobuild/cli-tools";
 
 const identity = await getIdentity();
 
@@ -29,12 +30,19 @@ const orbiterId = process.env.ORBITER_ID;
 
 assertNonNullish(orbiterId, "Orbiter ID undefined.");
 
-const { get_page_views } = await orbiterActor({ orbiterId, identity });
+const { get_page_views, get_track_events } = await orbiterActor({
+  orbiterId,
+  identity,
+});
 
 const args = process.argv.slice(2);
 
-const collectPageViews = async ({ from, to, fromText, toText }) => {
-  const pageViews = await get_page_views({
+const trackEvents = hasArgs({ args, options: ["-t", "--track-events"] });
+
+const collectAnalytics = async ({ from, to, fromText, toText }) => {
+  const fn = trackEvents ? get_track_events : get_page_views;
+
+  const data = await fn({
     satellite_id: [],
     from,
     to,
@@ -42,12 +50,16 @@ const collectPageViews = async ({ from, to, fromText, toText }) => {
 
   const outputFile = join(OUTPUT_DIR, `analytics-${fromText}-${toText}.json`);
 
-  await writeFile(outputFile, JSON.stringify(pageViews, jsonReplacer, 2));
+  await writeFile(outputFile, JSON.stringify(data, jsonReplacer, 2));
 
-  return { length: pageViews.length };
+  return { length: data.length };
 };
 
-const OUTPUT_DIR = join(process.cwd(), "output");
+const OUTPUT_DIR = join(
+  process.cwd(),
+  "output",
+  trackEvents ? "track-events" : "page-views",
+);
 
 try {
   const periods = buildPeriods(args);
@@ -57,11 +69,11 @@ try {
   let total = 0;
 
   for (const period of periods) {
-    const { length } = await collectPageViews(period);
+    const { length } = await collectAnalytics(period);
     total += length;
   }
 
-  console.log(`Analytics collected. ${total} page view's entries found.`);
+  console.log(`Analytics collected. ${total} entries found.`);
 } catch (err) {
   console.error(err);
 }

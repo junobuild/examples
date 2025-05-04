@@ -29,3 +29,11 @@ Data is collected hour by hour, meaning 24 queries will be performed for a singl
 ```bash
 npm run collect -- --from 2025-04-02 --to 2025-04-03
 ```
+
+## Get Track Events
+
+To collect tracked events, run the same command as above but provide the arguments `--track-events`.
+
+```bash
+npm run collect -- --from 2025-04-02 --to 2025-04-03 --track-events
+```
