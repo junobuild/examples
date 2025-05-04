@@ -5,7 +5,8 @@ import {
   fromNullable,
   isNullish,
   jsonReplacer,
-  nonNullish, toNullable
+  nonNullish,
+  toNullable,
 } from "@dfinity/utils";
 import { listFiles, readData } from "./utils.mjs";
 import { Principal } from "@dfinity/principal";
