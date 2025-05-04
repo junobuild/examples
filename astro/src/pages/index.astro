@@ -30,7 +30,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           signOut,
           getDoc,
         } from "@junobuild/core";
-        import { initOrbiter } from "@junobuild/analytics";
+        import { initOrbiter, trackEvent } from "@junobuild/analytics";
 
         // Initialize Satellite
         document.addEventListener(
@@ -98,6 +98,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           }
 
           try {
+            trackEvent({
+              name: "about-to-count"
+            });
+
             counter = await setDoc({
               collection: "counter",
               doc: {
@@ -109,9 +113,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
               },
             });
 
+            trackEvent({
+              name: "count-success"
+            });
+
             displayCounter();
           } catch (err) {
             console.error(err);
+
+            trackEvent({
+              name: "count-error",
+            });
           }
 
           if (count !== null) {
