@@ -23,7 +23,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@junobuild/analytics": "^0.1.8-next-2025-05-02",
+    "@junobuild/analytics": "^0.1.8-next-2025-05-04",
     "@junobuild/core": "^0.1.11"
   }
 }
