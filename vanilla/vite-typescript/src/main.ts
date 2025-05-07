@@ -14,14 +14,13 @@ import { initOrbiter } from "@junobuild/analytics";
 document.addEventListener(
   "DOMContentLoaded",
   async () => {
-    await Promise.all([
-      initSatellite({
-        workers: {
-          auth: true,
-        },
-      }),
-      initOrbiter(),
-    ]);
+    initOrbiter();
+
+    await initSatellite({
+      workers: {
+        auth: true,
+      },
+    });
   },
   { once: true },
 );
