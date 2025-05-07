@@ -34,6 +34,9 @@ export default defineConfig({
     },
   },
   orbiter: {
-    id: "ot5tb-nqaaa-aaaal-ac2sa-cai",
+    ids: {
+      production: "ot5tb-nqaaa-aaaal-ac2sa-cai",
+      development: "<DEVELOPMENT_ID>",
+    }
   },
 });
