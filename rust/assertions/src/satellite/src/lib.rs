@@ -1,3 +1,4 @@
+use ic_cdk::print;
 use junobuild_macros::assert_set_doc;
 use junobuild_satellite::{include_satellite, AssertSetDocContext};
 use junobuild_utils::decode_doc_data;
@@ -14,8 +15,11 @@ fn assert_set_doc(context: AssertSetDocContext) -> Result<(), String> {
     let note = decode_doc_data::<Note>(&context.data.data.proposed.data)?;
 
     if note.text.to_lowercase().contains("hello") {
+        print(format!("❌ Rejected note containing 'hello': {}", note.text));
         return Err("The note should not contain the keyword 'hello'.".to_string());
     }
+
+    print(format!("✅ Note accepted: {}", note.text));
 
     Ok(())
 }
