@@ -97,9 +97,9 @@ checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
 name = "candid"
-version = "0.10.13"
+version = "0.10.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a253bab4a9be502c82332b60cbeee6202ad0692834efeec95fae9f29db33d692"
+checksum = "f9d90f5a1426d0489283a0bd5da9ed406fb3e69597e0d823dcb88a1965bb58d2"
 dependencies = [
  "anyhow",
  "binread",
@@ -492,9 +492,9 @@ dependencies = [
 
 [[package]]
 name = "ic-stable-structures"
-version = "0.6.8"
+version = "0.6.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f0f5684f577e0146738cd11afed789109c4f51ba963c75823c48c1501dc53278"
+checksum = "4d30d4cf17aff1024e13133897048bcba580e063c9000571ab766ca37e2996f4"
 dependencies = [
  "ic_principal",
 ]
@@ -709,10 +709,27 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c"
 
 [[package]]
-name = "junobuild-collections"
-version = "0.0.11"
+name = "junobuild-cdn"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c79c236c7dbde2f93550fdcfa4e17fe0f4af4e8c17b805693e828512914ab4ba"
+checksum = "81de91029fd0ae0d6b4b92b2831b760a7ed53fb5ce2dd122aca3f652801e7774"
+dependencies = [
+ "candid",
+ "hex",
+ "ic-cdk",
+ "ic-stable-structures",
+ "junobuild-collections",
+ "junobuild-shared",
+ "junobuild-storage",
+ "serde",
+ "sha2",
+]
+
+[[package]]
+name = "junobuild-collections"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cc0022a6836ab89c6bc677a0408faeeae21cbb240299ebe4d0a49b73bca6c68e"
 dependencies = [
  "candid",
  "ic-cdk",
@@ -722,9 +739,9 @@ dependencies = [
 
 [[package]]
 name = "junobuild-macros"
-version = "0.0.4"
+version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2f79e88890cd9017143641407ebf0c9545812c315d522d83c6d7f6a02b87540d"
+checksum = "550cd56265292bdefc10113b9919519b7304a36c052d5ef44f425178b79f5a08"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -735,9 +752,9 @@ dependencies = [
 
 [[package]]
 name = "junobuild-satellite"
-version = "0.0.22"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c2455bfd7168c6aa0bc47caafbec9ba48eca5e186b49534cdbeb8483510437a1"
+checksum = "f9576341a9bdebcc70a62b3184d197a55146d163aac8af4648293d83226124d7"
 dependencies = [
  "candid",
  "ciborium",
@@ -746,6 +763,7 @@ dependencies = [
  "ic-cdk-macros",
  "ic-cdk-timers",
  "ic-stable-structures",
+ "junobuild-cdn",
  "junobuild-collections",
  "junobuild-shared",
  "junobuild-storage",
@@ -759,9 +777,9 @@ dependencies = [
 
 [[package]]
 name = "junobuild-shared"
-version = "0.0.24"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a6aff97ae8730c50b37dcb9e55ab9e6451becc8bef724178dfde5091044ce51e"
+checksum = "49ece351bf680b9524367a5797bbe260392e5bc5e87777ac3c8eb9d9743ec8ad"
 dependencies = [
  "candid",
  "ciborium",
@@ -779,9 +797,9 @@ dependencies = [
 
 [[package]]
 name = "junobuild-storage"
-version = "0.0.15"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bf6f958d983ccb664f08acaa16a56407ed8918868d4667ef3bc9cc2e2880e523"
+checksum = "ffc83f726dafeac59dc98268304eb1bda8c9618ab9fdf399a404f44d85c5f304"
 dependencies = [
  "base64",
  "candid",
@@ -804,9 +822,9 @@ dependencies = [
 
 [[package]]
 name = "junobuild-utils"
-version = "0.0.4"
+version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "526b6b74dc3a27a7c3c7da96abc1090b618efb2887d4d2c7893814a9790f19ab"
+checksum = "d15e56c14bfd056a7faed5fc4bf651ad996f55cff7bcda6d1e5182647e64c0e4"
 dependencies = [
  "candid",
  "serde",
@@ -996,13 +1014,12 @@ checksum = "74765f6d916ee2faa39bc8e68e4f3ed8949b48cccdac59983d287a7cb71ce9c5"
 
 [[package]]
 name = "rand"
-version = "0.9.0"
+version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3779b94aeb87e8bd4e834cee3650289ee9e0d5677f976ecdb6d219e5f4f6cd94"
+checksum = "9fbfd9d094a40bf3ae768db9361049ace4c0e04a4fd6b359518bd7b73a73dd97"
 dependencies = [
  "rand_chacha",
  "rand_core",
- "zerocopy",
 ]
 
 [[package]]
