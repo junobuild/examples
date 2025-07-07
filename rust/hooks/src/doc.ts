@@ -55,12 +55,12 @@ const setMany = async () => {
   };
 
   const doc2 = {
-    collection: "demo_2",
+    collection: "demo",
     doc: {
       key: tmpKey,
       data: {
         yolo: true,
-        hello: "world_" + tmpKey,
+        hello: "hello_" + tmpKey,
       },
     },
   };
