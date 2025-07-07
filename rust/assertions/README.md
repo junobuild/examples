@@ -53,7 +53,7 @@ npm run dev
 6. **Build the serverless functions** (in a separate terminal):
 
 ```bash
-juno dev build
+juno functions build
 ```
 
 The emulator will automatically upgrade your Satellite and live reload the changes.
