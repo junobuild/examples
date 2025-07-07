@@ -1,6 +1,6 @@
 [package]
 name = "satellite"
-version = "0.0.2"
+version = "0.1.0"
 edition = "2021"
 
 [lib]
@@ -8,9 +8,9 @@ crate-type = ["cdylib"]
 
 [dependencies]
 candid = "0.10.2"
-ic-cdk = "0.17.0"
+ic-cdk = "0.17.1"
 serde = "1.0.190"
-junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc", "on_set_many_docs", "on_delete_doc", "on_upload_asset"] }
-junobuild-macros = "0.0.3"
-junobuild-utils = "0.0.4"
+junobuild-satellite = { version = "0.2.0", default-features = false, features = ["on_set_doc", "on_set_many_docs", "on_delete_doc", "on_upload_asset"] }
+junobuild-macros = "0.1.0"
+junobuild-utils = "0.1.0"
 

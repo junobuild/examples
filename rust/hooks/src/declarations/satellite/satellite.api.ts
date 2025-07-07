@@ -5,14 +5,6 @@ import type {_SERVICE as SatelliteActor} from './satellite.did';
 import {idlFactory} from './satellite.factory.did.js';
 import {getSatelliteExtendedActor} from '@junobuild/core';
 
-export const buildVersion = async (): Promise<string> => {
-	const {build_version} = await getSatelliteExtendedActor<SatelliteActor>({
-		idlFactory
-	});
-
-	return await build_version();
-}
-
 export const say = async (): Promise<undefined> => {
 	const {say} = await getSatelliteExtendedActor<SatelliteActor>({
 		idlFactory

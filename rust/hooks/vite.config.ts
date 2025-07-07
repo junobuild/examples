@@ -1,31 +1,8 @@
-import viteCompression from 'vite-plugin-compression';
-import Juno from "@junobuild/vite-plugin";
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import juno from "@junobuild/vite-plugin";
+import { defineConfig } from "vite";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
-export default () => {
-    return {
-        plugins: [viteCompression(), Juno({
-            container: true
-        })],
-        server: {
-            port: 5175
-        },
-        define: {
-            global: {},
-        },
-        build: {
-            commonjsOptions: { include: [] },
-        },
-        optimizeDeps: {
-            disabled: false,
-            esbuildOptions: {
-                define: {
-                    global: 'globalThis'
-                },
-                plugins: [
-                    NodeModulesPolyfillPlugin()
-                ]
-            }
-        },
-    };
-};
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [nodePolyfills(), juno()],
+});

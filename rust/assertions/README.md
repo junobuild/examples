@@ -11,7 +11,6 @@ When testing this application, you should not be able to insert any notes (using
 ```bash
 git clone https://github.com/junobuild/examples
 cd rust/assertions
-npm ci
 ```
 
 ## How to Run
