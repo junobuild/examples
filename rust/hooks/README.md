@@ -36,7 +36,7 @@ juno dev start
 
 4. **Create required collections**:
 
-- `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+- `demo` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
 - `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
 
 5. **Start the frontend dev server** (in a separate terminal):
