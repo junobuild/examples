@@ -60,7 +60,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     Ok(())
 }
 
-#[on_set_many_docs(collections = ["demo_2"])]
+#[on_set_many_docs(collections = ["demo"])]
 async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {
     print(format!("Many docs called {}", context.data.len()));
 
