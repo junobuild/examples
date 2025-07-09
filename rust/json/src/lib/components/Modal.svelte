@@ -7,20 +7,19 @@
 	import type { Note } from '$lib/types/note';
 	import { userStore } from '$lib/stores/user.store';
 
-	let showModal = false;
+	let showModal = $state(false);
 
-	let inputText = '';
-	let file: File | undefined = undefined;
+	let inputText = $state('');
+	let file: File | undefined = $state(undefined);
 
-	let inputFile: HTMLInputElement | null = null;
+	let inputFile: HTMLInputElement | null = $state(null);
 
-	let progress = false;
+	let progress = $state(false);
 
-	let valid = false;
-	$: valid = inputText !== '' && $userSignedIn;
+	let valid = $derived(inputText !== '' && $userSignedIn);
 
 	const reload = () => {
-		const event = new CustomEvent('exampleReload');
+		const event = new CustomEvent('junoExampleReload');
 		window.dispatchEvent(event);
 	};
 
@@ -74,9 +73,19 @@
 		(file = ($event as unknown as { target: EventTarget & HTMLInputElement }).target?.files?.[0]);
 
 	const openSelectFile = () => inputFile?.click();
+
+	const openModal = async () => {
+		if (inputFile !== null) {
+			inputFile.value = '';
+		}
+
+		file = undefined;
+
+		showModal = true;
+	};
 </script>
 
-<Button on:click={() => (showModal = true)}>
+<Button onclick={openModal}>
 	Add an entry
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -90,22 +99,22 @@
 </Button>
 
 {#if showModal}
-	<div class="fixed inset-0 z-50 p-16 md:px-24 md:py-44 animate-fade" role="dialog">
+	<div class="animate-fade fixed inset-0 z-50 p-16 md:px-24 md:py-44" role="dialog">
 		<div class="relative w-full max-w-xl">
 			<textarea
-				class="form-control block w-full px-3 py-1.5 text-base font-normal m-0 resize-none border-black border-[3px] rounded-sm bg-white shadow-[5px_5px_0px_rgba(0,0,0,1)] focus:outline-none"
+				class="form-control m-0 block w-full resize-none rounded-xs border-[3px] border-black bg-white px-3 py-1.5 text-base font-normal shadow-[5px_5px_0px_rgba(0,0,0,1)] focus:outline-hidden"
 				rows={7}
 				placeholder="Your diary entry"
 				bind:value={inputText}
 				disabled={progress}
 			></textarea>
 
-			<div role="toolbar" class="flex justify-between items-center">
+			<div role="toolbar" class="flex items-center justify-between">
 				<div>
 					<button
 						aria-label="Attach a file to the entry"
-						class="flex gap-2 items-center hover:text-lavender-blue-600 active:text-lavender-blue-400"
-						on:click={openSelectFile}
+						class="hover:text-lavender-blue-600 active:text-lavender-blue-400 flex items-center gap-2"
+						onclick={openSelectFile}
 					>
 						<svg
 							width="20"
@@ -120,7 +129,7 @@
 								/>
 							</g>
 						</svg>
-						<span class="truncate max-w-48">
+						<span class="max-w-48 truncate">
 							<small>{file !== undefined ? file.name : 'Attach file'}</small>
 						</span>
 					</button>
@@ -128,7 +137,7 @@
 					<input
 						type="file"
 						class="fixed right-0 -bottom-24 opacity-0"
-						on:change={onChangeFile}
+						onchange={onChangeFile}
 						disabled={progress}
 						bind:this={inputFile}
 					/>
@@ -136,23 +145,23 @@
 
 				{#if progress}
 					<div
-						class="my-8 animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-indigo-600 rounded-full"
+						class="my-8 inline-block h-6 w-6 animate-spin rounded-full border-[3px] border-current border-t-transparent text-indigo-600"
 						role="status"
 						aria-label="loading"
 					>
 						<span class="sr-only">Loading...</span>
 					</div>
 				{:else}
-					<div class="flex my-4">
+					<div class="my-4 flex">
 						<button
-							class="py-1 px-8 hover:text-lavender-blue-600 active:text-lavender-blue-400"
+							class="hover:text-lavender-blue-600 active:text-lavender-blue-400 px-8 py-1"
 							type="button"
-							on:click={() => (showModal = false)}
+							onclick={() => (showModal = false)}
 						>
 							Close
 						</button>
 
-						<Button on:click={add} disabled={!valid}>Submit</Button>
+						<Button onclick={add} disabled={!valid}>Submit</Button>
 					</div>
 				{/if}
 			</div>

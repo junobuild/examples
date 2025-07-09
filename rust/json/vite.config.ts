@@ -1,9 +1,10 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import juno from '@junobuild/vite-plugin';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	plugins: [sveltekit(), juno({ container: true })],
+	plugins: [sveltekit(), juno(), tailwindcss()],
 	optimizeDeps: {
 		esbuildOptions: {
 			define: {

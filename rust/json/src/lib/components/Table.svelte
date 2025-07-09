@@ -2,12 +2,12 @@
 	import type { Note } from '$lib/types/note';
 	import { type Doc, listDocs } from '@junobuild/core';
 	import Delete from '$lib/components/Delete.svelte';
-	import { userNotSignedIn, userSignedIn } from '$lib/derived/user.derived';
+	import { userNotSignedIn } from '$lib/derived/user.derived';
 
-	let items: Doc<Note>[] = [];
+	let items: Doc<Note>[] = $state([]);
 
-	const list = async () => {
-		if ($userNotSignedIn) {
+	const list = async (userNotSignedIn: boolean) => {
+		if (userNotSignedIn) {
 			items = [];
 			return;
 		}
@@ -20,27 +20,31 @@
 		items = data;
 	};
 
-	$: $userSignedIn, (async () => await list())();
+	const reload = async () => await list($userNotSignedIn);
+
+	$effect(() => {
+		list($userNotSignedIn);
+	});
 </script>
 
-<svelte:window on:exampleReload={list} />
+<svelte:window onjunoExampleReload={reload} />
 
-<div class="w-full max-w-2xl mt-8 dark:text-white" role="table">
+<div class="mt-8 w-full max-w-2xl dark:text-white" role="table">
 	<div role="row">
 		<span role="columnheader" aria-sort="none"> Entries </span>
 	</div>
 
 	<div class="py-2" role="rowgroup">
-		{#each items as item, index}
+		{#each items as item, index (index)}
 			<div
-				class="flex items-center gap-2 px-3 mb-4 border-black dark:border-lavender-blue-500 border-[3px] rounded bg-white dark:bg-black dark:text-white transition-all shadow-[8px_8px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_#7888FF]"
+				class="dark:border-lavender-blue-500 mb-4 flex items-center gap-2 rounded-sm border-[3px] border-black bg-white px-3 shadow-[8px_8px_0px_rgba(0,0,0,1)] transition-all dark:bg-black dark:text-white dark:shadow-[8px_8px_0px_#7888FF]"
 				role="row"
 			>
-				<span role="cell" aria-rowindex={index} class="p-1 flex align-center min-w-max">
+				<span role="cell" aria-rowindex={index} class="align-center flex min-w-max p-1">
 					{index + 1}
 				</span>
-				<div role="cell" class="line-clamp-3 overflow-hidden grow">{item.data.text}</div>
-				<div role="cell" class="flex gap-2 justify-center align-middle">
+				<div role="cell" class="line-clamp-3 grow overflow-hidden">{item.data.text}</div>
+				<div role="cell" class="flex justify-center gap-2 align-middle">
 					{#if item.data.url !== undefined}
 						<a
 							aria-label="Open data"
@@ -65,7 +69,7 @@
 						</a>
 					{/if}
 
-					<Delete doc={item} on:deleted={list} />
+					<Delete doc={item} ondeleted={reload} />
 				</div>
 			</div>
 		{/each}

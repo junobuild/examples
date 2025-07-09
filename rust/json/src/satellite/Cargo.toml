@@ -10,10 +10,9 @@ crate-type = ["cdylib"]
 candid = "0.10.2"
 ic-cdk = "0.17.0"
 serde = "1.0.190"
-junobuild-satellite = { version = "= 0.0.21-patch.2", default-features = false, features = ["on_set_doc"] }
-junobuild-macros = "0.0.3"
-junobuild-utils = "0.0.4"
-junobuild-shared = "0.0.22"
-junobuild-storage = "= 0.0.12"
-junobuild-collections = "0.0.9"
+junobuild-satellite = { version = "= 0.2.0", default-features = false, features = ["on_set_doc"] }
+junobuild-macros = "0.1.0"
+junobuild-utils = "0.1.0"
+junobuild-shared = "0.2.0"
+junobuild-storage = "0.2.0"
 

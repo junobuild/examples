@@ -7,4 +7,4 @@
 	};
 </script>
 
-<Button on:click={login}>Sign in</Button>
+<Button onclick={login}>Sign in</Button>

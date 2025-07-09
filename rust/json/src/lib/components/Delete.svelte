@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import type { Note } from '$lib/types/note';
 	import { deleteAsset, deleteDoc, type Doc } from '@junobuild/core';
 	import Backdrop from '$lib/components/Backdrop.svelte';
 
-	export let doc: Doc<Note>;
+	interface Props {
+		doc: Doc<Note>;
+		ondeleted: () => Promise<void>;
+	}
 
-	const dispatch = createEventDispatcher();
+	let { doc, ondeleted }: Props = $props();
 
-	let progress = false;
+	let progress = $state(false);
 
 	const delItem = async () => {
 		progress = true;
@@ -32,7 +34,7 @@
 				doc
 			});
 
-			dispatch('deleted');
+			await ondeleted();
 		} catch (err) {
 			console.error(err);
 		}
@@ -42,9 +44,10 @@
 </script>
 
 <button
+	aria-label="Delete entry"
 	role="cell"
 	class="hover:text-lavender-blue-500 active:text-lavender-blue-400"
-	on:click={delItem}
+	onclick={delItem}
 >
 	<svg width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" fill="currentColor">
 		<g>

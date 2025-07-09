@@ -1,9 +1,30 @@
 use ic_cdk::id;
-use junobuild_satellite::{list_assets_store, set_asset_handler};
+use junobuild_satellite::{list_assets_store, set_asset_handler, Doc};
+use junobuild_shared::types::core::Key;
 use junobuild_shared::types::list::ListParams;
 use junobuild_storage::http::types::HeaderField;
 use junobuild_storage::types::store::AssetKey;
-use junobuild_utils::encode_doc_data_to_string;
+use junobuild_utils::{decode_doc_data, encode_doc_data_to_string};
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+struct Note {
+    text: String,
+    url: Option<String>,
+}
+
+pub fn generate_note(key: &Key, doc: &Doc) -> Result<(), String> {
+    // 1. Get the note that was persisted
+    let note: Note = decode_doc_data(&doc.data)?;
+
+    // 2. Transform it to a JSON string
+    let json = encode_doc_data_to_string(&note)?;
+
+    // 3. Save it as a JSON asset in the Storage
+    let name = format!("{}.json", key).clone();
+
+    insert_asset(&name, &json)
+}
 
 pub fn generate_list_of_notes() -> Result<(), String> {
     // 1. Search for all notes in the collection "notes"
@@ -34,7 +55,7 @@ pub fn generate_list_of_notes() -> Result<(), String> {
     Ok(())
 }
 
-pub fn insert_asset(name: &String, json: &String) -> Result<(), String> {
+fn insert_asset(name: &String, json: &String) -> Result<(), String> {
     ic_cdk::print(format!("Json: {} {}", name, json));
 
     let collection = "notes".to_string();

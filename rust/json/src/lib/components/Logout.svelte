@@ -4,8 +4,8 @@
 
 <button
 	type="button"
-	on:click={signOut}
-	class="dark:text-white flex items-center gap-2 mt-24 hover:text-lavender-blue-500 active:text-lavender-blue-400"
+	onclick={signOut}
+	class="hover:text-lavender-blue-500 active:text-lavender-blue-400 mt-24 flex items-center gap-2 dark:text-white"
 >
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
