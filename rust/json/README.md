@@ -2,6 +2,10 @@
 
 An example that showcases how to generate and upload JSON files to the Storage in Serverless Functions on Juno.
 
+## What to expect
+
+When testing this demo, each time you add a note through the frontend, a serverless function should be triggered to deduplicate it in the storage as JSON data and update a list of all notes, which is also stored as JSON.
+
 ## Getting started
 
 ```bash
@@ -37,7 +41,7 @@ juno dev start
 4. **Create required collections**:
 
 - `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
-- `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
+- `json` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
 
 5. **Start the frontend dev server** (in a separate terminal):
 
