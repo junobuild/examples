@@ -1,4 +1,3 @@
-use ic_cdk::id;
 use junobuild_satellite::{list_assets_store, set_asset_handler, Doc};
 use junobuild_shared::types::core::Key;
 use junobuild_shared::types::list::ListParams;
@@ -26,6 +25,8 @@ pub fn generate_note(key: &Key, doc: &Doc) -> Result<(), String> {
     insert_asset(&name, &json)
 }
 
+const STORAGE_COLLECTION: &str = "json";
+
 pub fn generate_list_of_notes() -> Result<(), String> {
     // 1. Search for all notes in the collection "notes"
     let params: ListParams = ListParams {
@@ -35,7 +36,7 @@ pub fn generate_list_of_notes() -> Result<(), String> {
         owner: None,
     };
 
-    let result = list_assets_store(id(), &"notes".to_string(), &params)?;
+    let result = list_assets_store(ic_cdk::id(), &STORAGE_COLLECTION.to_string(), &params)?;
 
     // 2. Map results to the full_path which is the only information we are interested in.
     let list_of_keys: Vec<String> = result
@@ -58,14 +59,14 @@ pub fn generate_list_of_notes() -> Result<(), String> {
 fn insert_asset(name: &String, json: &String) -> Result<(), String> {
     ic_cdk::print(format!("Json: {} {}", name, json));
 
-    let collection = "notes".to_string();
+    let full_path = format!("/{}/{}", STORAGE_COLLECTION, name.clone()).to_string();
 
     let key: AssetKey = AssetKey {
         name: name.clone(),
-        full_path: format!("/{}/{}", collection, name.clone()).to_string(),
+        full_path: full_path.clone(),
         token: None,
-        collection,
-        owner: id(),
+        collection: STORAGE_COLLECTION.to_string(),
+        owner: ic_cdk::id(),
         description: None,
     };
 
@@ -74,5 +75,13 @@ fn insert_asset(name: &String, json: &String) -> Result<(), String> {
         "application/json".to_string(),
     )];
 
-    set_asset_handler(&key, &json.as_bytes().to_vec(), &headers)
+    set_asset_handler(&key, &json.as_bytes().to_vec(), &headers)?;
+
+    ic_cdk::print(format!(
+        "Asset saved in Storage: http://{}.localhost:5987{}",
+        ic_cdk::id(),
+        full_path
+    ));
+
+    Ok(())
 }
