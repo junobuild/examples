@@ -1,114 +1,62 @@
-# Juno: React Example
+# Serverless Canister Call Demo (Rust + Juno)
 
-```sh
-npm create juno@latest -- --template react-ts-example
+A sample app showcasing how to perform canister calls (e.g., `transfer_from`) inside a Rust-based serverless function using [Juno](https://juno.build).
+
+This example listens for documents added to the `request` collection and:
+
+- Checks if the user has enough ICP.
+- Calls the `transfer_from` method to move 1 ICP from the user's wallet to the Satellite.
+- Marks the request as `processed` if the transfer succeeds.
+
+The included UI is minimal and meant for testing.  
+You can use it to request ICP and trigger the function. If successful, your ICP balance decreases by 1 and the request appears as `processed`.
+
+## Getting started
+
+```bash
+git clone https://github.com/junobuild/examples
+cd rust/calls
 ```
 
-> 🧑‍🚀 **Seasoned dev?** Delete this file. Have fun!
+## How to Run
 
-![A screenshot of the example](https://raw.githubusercontent.com/junobuild/create-juno/main/screenshots/screenshot-example.png)
+1. **Install dependencies**:
 
-An example developed for [Juno](https://juno.build) using [React](https://react.dev).
+```bash
+npm ci
+```
 
-## 🧭 Getting Started
+2. **Start Juno local emulator**:
 
-To start experimenting with Juno locally, follow these steps:
+:::important
 
-### 1. Start the local development emulator
+Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
-This will spin up the Juno backend locally:
+:::
 
 ```bash
 juno dev start
 ```
 
-### 2. Create a Satellite
+3. **Create a Satellite** for local dev:
 
-Your project needs a Satellite. Create one to connect your app for development.
+- Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
+- Update `juno.config.ts` with your Satellite ID.
 
-👉 [Open the Juno Console](http://localhost:5866)
+4. **Create required collections**:
 
-### 3. Configure your project
+- `request` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
 
-Set the Satellite ID in your `juno.config.ts` file:
-
-```ts
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig({
-  satellite: {
-    ids: {
-      development: "<DEV_SATELLITE_ID>",
-    },
-    source: "dist",
-    predeploy: ["npm run build"],
-  },
-});
-```
-
-### 4. Start the frontend dev server
-
-In another terminal, start your app's dev server:
+5. **Start the frontend dev server** (in a separate terminal):
 
 ```bash
 npm run dev
 ```
 
-### 5. Create a Datastore collection
+6. **Build the serverless functions** (in a separate terminal):
 
-This template is a note-taking app, so it needs a `notes` collection. Create it in the Datastore.
-
-👉 [Go to Datastore](http://localhost:5866/datastore)
-
-### 6. Create a Storage collection
-
-Likewise, it needs a collection named `images` to save assets. Create it in the Storage.
-
-👉 [Go to Storage](http://localhost:5866/storage)
-
-You only need to do this once. After that, you're ready to build 🚀
-
-## 🛰️ Production
-
-Ready to go live?
-
-Just like for local development, you'll need to create a Satellite — but this time on the mainnet [Console](https://console.juno.build). Then, update your `juno.config.ts` with the new Satellite ID:
-
-```ts
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig({
-  satellite: {
-    ids: {
-      development: "<DEV_SATELLITE_ID>",
-      production: "<PROD_SATELLITE_ID>",
-    },
-    source: "dist",
-    predeploy: ["npm run build"],
-  },
-});
+```bash
+juno functions build
 ```
 
-Check out the full guides in the [docs](https://juno.build/docs/category/deployment).
-
-## ✨ Links & Resources
-
-- Looking to get started with Juno? Check out the [documentation](https://juno.build).
-- Have a look at [React](https://react.dev) for question regarding the templates.
-- Got questions, comments or feedback? [Join our discord](https://discord.gg/wHZ57Z2RAG) or [OpenChat](https://oc.app/community/vxgpi-nqaaa-aaaar-ar4lq-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command          | Action                                         |
-| :--------------- | :--------------------------------------------- |
-| `npm install`    | Installs dependencies                          |
-| `npm run dev`    | Starts frontend dev server at `localhost:5173` |
-| `juno dev start` | Quickstart the local development emulator      |
-| `npm run build`  | Build your production site to `./dist/`        |
-| `juno deploy`    | Deploy your project to a Satellite             |
-
-## 🚀 Launch
-
-Explore this [guide](https://juno.build/docs/add-juno-to-an-app/create-a-satellite) to launch your Satellite into orbit via Juno's [administration console](https://console.juno.build).
+The emulator will automatically upgrade your Satellite and live reload the changes.
