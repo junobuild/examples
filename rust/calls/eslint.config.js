@@ -38,4 +38,7 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    ignores: ["**/declarations/**/*"],
+  },
 );

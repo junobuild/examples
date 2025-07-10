@@ -26,6 +26,16 @@ export const Wallet: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("reload", loadBalance);
+
+    return () => {
+      window.removeEventListener("reload", loadBalance);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   /**
    * A function to get some ICP from the ICP ledger that only works locally.
    * i.e. only works with the ledger deployed with the Juno Emulator.
