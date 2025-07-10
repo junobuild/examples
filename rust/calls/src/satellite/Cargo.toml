@@ -9,9 +9,7 @@ crate-type = ["cdylib"]
 [dependencies]
 candid = "0.10.13"
 ic-cdk = "0.17.1"
-ic-cdk-macros = "0.17.1"
 serde = "1.0.217"
-serde_cbor = "0.11.2"
 junobuild-satellite = {version = "0.2.0", default-features = false, features = ["on_set_doc"]}
 junobuild-macros = "0.1.0"
 junobuild-utils = "0.1.1"
