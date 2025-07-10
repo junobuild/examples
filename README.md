@@ -42,8 +42,8 @@ Templates for popular frameworks are available in the [create-juno repository](h
 
 Explore more specific examples directly in this repository:
 
-- [vanilla](./vanilla/README.md): a collection of examples developed without frameworks
+- [vanilla](./frontend/vanilla/README.md): a collection of examples developed without frameworks
 - [node](./node): a collection of NodeJS scripts
-- [rust](./rust): blockchainless functions/hooks examples
+- [functions](./functions): a collection of serverless functions
 
 These examples are maintained for specific or deep dive implementations.
