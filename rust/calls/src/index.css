@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/jetbrainsmono-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./fonts/jetbrainsmono-bold.woff2") format("woff2");
+}
+
+@theme {
+  --font-display: "JetBrains Mono", sans-serif;
+
+  --color-*: initial;
+  --color-inherit: inherit;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-black: rgb(0 0 0);
+  --color-white: rgb(255 255 255);
+
+  --color-lavender-blue-50: #f2f3ff;
+  --color-lavender-blue-100: #e4e7ff;
+  --color-lavender-blue-200: #c9cfff;
+  --color-lavender-blue-300: #aeb8ff;
+  --color-lavender-blue-400: #93a0ff;
+  --color-lavender-blue-500: #7888ff;
+  --color-lavender-blue-600: #606dcc;
+  --color-lavender-blue-700: #485299;
+  --color-lavender-blue-800: #303666;
+  --color-lavender-blue-900: #181b33;
+
+  --color-screamin-green-50: #eaffe5;
+  --color-screamin-green-100: #d0ffc8;
+  --color-screamin-green-200: #88ff78;
+  --color-screamin-green-300: #6bfb5b;
+  --color-screamin-green-400: #3bf229;
+  --color-screamin-green-500: #18d80a;
+  --color-screamin-green-600: #0cad03;
+  --color-screamin-green-700: #0c8308;
+  --color-screamin-green-800: #10670d;
+  --color-screamin-green-900: #105710;
+  --color-screamin-green-950: #023103;
+}
+
+@theme {
+  --animate-fade: fadeIn 0.25s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+html {
+  font-family: var(--font-display);
+}
