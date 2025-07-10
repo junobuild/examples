@@ -13,6 +13,8 @@
     "postinstall": "npm run postinstall:copy-auth"
   },
   "dependencies": {
+    "@dfinity/ledger-icp": "^3.0.0",
+    "@dfinity/utils": "^2.13.1",
     "@junobuild/core": "^0.1.17",
     "nanoid": "^5.1.5",
     "react": "19.1.0",
@@ -34,7 +36,8 @@
     "globals": "^16.2.0",
     "postcss": "^8.5.6",
     "prettier": "^3.6.1",
-    "prettier-plugin-tailwindcss": "^0.6.13",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0",
