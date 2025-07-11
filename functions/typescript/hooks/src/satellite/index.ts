@@ -29,7 +29,14 @@ export const assertSetDoc = defineAssert<AssertSetDoc>({
 export const onSetDoc = defineHook<OnSetDoc>({
   collections: ["demo"],
   run: async (context) => {
-    const {caller, data: {key, collection, data: {after: currentDoc}}} = context;
+    const {
+      caller,
+      data: {
+        key,
+        collection,
+        data: { after: currentDoc },
+      },
+    } = context;
 
     // We decode the new data saved in the Datastore because it holds those as blob.
     const person = decodeDocData<PersonData>(currentDoc.data);
