@@ -1,86 +1,96 @@
+import { Account } from "@dfinity/ledger-icrc/dist/candid/icrc_ledger";
+import { Principal } from "@dfinity/principal";
 import {
-  type AssertDeleteAsset,
-  type AssertDeleteDoc,
   type AssertSetDoc,
-  type AssertUploadAsset,
   defineAssert,
   defineHook,
-  type OnDeleteAsset,
-  type OnDeleteDoc,
-  type OnDeleteFilteredAssets,
-  type OnDeleteFilteredDocs,
-  type OnDeleteManyAssets,
-  type OnDeleteManyDocs,
   type OnSetDoc,
-  type OnSetManyDocs,
-  type OnUploadAsset
-} from '@junobuild/functions';
-
-// All the available hooks and assertions for your Datastore and Storage are scaffolded by default in this module.
-// However, if you don’t have to implement all of them, for example to improve readability or reduce unnecessary logic,
-// you can selectively delete the features you do not need.
-
-export const onSetDoc = defineHook<OnSetDoc>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onSetManyDocs = defineHook<OnSetManyDocs>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onDeleteDoc = defineHook<OnDeleteDoc>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onDeleteManyDocs = defineHook<OnDeleteManyDocs>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onDeleteFilteredDocs = defineHook<OnDeleteFilteredDocs>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onUploadAsset = defineHook<OnUploadAsset>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onDeleteAsset = defineHook<OnDeleteAsset>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onDeleteManyAssets = defineHook<OnDeleteManyAssets>({
-  collections: [],
-  run: async (context) => {}
-});
-
-export const onDeleteFilteredAssets = defineHook<OnDeleteFilteredAssets>({
-  collections: [],
-  run: async (context) => {}
-});
+} from "@junobuild/functions";
+import { id } from "@junobuild/functions/ic-cdk";
+import { decodeDocData } from "@junobuild/functions/sdk";
+import { COLLECTION_REQUEST, ICP_LEDGER_ID } from "../constants/app.constants";
+import { RequestData, RequestDataSchema } from "../types/request";
+import {
+  assertWalletBalance,
+  setRequestProcessed,
+  transferIcpFromWallet,
+} from "./services";
 
 export const assertSetDoc = defineAssert<AssertSetDoc>({
-  collections: [],
-  assert: (context) => {}
+  collections: [COLLECTION_REQUEST],
+  assert: (context) => {
+    // We validate that the data submitted for create or update matches the expected schema.
+    const person = decodeDocData<RequestData>(context.data.data.proposed.data);
+
+    RequestDataSchema.parse(person);
+  },
 });
 
-export const assertDeleteDoc = defineAssert<AssertDeleteDoc>({
-  collections: [],
-  assert: (context) => {}
-});
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections: [COLLECTION_REQUEST],
+  run: async (context) => {
+    // ###############
+    // Init data
+    // ###############
 
-export const assertUploadAsset = defineAssert<AssertUploadAsset>({
-  collections: [],
-  assert: (context) => {}
-});
+    const {
+      data: {
+        key,
+        data: {
+          after: { version },
+        },
+      },
+    } = context;
 
-export const assertDeleteAsset = defineAssert<AssertDeleteAsset>({
-  collections: [],
-  assert: (context) => {}
+    const data = decodeDocData<RequestData>(context.data.data.after.data);
+
+    const { amount: requestAmount, fee } = data;
+
+    const ledgerId = ICP_LEDGER_ID;
+
+    const fromAccount: Account = {
+      owner: Principal.fromUint8Array(context.caller),
+      subaccount: [],
+    };
+
+    // ###############
+    // Check current account balance. This way the process can stop early on
+    // ###############
+    await assertWalletBalance({
+      ledgerId,
+      fromAccount,
+      amount: requestAmount,
+      fee,
+    });
+
+    // ###############
+    // The request is about to be processed by transferring the amount via the ICP ledger.
+    // We update the status beforehand. Since the function is atomic, a failed transfer reverts everything.
+    // This avoids a case where the transfer succeeds but the status isn't updated — even if unlikely.
+    // This is for demo only. In production, proper error handling and bookkeeping would be required.
+    // ###############
+
+    setRequestProcessed({
+      key,
+      version,
+      data,
+    });
+
+    // ###############
+    // Transfer from wallet to satellite.
+    // ###############
+
+    const toAccount: Account = {
+      owner: id(),
+      subaccount: [],
+    };
+
+    await transferIcpFromWallet({
+      ledgerId,
+      fromAccount,
+      toAccount,
+      amount: requestAmount,
+      fee,
+    });
+  },
 });
