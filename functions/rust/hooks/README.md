@@ -1,12 +1,12 @@
 # Hooks
 
-A sample app that showcases a serverless function hooks developed in Rust.
+A sample app that showcases a serverless function hooks developed in TypeScript.
 
 ## Getting started
 
 ```bash
 git clone https://github.com/junobuild/examples
-cd rust/hooks
+cd typescript/hooks
 ```
 
 ## How to Run
