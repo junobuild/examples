@@ -1,0 +1,23 @@
+{
+  "name": "@junobuild/hooks",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --force",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@junobuild/config": "^0.4.0",
+    "@junobuild/vite-plugin": "^4.0.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.2",
+    "vite-plugin-node-polyfills": "^0.24.0"
+  },
+  "dependencies": {
+    "@junobuild/admin": "^0.6.0",
+    "@junobuild/core": "^0.1.17",
+    "@junobuild/functions": "^0.2.1"
+  }
+}
