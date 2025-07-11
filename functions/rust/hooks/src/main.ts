@@ -8,7 +8,7 @@ import {
 import "./style.css";
 import { initDoc } from "./doc";
 import { initStorage } from "./storage";
-import {version} from "./admin";
+import { version } from "./admin";
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -29,8 +29,8 @@ document
   ?.addEventListener("click", signOut, { passive: true });
 
 document
-    .querySelector("#version")
-    ?.addEventListener("click", version, { passive: true });
+  .querySelector("#version")
+  ?.addEventListener("click", version, { passive: true });
 
 authSubscribe((user: User | null) => {
   console.log("User", user);

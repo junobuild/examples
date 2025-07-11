@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "vite --force",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@junobuild/config": "^0.4.0",
     "@junobuild/vite-plugin": "^4.0.0",
+    "prettier": "^3.6.2",
     "typescript": "^5.8.3",
     "vite": "^7.0.2",
     "vite-plugin-node-polyfills": "^0.24.0"

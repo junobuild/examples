@@ -13,7 +13,7 @@ interface Example {
   yolo: boolean;
   hello: string;
   principal: Principal;
-  value: bigint
+  value: bigint;
 }
 
 let record: Doc<Example> | undefined;
@@ -31,7 +31,7 @@ const set = async () => {
         yolo: true,
         hello: "world",
         principal: (await unsafeIdentity()).getPrincipal(),
-        value: 123n
+        value: 123n,
       },
       ...(record !== undefined && { updated_at: record.updated_at }),
     },
