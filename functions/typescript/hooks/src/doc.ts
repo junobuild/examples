@@ -7,31 +7,24 @@ import {
   unsafeIdentity,
 } from "@junobuild/core";
 import { nanoid } from "nanoid";
-import { Principal } from "@dfinity/principal";
+import { PersonData } from "./types";
 
-interface Example {
-  yolo: boolean;
-  hello: string;
-  principal: Principal;
-  value: bigint
-}
-
-let record: Doc<Example> | undefined;
+let record: Doc<PersonData> | undefined;
 
 let key: string | undefined;
 
 const set = async () => {
   key = nanoid();
 
-  record = await setDoc<Example>({
+  record = await setDoc<PersonData>({
     collection: "demo",
     doc: {
       key,
       data: {
         yolo: true,
         hello: "world",
-        principal: (await unsafeIdentity()).getPrincipal(),
-        value: 123n
+        principal: (await unsafeIdentity()).getPrincipal().toText(),
+        value: 123n,
       },
       ...(record !== undefined && { updated_at: record.updated_at }),
     },
@@ -77,7 +70,7 @@ const del = async () => {
     return;
   }
 
-  await deleteDoc<Example>({
+  await deleteDoc<PersonData>({
     collection: "demo",
     doc: record,
   });
