@@ -1,0 +1,53 @@
+{
+  "name": "calls",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --force",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "postinstall:copy-auth": "node -e \"require('fs').cpSync('node_modules/@junobuild/core/dist/workers/', './public/workers', {recursive: true});\"",
+    "postinstall": "npm run postinstall:copy-auth"
+  },
+  "dependencies": {
+    "@dfinity/ledger-icp": "^3.0.0",
+    "@dfinity/utils": "^2.13.1",
+    "@junobuild/core": "^0.1.17",
+    "@junobuild/functions": "^0.2.1",
+    "nanoid": "^5.1.5",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@junobuild/config": "^0.4.0",
+    "@junobuild/vite-plugin": "^4.0.0",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.10",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.2.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0",
+    "vite": "^6.3.5",
+    "vite-plugin-node-polyfills": "^0.24.0"
+  },
+  "overrides": {
+    "vite-plugin-node-polyfills": {
+      "vite": "^6.0.0"
+    }
+  }
+}
