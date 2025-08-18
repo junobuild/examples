@@ -15,8 +15,8 @@
     "@astrojs/mdx": "^4.3.3",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.2",
-    "@junobuild/config": "^1.1.1",
-    "@junobuild/vite-plugin": "^4.1.2",
+    "@junobuild/config": "^2.0.0",
+    "@junobuild/vite-plugin": "^4.1.4",
     "astro": "^5.12.8",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
@@ -24,6 +24,6 @@
   },
   "dependencies": {
     "@junobuild/analytics": "^0.2.4",
-    "@junobuild/core": "^1.0.3"
+    "@junobuild/core": "^1.1.1"
   }
 }
