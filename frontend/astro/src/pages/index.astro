@@ -25,7 +25,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         import {
           initSatellite,
           setDoc,
-          authSubscribe,
+          onAuthStateChange,
           signIn,
           signOut,
           getDoc,
@@ -48,7 +48,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             initOrbiter({
               options: {
                 performance: true,
-                userAgentParser: true
+                userAgentParser: true,
               },
             }),
           { once: true },
@@ -56,7 +56,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
         let user = undefined;
 
-        authSubscribe((u) => {
+        onAuthStateChange((u) => {
           user = u;
 
           document.querySelector("#login").style.display =
@@ -70,7 +70,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         });
 
         let counter = undefined;
-        authSubscribe(async (user) => {
+        onAuthStateChange(async (user) => {
           if (user === null) {
             counter = undefined;
             return;
@@ -137,13 +137,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           }
         };
 
+        const signInWithII = async () =>
+          signIn({
+            internet_identity: {},
+          });
+
         document
           .querySelector("#count")
           ?.addEventListener("click", count, { passive: true });
 
         document
           .querySelector("#login")
-          ?.addEventListener("click", signIn, { passive: true });
+          ?.addEventListener("click", signInWithII, { passive: true });
         document
           .querySelector("#logout")
           ?.addEventListener("click", signOut, { passive: true });
