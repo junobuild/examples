@@ -1,12 +1,13 @@
 {
-  "name": "@junobuild/example-node-admin-read-save-documents",
+  "name": "@junobuild/example-node-admin-import-export-documents",
   "version": "0.0.1",
   "description": "A sample admin NodeJS script that reads a JSON file and save its data to Juno.",
   "main": "import.mjs",
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "export": "node export.mjs"
+    "export": "node export.mjs",
+    "import": "node import.mjs"
   },
   "author": "",
   "license": "MIT",
