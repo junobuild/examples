@@ -30,7 +30,7 @@ console.log(
 
 console.log(`${items.length} documents to import`);
 
-const limit = 2;
+const limit = 10;
 
 for (let i = 0; i < items.length; i = i + limit) {
   const batch = items.slice(i, i + limit);
