@@ -32,11 +32,12 @@ export default defineConfig({
         },
       ],
     },
+    predeploy: ["npm run build"],
   },
   orbiter: {
     ids: {
       production: "ot5tb-nqaaa-aaaal-ac2sa-cai",
       development: "<DEVELOPMENT_ID>",
-    }
+    },
   },
 });
