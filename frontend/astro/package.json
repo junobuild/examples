@@ -24,6 +24,6 @@
   },
   "dependencies": {
     "@junobuild/analytics": "^0.2.7",
-    "@junobuild/core": "^2.1.2"
+    "@junobuild/core": "^2.2.0"
   }
 }

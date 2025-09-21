@@ -14,6 +14,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <Header title={SITE_TITLE} />
     <main>
       <button id="login" style="display: none">Sign-in</button>
+      <button id="loginIdAi" style="display: none">Sign-in (id.ai)</button>
       <button id="logout" style="display: none">Sign-out</button>
       <button id="count" style="display: none">Count</button>
 
@@ -60,6 +61,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           user = u;
 
           document.querySelector("#login").style.display =
+            user === null ? "block" : "none";
+          document.querySelector("#loginIdAi").style.display =
             user === null ? "block" : "none";
           document.querySelector("#logout").style.display =
             user !== undefined && user !== null ? "block" : "none";
@@ -139,7 +142,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
         const signInWithII = async () =>
           signIn({
-            internet_identity: {},
+            internet_identity: {
+            },
+          });
+
+        const signInWithIdAi = async () =>
+          signIn({
+            internet_identity: {
+              options: {
+                domain: "id.ai"
+              }
+            },
           });
 
         document
@@ -149,6 +162,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         document
           .querySelector("#login")
           ?.addEventListener("click", signInWithII, { passive: true });
+
+        document
+          .querySelector("#loginIdAi")
+          ?.addEventListener("click", signInWithIdAi, { passive: true });
+
         document
           .querySelector("#logout")
           ?.addEventListener("click", signOut, { passive: true });
