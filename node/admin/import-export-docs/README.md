@@ -4,7 +4,7 @@ A sample admin NodeJS script that import and export documents with [Juno](https:
 
 ## Getting started
 
-> ![NOTE]
+> [!NOTE]
 > Make sure you have Juno's CLI (`npm i -g @junobuild/cli`) installed on your machine.
 
 ```bash
