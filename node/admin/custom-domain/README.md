@@ -4,7 +4,8 @@ Admin scripts to manually set or update a custom domain to a [Juno](https://juno
 
 ## Getting started
 
-Make sure you have [node.js](https://nodejs.org) LTS installed.
+> [!NOTE]
+> Make sure you have Juno's CLI (`npm i -g @junobuild/cli`) installed on your machine.
 
 ```bash
 git clone https://github.com/junobuild/examples
@@ -14,9 +15,7 @@ npm ci
 
 ## Configuration
 
-Configure your satellite ID in [.env](.env).
-
-- `JUNO_SATELLITE_ID`: the satellite ID to which you want to set the BN id
+Configure your satellite ID in [juno.config.mjs](./juno.config.mjs).
 
 ## Set BN ID in an existing Custom Domain
 
@@ -25,7 +24,7 @@ To associate a BN ID with an already configured custom domain, run the following
 > Replace `<your-domain-name>` and `<BN-id-to-set>` with your values.
 
 ```bash
-npm run update -- --domain=<your-domain-name> --bnid=<BN-id-to-set>
+juno run --src update.mjs --domain=<your-domain-name> --bnid=<BN-id-to-set>
 ```
 
 ## Add a Custom Domain
@@ -36,5 +35,5 @@ If you want to add a new custom domain without setting a BN ID, use the followin
 > This is more of a workaround than a standard behavior.
 
 ```bash
-npm run add -- --domain=<your-domain-name>
+juno run --src add.mjs --domain=<your-domain-name>
 ```

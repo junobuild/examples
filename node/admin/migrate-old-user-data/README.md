@@ -28,7 +28,7 @@ Configure your satellite ID in [juno.config.mjs](./juno.config.mjs).
 
 List users whose payload is not compatible with the current structure.
 
-```
+```bash
 juno run --src migrate.mjs --list
 ```
 
@@ -36,6 +36,6 @@ juno run --src migrate.mjs --list
 
 Effectively migrate the old beta users.
 
-```
+```bash
 juno run --src migrate.mjs
 ```

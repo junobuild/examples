@@ -6,19 +6,14 @@
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "update": "node update.mjs",
-    "add": "node add.mjs"
+    "update": "juno run update.mjs",
+    "add": "juno run add.mjs"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@dfinity/identity": "^2.2.0",
-    "@dfinity/utils": "^2.9.0",
-    "@junobuild/admin": "^0.1.3",
-    "@junobuild/cli-tools": "^0.1.0",
-    "conf": "^13.1.0",
-    "dotenv": "^16.4.7",
-    "prompts": "^2.4.2"
+    "@junobuild/admin": "^2.2.2",
+    "@junobuild/config": "^2.2.0"
   },
   "devDependencies": {
     "prettier": "^3.4.2",
