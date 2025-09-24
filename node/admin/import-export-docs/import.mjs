@@ -1,20 +1,14 @@
 #!/usr/bin/env node
 
-import { listDocs, setManyDocs } from "@junobuild/core";
-import { getIdentity } from "./auth.mjs";
+import { setManyDocs } from "@junobuild/core";
 import { readFile } from "node:fs/promises";
 import { jsonReviver } from "@dfinity/utils";
+import * as dotenv from "dotenv";
+import { defineRun } from "@junobuild/config";
 
-const identity = await getIdentity();
-
-const satellite = {
-  identity,
-  satelliteId: process.env.JUNO_SATELLITE_ID,
-  container: "https://icp0.io",
-};
+dotenv.config({ quiet: true });
 
 const collection = process.env.JUNO_DATASTORE_COLLECTION;
-
 const inputFile = process.env.DATA_SRC;
 
 const readData = async () => {
@@ -22,28 +16,35 @@ const readData = async () => {
   return JSON.parse(json, jsonReviver);
 };
 
-const { items } = await readData();
+export const onRun = defineRun(() => ({
+  run: async ({ identity, ...rest }) => {
+    const { items } = await readData();
 
-console.log(
-  `⚠️  The documents will be imported using ${identity.getPrincipal().toText()} as owner.`,
-);
+    console.log(
+      `⚠️  The documents will be imported using ${identity.getPrincipal().toText()} as owner.`,
+    );
 
-console.log(`${items.length} documents to import`);
+    console.log(`${items.length} documents to import`);
 
-const limit = 10;
+    const limit = 10;
 
-for (let i = 0; i < items.length; i = i + limit) {
-  const batch = items.slice(i, i + limit);
+    for (let i = 0; i < items.length; i = i + limit) {
+      const batch = items.slice(i, i + limit);
 
-  console.log(`Importing documents ${i + 1}/${i + batch.length}...`);
+      console.log(`Importing documents ${i + 1}/${i + batch.length}...`);
 
-  await setManyDocs({
-    docs: batch.map((doc) => ({
-      collection,
-      doc,
-    })),
-    satellite,
-  });
-}
+      await setManyDocs({
+        docs: batch.map((doc) => ({
+          collection,
+          doc,
+        })),
+        satellite: {
+          identity,
+          ...rest,
+        },
+      });
+    }
 
-console.log(`Data imported`);
+    console.log(`Data imported`);
+  },
+}));
