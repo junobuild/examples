@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "update": "juno run update.mjs",
-    "add": "juno run add.mjs"
+    "update": "juno run --src update.mjs",
+    "add": "juno run --src add.mjs"
   },
   "author": "",
   "license": "MIT",

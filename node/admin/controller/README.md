@@ -4,7 +4,8 @@ A sample admin NodeJS script to manually set a controller to a [Juno](https://ju
 
 ## Getting started
 
-Make sure you have [node.js](https://nodejs.org) LTS installed.
+> [!NOTE]
+> Make sure you have Juno's CLI (`npm i -g @junobuild/cli`) installed on your machine.
 
 ```bash
 git clone https://github.com/junobuild/examples
@@ -17,7 +18,7 @@ npm ci
 Run following command in your terminal to execute the script.
 
 ```bash
-npm run start -- --controllerId=<the-principal-id>
+juno run --src index.mjs --controllerId=<the-principal-id>
 ```
 
 Replace `<the-principal-id>` with the ID of the principal you are looking to set as a controller.
@@ -25,7 +26,7 @@ Replace `<the-principal-id>` with the ID of the principal you are looking to set
 You can also provide a hint - like a name - for the particular profile.
 
 ```bash
-npm run start -- --controllerId=<the-principal-id> --profile=my_controller_name
+juno run --src index.mjs --controllerId=<the-principal-id> --profile=my_controller_name
 ```
 
 ## Configuration
@@ -33,4 +34,5 @@ npm run start -- --controllerId=<the-principal-id> --profile=my_controller_name
 If you wish to use this script to configure your satellite, following environment options have to be set in [.env](.env).
 
 - `JUNO_MISSION_CONTROL_ID`: your mission control ID
-- `JUNO_SATELLITE_ID`: the satellite ID to which you want to set the controller
+
+Adapt your Satellite IDs in the [juno.config.mjs](./juno.config.mjs).
