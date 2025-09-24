@@ -4,7 +4,8 @@ A sample admin NodeJS script that import and export documents with [Juno](https:
 
 ## Getting started
 
-Make sure you have [node.js](https://nodejs.org) LTS installed.
+> ![NOTE]
+> Make sure you have Juno's CLI (`npm i -g @junobuild/cli`) installed on your machine.
 
 ```bash
 git clone https://github.com/junobuild/examples
@@ -17,12 +18,13 @@ npm ci
 Configure the required variables in [.env](.env) file.
 
 - `DATA_SRC`: the path to the JSON data that will be read or written
-- `JUNO_SATELLITE_ID`: the satellite ID
 - `JUNO_DATASTORE_COLLECTION`: the datastore's collection in which the data should be read and write
+
+Adapt your Satellite IDs in the [juno.config.mjs](./juno.config.mjs).
 
 ## Execution
 
 ```bash
-npm run export
-npm run import
+juno run --src export.mjs
+juno run --src import.mjs
 ```

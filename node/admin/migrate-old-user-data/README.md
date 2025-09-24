@@ -11,7 +11,8 @@ This script provides a way for admin controllers to migrate the old data to the 
 
 ## Getting started
 
-Make sure you have [node.js](https://nodejs.org) LTS installed.
+> ![NOTE]
+> Make sure you have Juno's CLI (`npm i -g @junobuild/cli`) installed on your machine.
 
 ```bash
 git clone https://github.com/junobuild/examples
@@ -21,16 +22,14 @@ npm ci
 
 ## Configuration
 
-Configure your satellite ID in [.env](.env).
-
-- `JUNO_SATELLITE_ID`: the satellite ID to which you want to set the BN id
+Configure your satellite ID in [juno.config.mjs](./juno.config.mjs).
 
 ## List users to migrate
 
 List users whose payload is not compatible with the current structure.
 
 ```
-npm run list
+juno run --src migrate.mjs --list
 ```
 
 ## Migrate
@@ -38,5 +37,5 @@ npm run list
 Effectively migrate the old beta users.
 
 ```
-npm run migrate
+juno run --src migrate.mjs
 ```
