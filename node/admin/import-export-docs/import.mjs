@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { setManyDocs } from "@junobuild/core";
 import { readFile } from "node:fs/promises";
 import { jsonReviver } from "@dfinity/utils";

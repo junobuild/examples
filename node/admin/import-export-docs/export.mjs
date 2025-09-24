@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { listDocs } from "@junobuild/core";
 import { writeFile } from "node:fs/promises";
 import { jsonReplacer } from "@dfinity/utils";
