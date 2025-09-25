@@ -6,7 +6,8 @@ This script is useful if you have gathered data and want to upload it in your de
 
 ## Getting Started
 
-Make sure you have [node.js](https://nodejs.org) LTS installed.
+> [!NOTE]
+> Make sure you have Juno's CLI (`npm i -g @junobuild/cli`) installed on your machine.
 
 ```bash
 git clone https://github.com/junobuild/examples
@@ -30,7 +31,7 @@ The `--path` argument must point to a folder containing data formatted similarly
 The script will process all files in the specified folder.
 
 ```bash
-npm run upload -- --path ./output/page-views
+juno run --src upload.mjs --path ./output/page-views
 ```
 
 ## Upload Track Events
@@ -38,7 +39,7 @@ npm run upload -- --path ./output/page-views
 Run following command to upload tracked events:
 
 ```bash
-npm run upload -- --path ./output/track-events --track-evets
+juno run --src upload.mjs --path ./output/track-events --track-evets
 ```
 
 ## Upload Performance Metric
@@ -46,5 +47,5 @@ npm run upload -- --path ./output/track-events --track-evets
 Run following command to upload performance metrics:
 
 ```bash
-npm run upload -- --path ./output/performance-metrics --performance-metrics
+juno run --src upload.mjs --path ./output/performance-metrics --performance-metrics
 ```

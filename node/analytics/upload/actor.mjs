@@ -1,5 +1,5 @@
 import pkgAgent from "@dfinity/agent";
-import { idlFactory as orbiterIdlFactory } from "./node_modules/@junobuild/admin/dist/declarations/orbiter/orbiter.factory.did.mjs";
+import { idlFactory as orbiterIdlFactory } from "./node_modules/@junobuild/ic-client/declarations/orbiter/orbiter.factory.did.mjs";
 
 const { HttpAgent, Actor } = pkgAgent;
 
