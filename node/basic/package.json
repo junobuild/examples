@@ -5,13 +5,17 @@
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "start": "node index.mjs"
+    "format": "prettier .. --write",
+    "index": "juno run --src index.mjs",
+    "assets": "juno run --src assets.mjs"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@dfinity/agent": "^2.2.0",
-    "@junobuild/core": "^0.1.1",
-    "nanoid": "^5.0.7"
+    "@junobuild/config": "^2.2.0",
+    "@junobuild/core": "^2.2.0",
+    "nanoid": "^5.0.7",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.3.0"
   }
 }

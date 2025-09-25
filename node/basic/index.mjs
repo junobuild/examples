@@ -1,40 +1,36 @@
-#!/usr/bin/env node
-
 import { getDoc, setDoc } from "@junobuild/core";
-import { AnonymousIdentity } from "@dfinity/agent";
 import { nanoid } from "nanoid";
+import { defineRun } from "@junobuild/config";
 
-const satellite = {
-  identity: new AnonymousIdentity(),
-  satelliteId: "jx5yt-yyaaa-aaaal-abzbq-cai",
-  container: true,
-};
+export const onRun = defineRun(() => ({
+  run: async (context) => {
+    const id = nanoid();
 
-const id = nanoid();
+    const set = async () =>
+      setDoc({
+        collection: "demo",
+        doc: {
+          key: id,
+          data: {
+            hello: "world",
+          },
+        },
+        satellite: context,
+      });
 
-const set = async () =>
-  setDoc({
-    collection: "demo",
-    doc: {
-      key: id,
-      data: {
-        hello: "world",
-      },
-    },
-    satellite,
-  });
+    const get = async () =>
+      console.log(
+        "Get",
+        await getDoc({
+          collection: "demo",
+          key: id,
+          satellite: context,
+        }),
+      );
 
-const get = async () =>
-  console.log(
-    "Get",
-    await getDoc({
-      collection: "demo",
-      key: id,
-      satellite,
-    }),
-  );
+    console.log("This is a demo client in NodeJS");
 
-console.log("This is a demo client in NodeJS");
-
-await set();
-await get();
+    await set();
+    await get();
+  },
+}));
