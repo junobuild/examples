@@ -4,7 +4,8 @@ A NodeJS to collect page views from [Juno](https://juno.build) analytics.
 
 ## Getting started
 
-Make sure you have [node.js](https://nodejs.org) LTS installed.
+> [!NOTE]
+> Make sure you have Juno's CLI (`npm i -g @junobuild/cli`) installed on your machine.
 
 ```bash
 git clone https://github.com/junobuild/examples
@@ -27,7 +28,7 @@ Both arguments — `from` and `to` — are required. Each must be a valid string
 Data is collected hour by hour, meaning 24 queries will be performed for a single day.
 
 ```bash
-npm run collect -- --from 2025-04-02 --to 2025-04-03
+juno run --src collect.mjs --from 2025-04-02 --to 2025-04-03
 ```
 
 ## Get Track Events
@@ -35,7 +36,7 @@ npm run collect -- --from 2025-04-02 --to 2025-04-03
 To collect tracked events, run the same command as above but provide the arguments `--track-events`.
 
 ```bash
-npm run collect -- --from 2025-04-02 --to 2025-04-03 --track-events
+juno run --src collect.mjs --from 2025-04-02 --to 2025-04-03 --track-events
 ```
 
 ## Get Performance Metrics
@@ -43,5 +44,5 @@ npm run collect -- --from 2025-04-02 --to 2025-04-03 --track-events
 To collect performance metrics, run the same command as above but provide the arguments `--performance-metrics`.
 
 ```bash
-npm run collect -- --from 2025-04-02 --to 2025-04-03 --performance-metrics
+juno run --src collect.mjs --from 2025-04-02 --to 2025-04-03 --performance-metrics
 ```

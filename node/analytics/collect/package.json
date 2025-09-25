@@ -6,20 +6,14 @@
   "type": "module",
   "scripts": {
     "format": "prettier .. --write",
-    "collect": "node collect.mjs"
+    "collect": "juno run --src collect.mjs"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@dfinity/identity": "^2.4.1",
-    "@dfinity/utils": "^2.13.0",
-    "@junobuild/admin": "^0.2.0",
-    "@junobuild/cli-tools": "^0.1.9",
-    "@junobuild/core": "^0.1.11",
-    "conf": "^13.1.0",
-    "date-fns": "^4.1.0",
-    "dotenv": "^16.5.0",
-    "prompts": "^2.4.2"
+    "@junobuild/config": "^2.2.0",
+    "@junobuild/ic-client": "^3.1.2",
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "prettier": "^3.5.3",
