@@ -11,19 +11,19 @@
     "format": "prettier --write './**/*.{ts,js,mjs,json,scss,css,astro,html,md}'"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.3.6",
-    "@astrojs/rss": "^4.0.12",
+    "@astrojs/check": "^0.9.5",
+    "@astrojs/mdx": "^4.3.11",
+    "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
-    "@junobuild/config": "^2.4.3",
-    "@junobuild/vite-plugin": "^4.3.0",
-    "astro": "^5.14.1",
+    "@junobuild/config": "^2.6.0",
+    "@junobuild/vite-plugin": "^4.4.0",
+    "astro": "^5.15.9",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@junobuild/analytics": "^0.2.7",
-    "@junobuild/core": "^2.2.0"
+    "@junobuild/analytics": "^0.2.9",
+    "@junobuild/core": "^3.1.0"
   }
 }
