@@ -1,11 +1,11 @@
-import { Account } from "@dfinity/ledger-icrc/dist/candid/icrc_ledger";
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 import {
   type AssertSetDoc,
   defineAssert,
   defineHook,
   type OnSetDoc,
 } from "@junobuild/functions";
+import { IcrcLedgerDid } from "@junobuild/functions/canisters/ledger/icrc";
 import { id } from "@junobuild/functions/ic-cdk";
 import { decodeDocData } from "@junobuild/functions/sdk";
 import { COLLECTION_REQUEST, ICP_LEDGER_ID } from "../constants/app.constants";
@@ -48,7 +48,7 @@ export const onSetDoc = defineHook<OnSetDoc>({
 
     const ledgerId = ICP_LEDGER_ID;
 
-    const fromAccount: Account = {
+    const fromAccount: IcrcLedgerDid.Account = {
       owner: Principal.fromUint8Array(context.caller),
       subaccount: [],
     };
@@ -80,7 +80,7 @@ export const onSetDoc = defineHook<OnSetDoc>({
     // Transfer from wallet to satellite.
     // ###############
 
-    const toAccount: Account = {
+    const toAccount: IcrcLedgerDid.Account = {
       owner: id(),
       subaccount: [],
     };

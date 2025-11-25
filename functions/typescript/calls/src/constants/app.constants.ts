@@ -1,4 +1,4 @@
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 
 export const E8S_PER_ICP = 100_000_000n;
 export const IC_TRANSACTION_FEE_ICP = 10_000n;

@@ -1,8 +1,11 @@
-import { encodeIcrcAccount } from "@dfinity/ledger-icrc";
-import type { Account } from "@dfinity/ledger-icrc/dist/candid/icrc_ledger";
-import type { Principal } from "@dfinity/principal";
-import { fromNullable, jsonReplacer } from "@dfinity/utils";
+import { fromNullable, jsonReplacer, toNullable } from "@dfinity/utils";
+import { encodeIcrcAccount } from "@icp-sdk/canisters/ledger/icrc";
+import type { Principal } from "@icp-sdk/core/principal";
 import { SetDoc } from "@junobuild/functions";
+import {
+  IcrcLedgerCanister,
+  type IcrcLedgerDid,
+} from "@junobuild/functions/canisters/ledger/icrc";
 import { id } from "@junobuild/functions/ic-cdk";
 import { encodeDocData, setDocStore } from "@junobuild/functions/sdk";
 import {
@@ -10,7 +13,6 @@ import {
   IC_TRANSACTION_FEE_ICP,
 } from "../constants/app.constants";
 import { RequestData } from "../types/request";
-import { icrcBalanceOf, icrcTransferFrom } from "./ledger-icrc";
 
 export const assertWalletBalance = async ({
   ledgerId,
@@ -19,12 +21,13 @@ export const assertWalletBalance = async ({
   fee,
 }: {
   ledgerId: Principal;
-  fromAccount: Account;
+  fromAccount: IcrcLedgerDid.Account;
   amount: bigint;
   fee: bigint | undefined;
 }) => {
-  const balance = await icrcBalanceOf({
-    ledgerId,
+  const { icrc1BalanceOf } = new IcrcLedgerCanister({ canisterId: ledgerId });
+
+  const balance = await icrc1BalanceOf({
     account: fromAccount,
   });
 
@@ -42,14 +45,34 @@ export const assertWalletBalance = async ({
   }
 };
 
-export const transferIcpFromWallet = async (params: {
+export const transferIcpFromWallet = async ({
+  ledgerId,
+  fromAccount,
+  amount,
+  fee,
+  toAccount,
+}: {
   ledgerId: Principal;
-  fromAccount: Account;
-  toAccount: Account;
+  fromAccount: IcrcLedgerDid.Account;
+  toAccount: IcrcLedgerDid.Account;
   amount: bigint;
   fee: bigint | undefined;
-}): Promise<bigint> => {
-  const result = await icrcTransferFrom(params);
+}): Promise<IcrcLedgerDid.Tokens> => {
+  const args: IcrcLedgerDid.TransferFromArgs = {
+    amount,
+    from: fromAccount,
+    to: toAccount,
+    created_at_time: toNullable(),
+    fee: toNullable(fee),
+    memo: toNullable(),
+    spender_subaccount: toNullable(),
+  };
+
+  const { icrc2TransferFrom } = new IcrcLedgerCanister({
+    canisterId: ledgerId,
+  });
+
+  const result = await icrc2TransferFrom({ args });
 
   if ("Err" in result) {
     throw new Error(

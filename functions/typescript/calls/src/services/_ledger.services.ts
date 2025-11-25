@@ -1,5 +1,5 @@
-import { LedgerCanister } from "@dfinity/ledger-icp";
 import { createAgent, nonNullish } from "@dfinity/utils";
+import { LedgerCanister } from "@icp-sdk/canisters/ledger/icp";
 import { unsafeIdentity } from "@junobuild/core";
 
 export const initLedger = async (): Promise<LedgerCanister> => {
