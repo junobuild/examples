@@ -92,5 +92,7 @@ export const onSetDoc = defineHook<OnSetDoc>({
       amount: requestAmount,
       fee,
     });
+
+    console.log(`${requestAmount} ICP transferred to Satellite 🥳`);
   },
 });
