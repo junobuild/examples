@@ -8,5 +8,15 @@ export default defineConfig({
     },
     source: "dist",
     predeploy: ["npm run build"],
+    collections: {
+      datastore: [
+        {
+          collection: "request",
+          memory: "stable",
+          read: "managed",
+          write: "managed",
+        },
+      ],
+    },
   },
 });
