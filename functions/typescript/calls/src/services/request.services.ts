@@ -1,6 +1,6 @@
-import { Icrc2ApproveRequest } from "@dfinity/ledger-icp";
-import { Principal } from "@dfinity/principal";
 import { nowInBigIntNanoSeconds } from "@dfinity/utils";
+import { Icrc2ApproveRequest } from "@icp-sdk/canisters/ledger/icp";
+import { Principal } from "@icp-sdk/core/principal";
 import { type Doc, setDoc } from "@junobuild/core";
 import {
   COLLECTION_REQUEST,
