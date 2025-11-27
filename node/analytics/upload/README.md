@@ -17,10 +17,7 @@ npm ci
 
 ## Configuration
 
-Configure your Orbiter ID in [.env](.env).
-
-- `JUNO_ORBITER_ID`: the Orbiter ID to which the data will be uploaded
-- `JUNO_SATELLITE_ID`: (optional) the Satellite ID for which the data should be uploaded
+Configure your Orbiter and Satellite ID in the [juno.config.mjs](juno.config.mjs) file.
 
 ## Upload Page Views
 
