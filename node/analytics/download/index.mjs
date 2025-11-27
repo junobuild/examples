@@ -21,10 +21,8 @@ console.log("██║  ██║██║ ╚████║██║  ██�
 console.log("╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝      ╚═╝   ╚═╝ ╚═════╝╚══════╝");
 
 export const onRun = defineRun(() => ({
-  run: async ({ identity }) => {
+  run: async ({ identity, orbiterId }) => {
     console.log(`\n[Your CLI identity: ${identity.getPrincipal().toText()}]\n`);
-
-    const orbiterId = process.env.ORBITER_ID;
 
     assertNonNullish(orbiterId, "Orbiter ID undefined.");
 
