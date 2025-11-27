@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@junobuild/cli-tools": "^0.9.3",
+    "@junobuild/cli-tools": "^0.9.4",
     "@junobuild/config": "^2.7.0",
     "@junobuild/ic-client": "^5.0.1",
     "date-fns": "^4.1.0"
