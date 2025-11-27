@@ -4,10 +4,7 @@ import { buildPeriods } from "./utils.mjs";
 import { writeFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import { hasArgs } from "@junobuild/cli-tools";
-
-import * as dotenv from "dotenv";
 import { defineRun } from "@junobuild/config";
-dotenv.config();
 
 console.log("");
 // prettier-ignore

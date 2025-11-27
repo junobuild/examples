@@ -15,9 +15,7 @@ npm ci
 
 ## Configuration
 
-Configure your Orbiter ID in [.env](.env).
-
-- `JUNO_ORBITER_ID`: the Orbiter ID from which you want to gather data
+Configure your Orbiter ID in the [juno.config.mjs](juno.config.mjs).
 
 ## Get Page Views
 
