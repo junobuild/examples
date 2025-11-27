@@ -1,5 +1,5 @@
 {
-  "name": "@junobuild/example-node-admin-read-save-documents",
+  "name": "@junobuild/example-node-admin-controller",
   "version": "0.0.1",
   "description": "A sample admin NodeJS script to set a controller for Juno's satellite.",
   "main": "index.mjs",
