@@ -7,7 +7,13 @@ export default defineConfig({
       development: "<DEV_SATELLITE_ID>",
       production: "<PROD_SATELLITE_ID>",
     },
-    source: "build",
+    source: "dist",
     predeploy: ["npm run build"],
+  },
+  orbiter: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>",
+    },
   },
 });

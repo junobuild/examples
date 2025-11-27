@@ -1,7 +1,5 @@
-import pkgAgent from "@dfinity/agent";
+import { HttpAgent, Actor } from "@icp-sdk/core/agent";
 import { idlFactory as orbiterIdlFactory } from "./node_modules/@junobuild/ic-client/declarations/orbiter/orbiter.factory.did.mjs";
-
-const { HttpAgent, Actor } = pkgAgent;
 
 export const orbiterLocalActor = async ({ orbiterId, identity }) => {
   const agent = await HttpAgent.create({

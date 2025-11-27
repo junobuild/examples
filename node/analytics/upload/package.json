@@ -11,14 +11,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@junobuild/cli-tools": "^0.8.0",
-    "@junobuild/config": "^2.2.0",
-    "@junobuild/ic-client": "^3.1.2",
-    "dotenv": "^17.2.2",
-    "ua-parser-js": "^1.0.40"
+    "@junobuild/cli-tools": "^0.9.4",
+    "@junobuild/config": "^2.7.0",
+    "@junobuild/ic-client": "^5.0.1",
+    "ua-parser-js": "1.0.40"
   },
   "devDependencies": {
-    "prettier": "^3.5.3",
-    "prettier-plugin-organize-imports": "^4.1.0"
+    "prettier": "^3.7.1",
+    "prettier-plugin-organize-imports": "^4.3.0"
   }
 }

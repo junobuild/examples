@@ -8,13 +8,10 @@ import {
   toNullable,
 } from "@dfinity/utils";
 import { listFiles, readData } from "./utils.mjs";
-import * as dotenv from "dotenv";
 import { hasArgs } from "@junobuild/cli-tools";
 import UAParser from "ua-parser-js";
 import { orbiterLocalActor } from "./actor.mjs";
 import { defineRun } from "@junobuild/config";
-
-dotenv.config();
 
 console.log("");
 // prettier-ignore
@@ -31,10 +28,8 @@ console.log("██║  ██║██║ ╚████║██║  ██�
 console.log("╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝      ╚═╝   ╚═╝ ╚═════╝╚══════╝");
 
 export const onRun = defineRun(() => ({
-  run: async ({ identity, satelliteId }) => {
+  run: async ({ identity, satelliteId, orbiterId }) => {
     console.log(`\n[Your CLI identity: ${identity.getPrincipal().toText()}]\n`);
-
-    const orbiterId = process.env.ORBITER_ID;
 
     assertNonNullish(orbiterId, "Orbiter ID undefined.");
 
