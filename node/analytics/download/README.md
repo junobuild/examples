@@ -1,6 +1,6 @@
-# NodeJS - Analytics - Collect
+# NodeJS - Analytics - Download
 
-A NodeJS to download page views from [Juno](https://juno.build) analytics.
+A script to download all the entries of your [Juno](https://juno.build) analytics.
 
 ## Getting started
 
