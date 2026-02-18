@@ -1,0 +1,24 @@
+{
+  "name": "@junobuild/multi-collection-hooks",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --force",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@junobuild/config": "^0.4.0",
+    "@junobuild/vite-plugin": "^4.0.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.2",
+    "vite-plugin-node-polyfills": "^0.24.0"
+  },
+  "dependencies": {
+    "@junobuild/core": "^0.1.17",
+    "nanoid": "^5.0.7"
+  }
+}
