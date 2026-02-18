@@ -8,3 +8,4 @@ A collection of examples developed on [Juno](https://juno.build).
 - [json](./json): generate JSON file exposed on the web on the fly
 - [multi-collection-hooks](./multi-collection-hooks): hooks that listen to multiple collections with a dispatch pattern
 - [calls](./calls): a minimal app that demonstrates how to make canister-to-canister calls inside a Rust serverless function
+- [logging](./logging): demonstrates how to use Juno's built-in logging functions with proper log levels
