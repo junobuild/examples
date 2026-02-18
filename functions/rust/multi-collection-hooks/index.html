@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juno Multi-Collection Hooks</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Multi-Collection Hooks</h1>
+      <button id="signin">Sign in</button>
+      <button id="signout">Sign Out</button>
+      <hr />
+      <h2>Notes</h2>
+      <input id="noteTitle" type="text" placeholder="Note title" />
+      <input id="noteBody" type="text" placeholder="Note body" />
+      <button id="setNote">Set Note</button>
+      <button id="getNote">Get Note</button>
+      <button id="deleteNote">Delete Note</button>
+      <hr />
+      <h2>Tasks</h2>
+      <input id="taskDesc" type="text" placeholder="Task description" />
+      <label><input id="taskDone" type="checkbox" /> Done</label>
+      <button id="setTask">Set Task</button>
+      <button id="getTask">Get Task</button>
+      <button id="deleteTask">Delete Task</button>
+      <hr />
+      <div id="result"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
