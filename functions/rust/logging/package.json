@@ -10,14 +10,14 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@junobuild/config": "^0.4.0",
-    "@junobuild/vite-plugin": "^4.0.0",
-    "prettier": "^3.6.2",
-    "typescript": "^5.8.3",
-    "vite": "^7.0.2",
-    "vite-plugin-node-polyfills": "^0.24.0"
+    "@junobuild/config": "^2.10.1",
+    "@junobuild/vite-plugin": "^4.7.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-node-polyfills": "^0.25.0"
   },
   "dependencies": {
-    "@junobuild/core": "^0.1.17"
+    "@junobuild/core": "^5.1.0"
   }
 }
