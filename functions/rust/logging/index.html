@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juno Logging Example</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Juno Logging Example</h1>
+      <p>Demonstrates <code>junobuild_satellite::{info, debug, warn, error}</code></p>
+
+      <button id="signin">Sign in</button>
+      <button id="signout">Sign Out</button>
+      <hr />
+
+      <h2>Create a Note</h2>
+      <label for="title">Title:</label>
+      <input id="title" type="text" placeholder="My note" />
+      <br />
+      <label for="body">Body:</label>
+      <textarea id="body" placeholder="Note body (leave empty to trigger a warning log)"></textarea>
+      <br />
+      <button id="save">Save Note</button>
+
+      <div id="result"></div>
+
+      <p>
+        After saving, check the
+        <strong>Juno Console → Functions → Logs</strong> tab to see structured
+        log entries with proper levels (Info, Debug, Warning, Error).
+      </p>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
