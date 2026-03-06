@@ -1,0 +1,19 @@
+{
+  "name": "@junobuild/example-node-basic",
+  "version": "0.0.1",
+  "description": "A sample NodeJS script that showcases queries to Juno.",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "format": "prettier . --write",
+    "index": "juno run --src index.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@junobuild/config": "^2.2.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "typescript": "^5.9.3"
+  }
+}
