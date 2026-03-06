@@ -8,6 +8,9 @@ import { Principal } from "@icp-sdk/core/principal";
 import { readFile } from "node:fs/promises";
 import { upgradeModule } from "@junobuild/admin";
 import { IDL } from "@icp-sdk/core/candid";
+import { AccountIdentifier } from "@icp-sdk/canisters/ledger/icp";
+// @ts-expect-error demo purpose only. Loose, pragmatic import.
+import { init } from "./node_modules/@icp-sdk/canisters/declarations/ledger-icp/ledger.idl";
 
 // ============================================================
 // Configure your canister here
@@ -16,6 +19,7 @@ import { IDL } from "@icp-sdk/core/candid";
 const CANISTER = {
   canisterId: "2ipq2-uqaaa-aaaar-qailq-cai",
   wasmPath: "./ledger-canister.wasm.gz",
+  // Edit your init arguments in "buildInitArgs" function at the end of this script
 } as const;
 
 // ============================================================
@@ -175,7 +179,8 @@ const createCanister = async ({
 
 const install = async ({
   mode,
-  ...actor
+  identity,
+  agent,
 }: {
   agent: HttpAgent;
   identity: Identity;
@@ -184,11 +189,54 @@ const install = async ({
   const { wasmPath, canisterId } = CANISTER;
 
   await upgradeModule({
-    actor,
+    actor: { agent, identity },
     mode,
     canisterId: Principal.fromText(canisterId),
     wasmModule: await readFile(wasmPath),
-    arg: IDL.encode([], []),
+    arg: buildInitArgs({
+      identity,
+      mode: "upgrade" in mode ? "upgrade" : "install",
+    }),
     takeSnapshot: false,
   });
+};
+
+// For demo purpose only. Values - notably the identity - used to build the arguments
+// make no sense.
+const buildInitArgs = ({
+  identity,
+  mode,
+}: {
+  identity: Identity;
+  mode: "upgrade" | "install";
+}): Uint8Array => {
+  const minterAccountIdentifier = AccountIdentifier.fromPrincipal({
+    principal: identity.getPrincipal(),
+  }).toHex();
+
+  const ledgerAccountIdentifier = AccountIdentifier.fromPrincipal({
+    principal: identity.getPrincipal(),
+  }).toHex();
+
+  const initArgs = {
+    send_whitelist: [],
+    token_symbol: ["Yolo"],
+    transfer_fee: [{ e8s: 10_000n }],
+    minting_account: minterAccountIdentifier,
+    maximum_number_of_accounts: [],
+    accounts_overflow_trim_quantity: [],
+    transaction_window: [],
+    max_message_size_bytes: [],
+    icrc1_minting_account: [],
+    archive_options: [],
+    initial_values: [[ledgerAccountIdentifier, { e8s: 100_000_000_000n }]],
+    token_name: ["Yolo world"],
+    feature_flags: [],
+  };
+
+  const upgradeArgs: unknown = [];
+
+  return IDL.encode(init({ IDL }), [
+    mode === "upgrade" ? { Upgrade: upgradeArgs } : { Init: initArgs },
+  ]);
 };
