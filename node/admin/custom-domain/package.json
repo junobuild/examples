@@ -5,7 +5,7 @@
   "main": "update.mjs",
   "type": "module",
   "scripts": {
-    "format": "prettier .. --write",
+    "format": "prettier . --write",
     "update": "juno run --src update.mjs",
     "add": "juno run --src add.mjs"
   },

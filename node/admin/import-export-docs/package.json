@@ -5,7 +5,7 @@
   "main": "import.mjs",
   "type": "module",
   "scripts": {
-    "format": "prettier .. --write",
+    "format": "prettier . --write",
     "export": "node export.mjs",
     "import": "node import.mjs"
   },

@@ -5,7 +5,7 @@
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "format": "prettier .. --write",
+    "format": "prettier . --write",
     "index": "juno run --src index.mjs",
     "assets": "juno run --src assets.mjs"
   },

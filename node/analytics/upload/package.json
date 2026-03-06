@@ -5,7 +5,7 @@
   "main": "upload.mjs",
   "type": "module",
   "scripts": {
-    "format": "prettier .. --write",
+    "format": "prettier . --write",
     "upload": "juno run --src upload.mjs"
   },
   "author": "",

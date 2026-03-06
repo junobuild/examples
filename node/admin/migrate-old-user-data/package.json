@@ -5,7 +5,7 @@
   "main": "migrate.mjs",
   "type": "module",
   "scripts": {
-    "format": "prettier .. --write",
+    "format": "prettier . --write",
     "migrate": "juno run --src migrate.mjs"
   },
   "author": "",
