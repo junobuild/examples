@@ -19,11 +19,8 @@ npm ci
 
 2. **Start Juno local emulator**:
 
-:::important
-
-Requires the Juno CLI to be available `npm i -g @junobuild/cli`
-
-:::
+> [!IMPORTANT]
+> Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```bash
 juno emulator start
