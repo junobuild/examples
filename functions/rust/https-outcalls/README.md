@@ -1,6 +1,6 @@
 # HTTPS Outcalls
 
-A sample app that showcases how to implement [HTTPS outcalls](https://juno.build/docs/guides/rust#https-outcalls) on Juno.
+A sample app that showcases how to implement [HTTPS outcalls](https://juno.build/docs/guides/rust#https-outcalls) on Juno with serverless functions written in Rust.
 
 ## Getting started
 
@@ -34,7 +34,7 @@ juno emulator start
 
 4. **Create required collections**:
 
-- `dog` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+- `dogs` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
 
 5. **Start the frontend dev server** (in a separate terminal):
 
