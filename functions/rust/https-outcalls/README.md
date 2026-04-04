@@ -1,4 +1,4 @@
-# Hooks
+# HTTPS Outcalls
 
 A sample app that showcases how to implement [HTTPS outcalls](https://juno.build/docs/guides/rust#https-outcalls) on Juno.
 
