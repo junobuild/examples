@@ -19,7 +19,7 @@ const DogDataSchema = j.strictObject({
 //
 // That's why we declare a struct that matches the structure of the answer.
 const DogApiResponseSchema = j.strictObject({
-  message: j.string(),
+  message: j.url(),
   status: j.string(),
 });
 
@@ -53,8 +53,7 @@ export const onSetDoc = defineHook<OnSetDoc>({
     const decoder = new TextDecoder();
     const body = decoder.decode(result.body);
 
-    const dogResponse = DogApiResponseSchema.parse(body);
-
+    const dogResponse = DogApiResponseSchema.parse(JSON.parse(body));
     // 4. Our goal is to update the document in the Datastore with an update that contains the link to the image fetched from the API we just called.
     const dogData = DogDataSchema.parse({
       src: dogResponse.message,
