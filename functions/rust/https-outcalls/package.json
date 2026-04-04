@@ -18,7 +18,6 @@
     "vite": "^8.0.3"
   },
   "dependencies": {
-    "@junobuild/admin": "^4.3.2",
     "@junobuild/core": "^5.3.1"
   }
 }
