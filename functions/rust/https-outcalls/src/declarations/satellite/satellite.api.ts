@@ -6,18 +6,6 @@
 // @ts-nocheck
 
 import type {_SERVICE as SatelliteActor} from './satellite.did';
-import type { Principal } from '@icp-sdk/core/principal';
-import {idlFactory} from './satellite.factory.did.js';
-import {getSatelliteExtendedActor} from '@junobuild/core';
-
-const buildVersion = async (): Promise<string> => {
-	const {build_version} = await getSatelliteExtendedActor<SatelliteActor>({
-		idlFactory
-	});
-
-	return await build_version();
-}
-
-export const functions = {
-	buildVersion
-};
+import type { Principal } from "@icp-sdk/core/principal";
+import { idlFactory } from "./satellite.factory.did.js";
+import { getSatelliteExtendedActor } from "@junobuild/core";
