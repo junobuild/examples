@@ -1,8 +1,4 @@
-import {
-  getDoc,
-  setDoc,
-  type Doc,
-} from "@junobuild/core";
+import { getDoc, setDoc, type Doc } from "@junobuild/core";
 import { nanoid } from "nanoid";
 
 interface Dog {

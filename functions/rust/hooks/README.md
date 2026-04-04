@@ -26,7 +26,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 :::
 
 ```bash
-juno dev start
+juno emulator start
 ```
 
 3. **Create a Satellite** for local dev:

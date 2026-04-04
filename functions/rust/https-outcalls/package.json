@@ -4,19 +4,21 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-    "@junobuild/vite-plugin": "^0.0.19",
-    "typescript": "^5.7.3",
-    "vite": "^6.0.11",
-    "vite-plugin-compression": "^0.5.1"
+    "@icp-sdk/bindgen": "^0.3.0",
+    "@junobuild/config": "^2.15.1",
+    "@junobuild/vite-plugin": "^4.7.1",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3"
   },
   "dependencies": {
-    "@junobuild/admin": "^0.1.2",
-    "@junobuild/core": "^0.1.1"
+    "@junobuild/admin": "^4.3.2",
+    "@junobuild/core": "^5.3.1"
   }
 }

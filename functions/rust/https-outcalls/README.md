@@ -1,6 +1,6 @@
 # Hooks
 
-A sample app that showcases how to implement [HTTPS outcalls](https://internetcomputer.org/https-outcalls) on Juno.
+A sample app that showcases how to implement [HTTPS outcalls](https://juno.build/docs/guides/rust#https-outcalls) on Juno.
 
 ## Getting started
 
@@ -10,22 +10,45 @@ cd rust/https-outcalls
 npm ci
 ```
 
-## Local development
+## How to Run
 
-Running the frontend app:
+1. **Install dependencies**:
 
+```bash
+npm ci
 ```
+
+2. **Start Juno local emulator**:
+
+:::important
+
+Requires the Juno CLI to be available `npm i -g @junobuild/cli`
+
+:::
+
+```bash
+juno emulator start
+```
+
+3. **Create a Satellite** for local dev:
+
+- Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
+- Update `juno.config.ts` with your Satellite ID.
+
+4. **Create required collections**:
+
+- `dog` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+
+5. **Start the frontend dev server** (in a separate terminal):
+
+```bash
 npm run dev
 ```
 
-Starting the local development (using Docker):
+6. **Build the serverless functions** (in a separate terminal):
 
-```
-juno dev start
+```bash
+juno functions build
 ```
 
-Building and deploying the extended [Satellite](src/satellite/src/lib.rs):
-
-```
-juno dev build
-```
+The emulator will automatically upgrade your Satellite and live reload the changes.

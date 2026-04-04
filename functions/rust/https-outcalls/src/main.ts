@@ -1,6 +1,6 @@
 import {
-  authSubscribe,
   initSatellite,
+  onAuthStateChange,
   signIn,
   signOut,
   type User,
@@ -18,15 +18,20 @@ document.addEventListener(
   { once: true },
 );
 
-document
-  .querySelector("#signin")
-  ?.addEventListener("click", async () => await signIn(), { passive: true });
+document.querySelector("#signin")?.addEventListener(
+  "click",
+  async () =>
+    await signIn({
+      dev: {},
+    }),
+  { passive: true },
+);
 
 document
   .querySelector("#signout")
-  ?.addEventListener("click", signOut, { passive: true });
+  ?.addEventListener("click", async () => await signOut(), { passive: true });
 
-authSubscribe((user: User | null) => {
+onAuthStateChange((user: User | null) => {
   console.log("User", user);
 });
 
