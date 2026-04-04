@@ -1,6 +1,5 @@
-use ic_cdk::api::management_canister::http_request::{
-    http_request as http_request_outcall, CanisterHttpRequestArgument, HttpMethod,
-};
+use ic_cdk::management_canister::http_request as http_request_outcall;
+use ic_cdk::management_canister::{HttpMethod, HttpRequestArgs};
 use junobuild_macros::on_set_doc;
 use junobuild_satellite::{include_satellite, set_doc_store, OnSetDocContext, SetDoc};
 use junobuild_utils::encode_doc_data;
@@ -35,7 +34,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 
     let request_headers = vec![];
 
-    let request = CanisterHttpRequestArgument {
+    let request = HttpRequestArgs {
         url,
         method: HttpMethod::GET,
         body: None,
@@ -44,18 +43,14 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
         transform: None,
         // We do not require any particular HTTP headers in this example.
         headers: request_headers,
+        // Use a single node as we do not require that a trust level for fetching a dog image for demo purposes. 😉
+        is_replicated: Some(false),
     };
 
-    // 2. Execute the HTTP request. A request consumes Cycles(!). In this example we provide 2_000_000_000 Cycles (= 0.002 TCycles).
-    // To estimate the costs see documentation:
-    // - https://internetcomputer.org/docs/current/developer-docs/gas-cost#special-features
-    // - https://internetcomputer.org/docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works#pricing
-    // Total amount of cycles depends on the subnet size. Therefore, on mainnet it might cost ~13x more than what's required when developing locally. Source: https://forum.dfinity.org/t/http-outcalls-cycles/27439/4
-    // Note: In the future we will have a UI logging panel in console.juno.build to help debug on production. Follow PR https://github.com/junobuild/juno/issues/415.
-    //
-    // We rename ic_cdk::api::management_canister::http_request::http_request to http_request_outcall because the Satellite already includes such a function's name.
-    match http_request_outcall(request, 2_000_000_000).await {
-        Ok((response,)) => {
+    // 2. Execute the HTTP request.
+    // Note: we alias the function http_request to http_request_outcall just to prevent naming conflicts.
+    match http_request_outcall(&request).await {
+        Ok(response) => {
             // 3. Use serde_json to transform the response to a structured object.
             let str_body = String::from_utf8(response.body)
                 .expect("Transformed response is not UTF-8 encoded.");
@@ -88,9 +83,8 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 
             Ok(())
         }
-        Err((r, m)) => {
-            let message =
-                format!("The http_request resulted into error. RejectionCode: {r:?}, Error: {m}");
+        Err(error) => {
+            let message = format!("The http_request resulted into error: {error:?}");
 
             Err(message)
         }
