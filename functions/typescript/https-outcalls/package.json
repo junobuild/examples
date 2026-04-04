@@ -1,0 +1,25 @@
+{
+  "name": "@junobuild/https-outcalls",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --force",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@icp-sdk/bindgen": "^0.3.0",
+    "@junobuild/config": "^2.15.1",
+    "@junobuild/vite-plugin": "^4.7.1",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3"
+  },
+  "dependencies": {
+    "@junobuild/core": "^5.3.1",
+    "@junobuild/functions": "^0.8.2",
+    "@junobuild/schema": "^1.2.1"
+  }
+}
